@@ -24,8 +24,10 @@ public class PlayerMoonGolfController : BaseCharacterController
         }
         else if (isAttacking)
         {
-            // Rotates towards mouse click for attack
-            RotateTowards(attackDirection, true);
+            // Rotate towards player click
+
+            movement.Rotate(attackDirection, 900, false);
+
         }
         else
         {
@@ -67,7 +69,8 @@ public class PlayerMoonGolfController : BaseCharacterController
             if (!Physics.Raycast(ray, out hitInfo, Mathf.Infinity, groundMask.value))
             return;
 
-            attackDirection = hitInfo.point;
+            attackDirection = Vector3.ProjectOnPlane(hitInfo.point - transform.position, transform.up);
+            moveDirection = Vector3.zero;
             isAttacking = true;
 
         }
