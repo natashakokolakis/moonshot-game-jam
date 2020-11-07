@@ -3,23 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-//add method to check if player in range, then determine whether to melee or ranged attack
-
 public class BossAttack : MonoBehaviour
 {
     public GameObject minion;
     public Transform minionSpawnPoint; //center point of where minions will spawn
     public GameObject projectile;
     public Transform projectileOrigin;
+    public int attackRange = 2;
 
     bool isAttacking = false;
     bool onCooldown;
-    //GameObject player;
+    GameObject player;
     //PlayerHealth playerHealth;
 
     private void Awake()
     {
-        //player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         //playerHealth = player.GetComponent<PlayerHealth>();
     }
 
@@ -27,7 +26,7 @@ public class BossAttack : MonoBehaviour
     {
         if (isAttacking == false && onCooldown == false /* && playerHealth.currentHealth > 0 */)
         {
-            int num = Random.Range(0, 5);
+            int num = Random.Range(0, 6);
 
             if (num == 0)
             {
@@ -39,6 +38,10 @@ public class BossAttack : MonoBehaviour
             }
             else
             {
+                if (Vector2.Distance(transform.position, player.transform.position) <= attackRange)
+                {
+                    MeleeAttack();
+                }
                 RangedAttack();
             }
         }
@@ -60,7 +63,7 @@ public class BossAttack : MonoBehaviour
         onCooldown = true;
 
         //summon 5 minions at random positions
-        for (int i=0; i < 5; i++)
+        for (int i = 0; i < 5; i++)
         {
             Vector3 randomPosition = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
             Instantiate(minion, minionSpawnPoint.position + randomPosition, minionSpawnPoint.rotation);
@@ -68,6 +71,16 @@ public class BossAttack : MonoBehaviour
 
         StartCoroutine(AttackDuration(2f));
         StartCoroutine(NextAttackDelay(7f));
+    }
+
+    void MeleeAttack()
+    {
+        isAttacking = true;
+        onCooldown = true;
+        DealDamage(5);
+
+        StartCoroutine(AttackDuration(1f));
+        StartCoroutine(NextAttackDelay(3f));
     }
 
     void RangedAttack()
@@ -87,9 +100,14 @@ public class BossAttack : MonoBehaviour
         isAttacking = false;
     }
 
-    IEnumerator NextAttackDelay (float minTimeBetweenAttack)
+    IEnumerator NextAttackDelay(float minTimeBetweenAttack)
     {
         yield return new WaitForSeconds(minTimeBetweenAttack);
         onCooldown = false;
+    }
+
+    void DealDamage(int attackDamage)
+    {
+        //playerHealth.TakeDamage(attackDamage);
     }
 }
