@@ -5,6 +5,8 @@ using UnityEngine;
 public class MeleeAttackScript : MonoBehaviour
 {
     public BoxCollider meleeHitbox;
+    public int meleeDamage = 5;
+
     private void Awake()
     {
         
@@ -14,7 +16,7 @@ public class MeleeAttackScript : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-
+            other.GetComponent<EnemyHealth>().TakeDamage(meleeDamage);
         }
     }
 
