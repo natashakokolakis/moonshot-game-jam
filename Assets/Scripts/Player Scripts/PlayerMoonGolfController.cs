@@ -6,6 +6,9 @@ public class PlayerMoonGolfController : BaseCharacterController
     // groundMask is used to determine which layer is the ground in Unity
     public LayerMask groundMask = 1;
 
+    [HideInInspector]
+    public bool isDead = false;
+
     // Used for basic attack
     public bool isAttacking = false;
     public float attackCooldownMax = 1.0f;
@@ -44,7 +47,7 @@ public class PlayerMoonGolfController : BaseCharacterController
 
         // Handle user input
 
-        if (isAttacking)
+        if (isAttacking | isDead)
             return;
 
         moveDirection = new Vector3

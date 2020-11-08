@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ECM.Components;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     //public Slider healthSlider;
 
     PlayerMoonGolfController playerController;
+    CharacterMovement characterMovement;
 
     private void Awake()
     {
@@ -32,6 +34,7 @@ public class PlayerHealth : MonoBehaviour
     public void Death()
     {
         isDead = true;
-        playerController.enabled = false;
+        playerController.moveDirection = Vector3.zero;
+        playerController.isDead = true;
     }
 }
