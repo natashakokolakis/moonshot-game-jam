@@ -17,6 +17,8 @@ public class EnemyProjectile : MonoBehaviour
     private void Start()
     {
         rb.velocity = transform.forward * speed;
+
+        Destroy(gameObject, 3);
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -24,7 +26,7 @@ public class EnemyProjectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+            Destroy(gameObject);
         }
-        Destroy(gameObject, 3);
     }
 }

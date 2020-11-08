@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossBeam : MonoBehaviour
 {
     public int damage = 4;
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(BeamOff(3f));
     }
