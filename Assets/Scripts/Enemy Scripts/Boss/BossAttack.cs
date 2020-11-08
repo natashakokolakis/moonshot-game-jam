@@ -50,7 +50,6 @@ public class BossAttack : MonoBehaviour
 
     void ChargedAttack()
     {
-        //add damage script to projectile so that it only damages player if it hits
         //modify so that boss charges before activating beam
         isAttacking = true;
         onCooldown = true;
