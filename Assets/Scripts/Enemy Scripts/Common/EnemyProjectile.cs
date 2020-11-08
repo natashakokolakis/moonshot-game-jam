@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 7f;
     public int damage = 2;
 
     Rigidbody rb;

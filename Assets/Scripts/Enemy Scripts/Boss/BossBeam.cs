@@ -5,6 +5,10 @@ using UnityEngine;
 public class BossBeam : MonoBehaviour
 {
     public int damage = 4;
+    private void Start()
+    {
+        StartCoroutine(BeamOff(3f));
+    }
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -12,5 +16,11 @@ public class BossBeam : MonoBehaviour
         {
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
+    }
+
+    IEnumerator BeamOff(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        gameObject.SetActive(false);
     }
 }

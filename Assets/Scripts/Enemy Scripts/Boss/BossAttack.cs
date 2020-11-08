@@ -15,17 +15,17 @@ public class BossAttack : MonoBehaviour
     bool isAttacking = false;
     bool onCooldown;
     GameObject player;
-    //PlayerHealth playerHealth;
+    PlayerHealth playerHealth;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        //playerHealth = player.GetComponent<PlayerHealth>();
+        playerHealth = player.GetComponent<PlayerHealth>();
     }
 
     void Update()
     {
-        if (isAttacking == false && onCooldown == false /* && playerHealth.currentHealth > 0 */)
+        if (isAttacking == false && onCooldown == false && playerHealth.currentHealth > 0)
         {
             int num = Random.Range(0, 6);
 
@@ -33,7 +33,7 @@ public class BossAttack : MonoBehaviour
             {
                 ChargedAttack();
             }
-            if (num < 3)
+            if (num < 3 && num > 0)
             {
                 SummonMinions();
             }
@@ -55,9 +55,7 @@ public class BossAttack : MonoBehaviour
         onCooldown = true;
         chargeBeam.SetActive(true);
 
-        StartCoroutine(AttackDuration(10f));
-        chargeBeam.SetActive(false);
-        StartCoroutine(NextAttackDelay(3f));
+        StartCoroutine(AttackDuration(10f, 3f));
     }
 
     void SummonMinions()
@@ -72,8 +70,7 @@ public class BossAttack : MonoBehaviour
             Instantiate(minion, minionSpawnPoint.position + randomPosition, minionSpawnPoint.rotation);
         }
 
-        StartCoroutine(AttackDuration(2f));
-        StartCoroutine(NextAttackDelay(7f));
+        StartCoroutine(AttackDuration(2f, 7f));
     }
 
     void MeleeAttack()
@@ -82,8 +79,7 @@ public class BossAttack : MonoBehaviour
         onCooldown = true;
         DealDamage(5);
 
-        StartCoroutine(AttackDuration(1f));
-        StartCoroutine(NextAttackDelay(3f));
+        StartCoroutine(AttackDuration(1f, 3f));
     }
 
     void RangedAttack()
@@ -92,14 +88,14 @@ public class BossAttack : MonoBehaviour
         onCooldown = true;
         Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);
 
-        StartCoroutine(AttackDuration(1f));
-        StartCoroutine(NextAttackDelay(3f));
+        StartCoroutine(AttackDuration(1f, 3f));
     }
 
-    IEnumerator AttackDuration(float duration)
+    IEnumerator AttackDuration(float duration, float minTimeBetweenAttack)
     {
         yield return new WaitForSeconds(duration);
         isAttacking = false;
+        StartCoroutine(NextAttackDelay(minTimeBetweenAttack));
     }
 
     IEnumerator NextAttackDelay(float minTimeBetweenAttack)
@@ -110,6 +106,6 @@ public class BossAttack : MonoBehaviour
 
     void DealDamage(int attackDamage)
     {
-        //playerHealth.TakeDamage(attackDamage);
+        playerHealth.TakeDamage(attackDamage);
     }
 }
