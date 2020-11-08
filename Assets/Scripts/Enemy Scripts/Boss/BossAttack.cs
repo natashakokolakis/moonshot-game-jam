@@ -9,6 +9,7 @@ public class BossAttack : MonoBehaviour
     public Transform minionSpawnPoint; //center point of where minions will spawn
     public GameObject projectile;
     public Transform projectileOrigin;
+    public GameObject chargeBeam;
     public int attackRange = 2;
 
     bool isAttacking = false;
@@ -50,10 +51,13 @@ public class BossAttack : MonoBehaviour
     void ChargedAttack()
     {
         //add damage script to projectile so that it only damages player if it hits
+        //modify so that boss charges before activating beam
         isAttacking = true;
         onCooldown = true;
+        chargeBeam.SetActive(true);
 
         StartCoroutine(AttackDuration(10f));
+        chargeBeam.SetActive(false);
         StartCoroutine(NextAttackDelay(3f));
     }
 
@@ -85,7 +89,6 @@ public class BossAttack : MonoBehaviour
 
     void RangedAttack()
     {
-        //add damage script to projectile so that it only damages player if it hits
         isAttacking = true;
         onCooldown = true;
         Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);
