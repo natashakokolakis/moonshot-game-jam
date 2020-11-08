@@ -108,8 +108,8 @@ GameObject:
   - component: {fileID: 1564519094587152915}
   - component: {fileID: 1564519094587152912}
   - component: {fileID: 1564519094587152913}
-  - component: {fileID: 1564519094587152919}
   - component: {fileID: 544029535}
+  - component: {fileID: -2641722695120502347}
   m_Layer: 0
   m_Name: ECM_Minion
   m_TagString: Enemy that can be melee'd
@@ -226,7 +226,7 @@ MonoBehaviour:
   _slideGravityMultiplier: 2
   _snapToGround: 1
   _snapStrength: 0.5
---- !u!114 &1564519094587152919
+--- !u!114 &544029535
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,10 +235,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1564519094587152943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 157566651ed7283488329c06a49febe3, type: 3}
+  m_Script: {fileID: 11500000, guid: ba2abb30c92bdf44587435c883a66458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
+  startingHealth: 3
+  currentHealth: 0
+--- !u!114 &-2641722695120502347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564519094587152943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c112752ed60c06b42ba230d7927ca185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
   _angularSpeed: 540
   _acceleration: 50
   _deceleration: 20
@@ -247,7 +261,7 @@ MonoBehaviour:
   _brakingFriction: 8
   _airFriction: 0
   _airControl: 0.2
-  _canCrouch: 0
+  _canCrouch: 1
   _standingHeight: 2
   _crouchingHeight: 1
   _baseJumpHeight: 1.5
@@ -265,17 +279,3 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   chaseTarget: {fileID: 0}
---- !u!114 &544029535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564519094587152943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba2abb30c92bdf44587435c883a66458, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 3
-  currentHealth: 0
