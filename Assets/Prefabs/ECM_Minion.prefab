@@ -274,7 +274,7 @@ MonoBehaviour:
   _rootMotionRotation: 0
   _autoBraking: 1
   _brakingDistance: 2
-  _stoppingDistance: 1
+  _stoppingDistance: 2
   groundMask:
     serializedVersion: 2
     m_Bits: 1
