@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ECM.Components;
 using ECM.Controllers;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -26,16 +27,14 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     private int specialWeakness = 1;
 
+
+    public int basePushback = 300;
+
     #endregion
 
-    private Vector3 CalculatePushback(int damage, int basePushback)
+    public void GetPushedBack(int damage, Vector3 travelDirection)
     {
-        return Vector3.zero;
-    }
-
-    public void GetPushedBack(Vector3 pushback)
-    {
-        enemyMovementController.ApplyForce(pushback);
+        enemyMovementController.ApplyForce(travelDirection * damage * basePushback, ForceMode.Impulse);
     }
 
     private void Awake()
@@ -44,16 +43,18 @@ public class EnemyHealth : MonoBehaviour
         enemyMovementController = this.GetComponent<CharacterMovement>();
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int amount, Vector3 travelDirection)
     {
         currentHealth -= amount;
 
+        travelDirection = (this.transform.position - travelDirection).normalized;
+        
         if (currentHealth <= 0)
         {
             Death();
         }
 
-
+        GetPushedBack(amount, travelDirection);
     }
 
     void Death()

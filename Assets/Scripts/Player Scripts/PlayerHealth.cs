@@ -7,8 +7,8 @@ using UnityEngine.UIElements;
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 10;
-    public int currentHealth;
-    public bool isDead;
+    public int currentHealth= 1;
+    public bool isDead = false;
     //public Slider healthSlider;
 
     PlayerMoonGolfController playerController;

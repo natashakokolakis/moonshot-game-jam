@@ -3,17 +3,33 @@ using UnityEngine;
 
 public class PlayerMoonGolfController : BaseCharacterController
 {
+    #region VARIABLES AND DEPENDENCIES
+
     // groundMask is used to determine which layer is the ground in Unity
     public LayerMask groundMask = 1;
 
+
+
+    // Turns off inputs when dead
     [HideInInspector]
     public bool isDead = false;
-
+    
+    [Header("Attack")]
     // Used for basic attack
     public bool isAttacking = false;
     public float attackCooldownMax = 1.0f;
     protected float attackTimer;
     public Vector3 attackDirection = Vector3.zero;
+
+    public BoxCollider meleeBoxCollider;
+    public Animator meleeAnimator;
+
+    #endregion
+
+    protected override void Animate()
+    {
+        
+    }
 
     protected override void UpdateRotation()
     {
@@ -75,7 +91,8 @@ public class PlayerMoonGolfController : BaseCharacterController
             attackDirection = Vector3.ProjectOnPlane(hitInfo.point - transform.position, transform.up);
             moveDirection = Vector3.zero;
             isAttacking = true;
-
+            meleeBoxCollider.enabled = true;
+            meleeAnimator.SetTrigger("MeleeAttack");
         }
 
         return;
@@ -95,6 +112,7 @@ public class PlayerMoonGolfController : BaseCharacterController
         {
             attackTimer = 0f;
             isAttacking = false;
+            meleeBoxCollider.enabled = false;
         }
     
     }
@@ -104,6 +122,8 @@ public class PlayerMoonGolfController : BaseCharacterController
     {
         base.Awake();
         attackTimer = attackCooldownMax;
+        meleeAnimator = transform.Find("Player").transform.Find("GolfClub").GetComponent<Animator>();
+        
     }
 
     public override void FixedUpdate()

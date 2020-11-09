@@ -11,8 +11,10 @@ public sealed class ChaseBehaviourPrefab : BaseAgentController
         if (Input.GetKeyDown(KeyCode.P))
             pause = !pause;
 
+
         if (chaseTarget != null)
         agent.SetDestination(chaseTarget.transform.position);
+ 
     }
 
     public void OnEnable()

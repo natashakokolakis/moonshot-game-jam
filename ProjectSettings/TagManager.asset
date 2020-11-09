@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Enemy that can be melee'd
+  - Enemy
   layers:
   - Default
   - TransparentFX

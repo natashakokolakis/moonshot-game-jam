@@ -213,101 +213,8 @@ Transform:
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &126893572
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 126893573}
-  - component: {fileID: 126893576}
-  - component: {fileID: 126893575}
-  - component: {fileID: 126893574}
-  m_Layer: 0
-  m_Name: Melee Hitbox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &126893573
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 126893572}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.15, z: 1}
-  m_LocalScale: {x: 2.5, y: 1, z: 2}
-  m_Children: []
-  m_Father: {fileID: 1582167318}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &126893574
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 126893572}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &126893575
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 126893572}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &126893576
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 126893572}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &404062393
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &404062394
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -397,7 +304,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404062393}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 3.5, z: 22.13}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children:
@@ -405,7 +312,7 @@ Transform:
   - {fileID: 874799524}
   - {fileID: 1718220421}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &404062398
 MonoBehaviour:
@@ -440,6 +347,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 20
   currentHealth: 0
+  meleeWeakness: 1
+  rangedWeakness: 1
+  specialWeakness: 1
+  basePushback: 3000
 --- !u!114 &404062400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,7 +732,7 @@ BoxCollider:
   m_GameObject: {fileID: 894960928}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -937,7 +848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  currentHealth: 0
+  currentHealth: 5
   isDead: 0
 --- !u!114 &1582167314
 MonoBehaviour:
@@ -1003,14 +914,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582167312}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 50
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!4 &1582167318
 Transform:
   m_ObjectHideFlags: 0
@@ -1023,7 +934,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1762227598}
-  - {fileID: 126893573}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1062,9 +972,12 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1
+  isDead: 0
   isAttacking: 0
   attackCooldownMax: 0.5
   attackDirection: {x: 0, y: 0, z: 0}
+  meleeBoxCollider: {fileID: 1878032838}
+  meleeAnimator: {fileID: 1878032837}
 --- !u!1 &1718220420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,6 +1116,7 @@ GameObject:
   - component: {fileID: 1878032839}
   - component: {fileID: 1878032838}
   - component: {fileID: 1878032837}
+  - component: {fileID: 1878032841}
   m_Layer: 0
   m_Name: GolfClub
   m_TagString: Untagged
@@ -1253,7 +1167,7 @@ BoxCollider:
   m_GameObject: {fileID: 1878032835}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1304,6 +1218,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878032835}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1878032841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878032835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6320603092688c740baadd6c86828706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeHitbox: {fileID: 0}
+  meleeDamage: 5
 --- !u!1001 &1564519095125401969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1311,6 +1239,69 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2641722695120502347, guid: 9a282e83a92f87d4eb2d787651281bcc,
+        type: 3}
+      propertyPath: _useBrakingFriction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2641722695120502347, guid: 9a282e83a92f87d4eb2d787651281bcc,
+        type: 3}
+      propertyPath: _acceleration
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -2641722695120502347, guid: 9a282e83a92f87d4eb2d787651281bcc,
+        type: 3}
+      propertyPath: _canCrouch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2641722695120502347, guid: 9a282e83a92f87d4eb2d787651281bcc,
+        type: 3}
+      propertyPath: _autoBraking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2641722695120502347, guid: 9a282e83a92f87d4eb2d787651281bcc,
+        type: 3}
+      propertyPath: _deceleration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2641722695120502347, guid: 9a282e83a92f87d4eb2d787651281bcc,
+        type: 3}
+      propertyPath: _groundFriction
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -2641722695120502347, guid: 9a282e83a92f87d4eb2d787651281bcc,
+        type: 3}
+      propertyPath: _brakingFriction
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 544029535, guid: 9a282e83a92f87d4eb2d787651281bcc, type: 3}
+      propertyPath: startingHealth
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 544029535, guid: 9a282e83a92f87d4eb2d787651281bcc, type: 3}
+      propertyPath: basePushback
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564519094587152912, guid: 9a282e83a92f87d4eb2d787651281bcc,
+        type: 3}
+      propertyPath: _triggerInteraction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564519094587152913, guid: 9a282e83a92f87d4eb2d787651281bcc,
+        type: 3}
+      propertyPath: _maxLateralSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564519094587152914, guid: 9a282e83a92f87d4eb2d787651281bcc,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564519094587152914, guid: 9a282e83a92f87d4eb2d787651281bcc,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1564519094587152916, guid: 9a282e83a92f87d4eb2d787651281bcc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1349,7 +1340,7 @@ PrefabInstance:
     - target: {fileID: 1564519094587152916, guid: 9a282e83a92f87d4eb2d787651281bcc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1564519094587152916, guid: 9a282e83a92f87d4eb2d787651281bcc,
         type: 3}
@@ -1370,6 +1361,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ECM_Minion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564519094587152943, guid: 9a282e83a92f87d4eb2d787651281bcc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a282e83a92f87d4eb2d787651281bcc, type: 3}
