@@ -24,7 +24,42 @@ public class PlayerMoonGolfController : BaseCharacterController
     public BoxCollider meleeBoxCollider;
     public Animator meleeAnimator;
 
+    [Header("Ranged")]
+    public bool isAiming = false;
+
     #endregion
+
+    private void MeleeAttack()
+    {
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hitInfo;
+
+        if (!Physics.Raycast(ray, out hitInfo, Mathf.Infinity, groundMask.value))
+            return;
+
+        attackDirection = Vector3.ProjectOnPlane(hitInfo.point - transform.position, transform.up);
+        moveDirection = Vector3.zero;
+        isAttacking = true;
+        meleeBoxCollider.enabled = true;
+        meleeAnimator.SetTrigger("MeleeAttack");
+    }
+
+    private void RangedAttack()
+    {
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hitInfo;
+
+        if (!Physics.Raycast(ray, out hitInfo, Mathf.Infinity, groundMask.value))
+            return;
+
+        attackDirection = Vector3.ProjectOnPlane(hitInfo.point - transform.position, transform.up);
+        movement.Rotate(attackDirection, 900, false);
+        moveDirection = Vector3.zero;
+/*        meleeBoxCollider.enabled = true;
+        meleeAnimator.SetTrigger("MeleeAttack");*/
+    }
 
     protected override void Animate()
     {
@@ -63,8 +98,22 @@ public class PlayerMoonGolfController : BaseCharacterController
 
         // Handle user input
 
+        //Do Nothing if dead
+
         if (isAttacking | isDead)
             return;
+
+        if (Input.GetButton("Fire2"))
+        {
+            RangedAttack();
+            isAiming = true;
+            return;
+        }
+        
+        if (Input.GetButtonUp("Fire2"))
+        {
+            isAiming = false;
+        }
 
         moveDirection = new Vector3
         {
@@ -81,18 +130,7 @@ public class PlayerMoonGolfController : BaseCharacterController
 
         if (Input.GetButtonDown("Fire1"))
         {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit hitInfo;
-            
-            if (!Physics.Raycast(ray, out hitInfo, Mathf.Infinity, groundMask.value))
-            return;
-
-            attackDirection = Vector3.ProjectOnPlane(hitInfo.point - transform.position, transform.up);
-            moveDirection = Vector3.zero;
-            isAttacking = true;
-            meleeBoxCollider.enabled = true;
-            meleeAnimator.SetTrigger("MeleeAttack");
+            MeleeAttack();
         }
 
         return;
