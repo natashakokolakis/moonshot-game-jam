@@ -28,7 +28,7 @@ public class EnemyHealth : MonoBehaviour
     private int specialWeakness = 1;
 
 
-    public int basePushback = 300;
+    public int basePushback = 50;
 
     #endregion
 

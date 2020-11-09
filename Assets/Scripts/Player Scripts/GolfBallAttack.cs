@@ -5,10 +5,17 @@ using UnityEngine;
 public class GolfBallAttack : MonoBehaviour
 {
     public Rigidbody golfBallRB;
-    public float basePower = .03f;
+    public SphereCollider golfBallCollider;
+    public float basePower = 1f;
+    public int baseGolfBAllDamage = 1;
+    private Vector3 currentVelocity = Vector3.zero;
+
     public void ShootGolfBall(float golfPower, Vector3 direction)
     {
-        golfBallRB.AddForce(direction * golfPower * basePower, ForceMode.Impulse);
+        golfBallRB.velocity = Vector3.zero;
+        golfBallCollider.enabled = true;
+        direction = (direction + Vector3.up/10) * golfPower * basePower / 10;
+        golfBallRB.AddForce(direction, ForceMode.Impulse);
     }
 
     void OnEnable()
@@ -16,13 +23,28 @@ public class GolfBallAttack : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") && golfBallRB.velocity.magnitude > 4.3f)
+        {
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(baseGolfBAllDamage, transform.position);
+            golfBallCollider.enabled = false;
+        }
+    }
+
     private void Awake()
     {
         golfBallRB = this.GetComponent<Rigidbody>();
+        golfBallCollider = this.GetComponent<SphereCollider>();
     }
 
     void Update()
     {
         
     }
+
+    private void FixedUpdate()
+    {
+    }
+
 }

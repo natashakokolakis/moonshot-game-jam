@@ -162,7 +162,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564519094587152943}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   meleeWeakness: 1
   rangedWeakness: 1
   specialWeakness: 1
-  basePushback: 5
+  basePushback: 50
 --- !u!114 &-2641722695120502347
 MonoBehaviour:
   m_ObjectHideFlags: 0

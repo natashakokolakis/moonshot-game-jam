@@ -28,7 +28,7 @@ public class PlayerMoonGolfController : BaseCharacterController
     public float golfPower = 0f;
     public GameObject golfBallObject;
     public GolfBallAttack golfBallAttack;
-
+    public GameObject aimLine;
 
     #endregion
 
@@ -62,7 +62,7 @@ public class PlayerMoonGolfController : BaseCharacterController
         moveDirection = Vector3.zero;
 
         golfPower += golfPowerRate * Time.deltaTime;
-        if (golfPower > 99)
+        if (golfPower > 33)
             golfPower = 0;
 
     }
@@ -104,7 +104,7 @@ public class PlayerMoonGolfController : BaseCharacterController
 
         // Handle user input
 
-        //Do Nothing if dead
+        //Do nothing if dead/ attacking
 
         if (isAttacking | isDead)
             return;
@@ -113,6 +113,7 @@ public class PlayerMoonGolfController : BaseCharacterController
         {
             RangedAttack();
             isAiming = true;
+            aimLine.SetActive(true);
             return;
         }
         
@@ -120,7 +121,10 @@ public class PlayerMoonGolfController : BaseCharacterController
         {
             isAiming = false;
             golfBallObject.SetActive(true);
+            golfBallObject.transform.position = transform.localPosition + attackDirection.normalized + new Vector3(0,.5f,0);
+            golfPower = Mathf.Clamp(golfPower, 1, 30);
             golfBallAttack.ShootGolfBall(golfPower, attackDirection);
+            aimLine.SetActive(false);
             golfPower = 0;
         }
 
