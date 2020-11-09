@@ -8,8 +8,6 @@ public class PlayerMoonGolfController : BaseCharacterController
     // groundMask is used to determine which layer is the ground in Unity
     public LayerMask groundMask = 1;
 
-
-
     // Turns off inputs when dead
     [HideInInspector]
     public bool isDead = false;
@@ -26,6 +24,11 @@ public class PlayerMoonGolfController : BaseCharacterController
 
     [Header("Ranged")]
     public bool isAiming = false;
+    public float golfPowerRate = 1f;
+    public float golfPower = 0f;
+    public GameObject golfBallObject;
+    public GolfBallAttack golfBallAttack;
+
 
     #endregion
 
@@ -57,8 +60,11 @@ public class PlayerMoonGolfController : BaseCharacterController
         attackDirection = Vector3.ProjectOnPlane(hitInfo.point - transform.position, transform.up);
         movement.Rotate(attackDirection, 900, false);
         moveDirection = Vector3.zero;
-/*        meleeBoxCollider.enabled = true;
-        meleeAnimator.SetTrigger("MeleeAttack");*/
+
+        golfPower += golfPowerRate * Time.deltaTime;
+        if (golfPower > 99)
+            golfPower = 0;
+
     }
 
     protected override void Animate()
@@ -113,6 +119,9 @@ public class PlayerMoonGolfController : BaseCharacterController
         if (Input.GetButtonUp("Fire2"))
         {
             isAiming = false;
+            golfBallObject.SetActive(true);
+            golfBallAttack.ShootGolfBall(golfPower, attackDirection);
+            golfPower = 0;
         }
 
         moveDirection = new Vector3
