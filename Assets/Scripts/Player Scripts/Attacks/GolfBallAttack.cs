@@ -9,13 +9,17 @@ public class GolfBallAttack : MonoBehaviour
     public float basePower = 1f;
     public int baseGolfBAllDamage = 1;
     private Vector3 currentVelocity = Vector3.zero;
+    public TrailRenderer trailRenderer;
+    public float trailTimer = 3f;
 
     public void ShootGolfBall(float golfPower, Vector3 direction)
     {
+        trailRenderer.Clear();
         golfBallRB.velocity = Vector3.zero;
         golfBallCollider.enabled = true;
         direction = (direction + Vector3.up/10) * golfPower * basePower / 10;
         golfBallRB.AddForce(direction, ForceMode.Impulse);
+
     }
 
     void OnEnable()
@@ -36,6 +40,7 @@ public class GolfBallAttack : MonoBehaviour
     {
         golfBallRB = this.GetComponent<Rigidbody>();
         golfBallCollider = this.GetComponent<SphereCollider>();
+        trailRenderer = this.GetComponent<TrailRenderer>();
     }
 
     void Update()
@@ -43,8 +48,9 @@ public class GolfBallAttack : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
+        currentVelocity = golfBallRB.velocity;
     }
 
 }

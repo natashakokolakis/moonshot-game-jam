@@ -26,9 +26,11 @@ public class PlayerMoonGolfController : BaseCharacterController
     public bool isAiming = false;
     public float golfPowerRate = 1f;
     public float golfPower = 0f;
+    public float golfPowerMAX = 33f;
     public GameObject golfBallObject;
     public GolfBallAttack golfBallAttack;
     public GameObject aimLine;
+    public TrailRenderer golfBallTrail;
 
     #endregion
 
@@ -62,7 +64,7 @@ public class PlayerMoonGolfController : BaseCharacterController
         moveDirection = Vector3.zero;
 
         golfPower += golfPowerRate * Time.deltaTime;
-        if (golfPower > 33)
+        if (golfPower > golfPowerMAX)
             golfPower = 0;
 
     }
@@ -120,11 +122,15 @@ public class PlayerMoonGolfController : BaseCharacterController
         if (Input.GetButtonUp("Fire2"))
         {
             isAiming = false;
+            
             golfBallObject.SetActive(true);
             golfBallObject.transform.position = transform.localPosition + attackDirection.normalized + new Vector3(0,.5f,0);
-            golfPower = Mathf.Clamp(golfPower, 1, 30);
+            golfPower = Mathf.Clamp(golfPower, 0, golfPowerMAX - 1);
             golfBallAttack.ShootGolfBall(golfPower, attackDirection);
             aimLine.SetActive(false);
+            isAttacking = true;
+            meleeAnimator.SetTrigger("MeleeAttack");
+
             golfPower = 0;
         }
 
