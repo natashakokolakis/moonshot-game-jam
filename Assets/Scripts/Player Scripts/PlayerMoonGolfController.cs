@@ -159,9 +159,12 @@ public class PlayerMoonGolfController : BaseCharacterController
         if (Input.GetButtonDown("Fire1"))
         {
             MeleeAttack();
+            aimLine.SetActive(false);
+            golfPower = 0;
+            golfPowerRate = Mathf.Abs(golfPowerRate);
         }
 
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire2") & !isAttacking)
         {
             RangedAttack();
             isAiming = true;
