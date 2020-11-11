@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using PixelCrushers.DialogueSystem;
 using UnityEngine;
 
 public class PowerMeterAnimation : MonoBehaviour
@@ -12,7 +13,13 @@ public class PowerMeterAnimation : MonoBehaviour
     public PlayerMoonGolfController playerController;
     private LineRenderer lineRenderer;
 
-    // Start is called before the first frame update
+
+    private void OnDisable()
+    {
+        powerBarColour.Pause();
+        powerBarLength.Pause();
+    }
+
     void Awake()
     {
         lineRenderer = this.GetComponent<LineRenderer>();
@@ -24,7 +31,7 @@ public class PowerMeterAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tweenCurrentTime = playerController.golfPower / playerController.golfPowerMAX;
+        tweenCurrentTime = Mathf.Clamp((playerController.golfPower/ playerController.golfPowerMAX), 0f, 0.99f);
         powerBarLength.fullPosition = tweenCurrentTime;
         powerBarColour.fullPosition = tweenCurrentTime;
     }

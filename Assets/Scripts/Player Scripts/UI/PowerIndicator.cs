@@ -9,7 +9,11 @@ public class PowerIndicator : MonoBehaviour
     public float tweenCurrentTime = 0f;
     public PlayerMoonGolfController playerController;
 
-    // Start is called before the first frame update
+    private void OnDisable()
+    {
+        powerBarIndicatorPosition.Pause();
+    }
+
     void Awake()
     {
         DOTween.Init(true, true, LogBehaviour.Default);
@@ -19,7 +23,8 @@ public class PowerIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tweenCurrentTime = playerController.golfPower / playerController.golfPowerMAX;
+
+        tweenCurrentTime = Mathf.Clamp((playerController.golfPower / playerController.golfPowerMAX), 0f, 0.99f);
         powerBarIndicatorPosition.fullPosition = tweenCurrentTime;
     }
 }

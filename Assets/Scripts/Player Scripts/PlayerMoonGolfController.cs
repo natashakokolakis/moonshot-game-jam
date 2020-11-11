@@ -26,6 +26,7 @@ public class PlayerMoonGolfController : BaseCharacterController
     public bool isAiming = false;
     public float golfPowerRate = 1f;
     public float golfPower = 0f;
+    public float golfPowerMin = 0f;
     public float golfPowerMAX = 33f;
     public GameObject golfBallObject;
     public GolfBallAttack golfBallAttack;
@@ -64,9 +65,14 @@ public class PlayerMoonGolfController : BaseCharacterController
         moveDirection = Vector3.zero;
 
         golfPower += golfPowerRate * Time.deltaTime;
-        if (golfPower > golfPowerMAX)
-            golfPower = 0;
 
+        if (golfPower >= golfPowerMAX)
+            golfPowerRate = -golfPowerRate;
+
+        if (golfPower <= 0)
+        {
+            golfPowerRate = -golfPowerRate;
+        }
     }
 
     protected override void Animate()
@@ -132,6 +138,7 @@ public class PlayerMoonGolfController : BaseCharacterController
             meleeAnimator.SetTrigger("MeleeAttack");
 
             golfPower = 0;
+            golfPowerRate = Mathf.Abs(golfPowerRate);
         }
 
         moveDirection = new Vector3

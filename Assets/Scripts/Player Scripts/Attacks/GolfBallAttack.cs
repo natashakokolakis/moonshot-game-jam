@@ -29,10 +29,13 @@ public class GolfBallAttack : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && golfBallRB.velocity.magnitude > 4.3f)
+        if (collision.gameObject.CompareTag("Enemy") && golfBallRB.velocity.magnitude > 3f)
         {
-            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(baseGolfBAllDamage, transform.position);
-            golfBallCollider.enabled = false;
+            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(baseGolfBAllDamage*(int)Mathf.Clamp(golfBallRB.velocity.magnitude / 10, 1f, 3f) , transform.position);
+            Debug.Log(baseGolfBAllDamage * (int)Mathf.Clamp(golfBallRB.velocity.magnitude / 10, 1f, 3f));
+
+            //golfBallCollider.enabled = false;
+            trailRenderer.Clear();
         }
     }
 
