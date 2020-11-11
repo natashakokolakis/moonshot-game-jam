@@ -35,6 +35,8 @@ public class PlayerMoonGolfController : BaseCharacterController
 
     #endregion
 
+    #region Custom Methods
+
     private void MeleeAttack()
     {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -61,8 +63,9 @@ public class PlayerMoonGolfController : BaseCharacterController
             return;
 
         attackDirection = Vector3.ProjectOnPlane(hitInfo.point - transform.position, transform.up);
-        movement.Rotate(attackDirection, 900, false);
         moveDirection = Vector3.zero;
+        movement.Rotate(attackDirection, 900, false);
+        
 
         golfPower += golfPowerRate * Time.deltaTime;
 
@@ -74,6 +77,28 @@ public class PlayerMoonGolfController : BaseCharacterController
             golfPowerRate = -golfPowerRate;
         }
     }
+
+    private void AttackCooldown()
+    {
+        if (isPaused)
+            return;
+
+        if (attackTimer < attackCooldownMax && isAttacking)
+        {
+            attackTimer += Time.deltaTime;
+        }
+        else
+        {
+            attackTimer = 0f;
+            isAttacking = false;
+            meleeBoxCollider.enabled = false;
+        }
+
+    }
+
+    #endregion
+
+    #region Override Methods
 
     protected override void Animate()
     {
@@ -117,29 +142,6 @@ public class PlayerMoonGolfController : BaseCharacterController
         if (isAttacking | isDead)
             return;
 
-        if (Input.GetButton("Fire2"))
-        {
-            RangedAttack();
-            isAiming = true;
-            aimLine.SetActive(true);
-            return;
-        }
-        
-        if (Input.GetButtonUp("Fire2"))
-        {
-            isAiming = false;
-            
-            golfBallObject.SetActive(true);
-            golfBallObject.transform.position = transform.localPosition + attackDirection.normalized + new Vector3(0,.5f,0);
-            golfPower = Mathf.Clamp(golfPower, 0, golfPowerMAX - 1);
-            golfBallAttack.ShootGolfBall(golfPower, attackDirection);
-            aimLine.SetActive(false);
-            isAttacking = true;
-            meleeAnimator.SetTrigger("MeleeAttack");
-
-            golfPower = 0;
-            golfPowerRate = Mathf.Abs(golfPowerRate);
-        }
 
         moveDirection = new Vector3
         {
@@ -159,29 +161,41 @@ public class PlayerMoonGolfController : BaseCharacterController
             MeleeAttack();
         }
 
+        if (Input.GetButton("Fire2"))
+        {
+            RangedAttack();
+            isAiming = true;
+            aimLine.SetActive(true);
+            return;
+        }
+
+
+        if (Input.GetButtonUp("Fire2"))
+        {
+            isAiming = false;
+
+            isAttacking = true;
+            moveDirection = Vector3.zero;
+            golfBallObject.SetActive(true);
+            golfBallObject.transform.position = transform.localPosition + attackDirection.normalized + new Vector3(0, .5f, 0);
+            golfPower = Mathf.Clamp(golfPower, 0, golfPowerMAX - 1);
+            golfBallAttack.ShootGolfBall(golfPower, attackDirection);
+            aimLine.SetActive(false);
+            isAttacking = true;
+            meleeAnimator.SetTrigger("MeleeAttack");
+
+            golfPower = 0;
+            golfPowerRate = Mathf.Abs(golfPowerRate);
+        }
+
         return;
         
     }
 
-    private void AttackCooldown()
-    {
-        if (isPaused)
-            return;
+    #endregion
 
-        if (attackTimer < attackCooldownMax && isAttacking)
-        {
-            attackTimer += Time.deltaTime;          
-        }
-        else
-        {
-            attackTimer = 0f;
-            isAttacking = false;
-            meleeBoxCollider.enabled = false;
-        }
-    
-    }
+    #region MonoBehaviours
 
-    //Sets components and values
     public override void Awake()
     {
         base.Awake();
@@ -196,6 +210,8 @@ public class PlayerMoonGolfController : BaseCharacterController
         base.FixedUpdate();
 
     }
+
+    #endregion
 }
 
 
