@@ -545,6 +545,7 @@ MonoBehaviour:
   rangedWeakness: 1
   specialWeakness: 1
   basePushback: 3000
+  invincibilityCooldown: 0
 --- !u!114 &404062400
 MonoBehaviour:
   m_ObjectHideFlags: 0

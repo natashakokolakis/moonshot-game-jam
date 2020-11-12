@@ -29,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
 
 
     public int basePushback = 50;
+    public bool invincibilityCooldown = false;
 
     #endregion
 
@@ -43,8 +44,24 @@ public class EnemyHealth : MonoBehaviour
         enemyMovementController = this.GetComponent<CharacterMovement>();
     }
 
+    IEnumerator InvincibilityAfterDamage()
+    {
+        int i = 0;
+        while(i < 1)
+        {
+            i++;
+            yield return new WaitForSeconds(.5f);
+        }
+
+        invincibilityCooldown = false;
+
+    }
+
     public void TakeDamage(int amount, Vector3 travelDirection)
     {
+        if (invincibilityCooldown)
+            return;
+
         currentHealth -= amount;
 
         travelDirection = (this.transform.position - travelDirection).normalized;
@@ -55,6 +72,10 @@ public class EnemyHealth : MonoBehaviour
         }
 
         GetPushedBack(amount, travelDirection);
+
+        invincibilityCooldown = true;
+
+        StartCoroutine("InvincibilityAfterDamage");
     }
 
     void Death()
