@@ -238,12 +238,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2abb30c92bdf44587435c883a66458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 200
+  startingHealth: 50
   currentHealth: 0
   meleeWeakness: 1
   rangedWeakness: 1
   specialWeakness: 1
   basePushback: 50
+  invincibilityCooldown: 0
 --- !u!114 &-2641722695120502347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c112752ed60c06b42ba230d7927ca185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 3
   _angularSpeed: 540
   _acceleration: 50
   _deceleration: 5

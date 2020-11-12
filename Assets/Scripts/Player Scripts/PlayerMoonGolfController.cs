@@ -33,6 +33,10 @@ public class PlayerMoonGolfController : BaseCharacterController
     public GameObject aimLine;
     public TrailRenderer golfBallTrail;
 
+    [Header("Orb Golf")]
+    public GameObject orbBallObject;
+    public CapsuleCollider orbInteractionCollider;
+
     #endregion
 
     #region Custom Methods
@@ -73,9 +77,8 @@ public class PlayerMoonGolfController : BaseCharacterController
             golfPowerRate = -golfPowerRate;
 
         if (golfPower <= 0)
-        {
             golfPowerRate = -golfPowerRate;
-        }
+        
     }
 
     private void AttackCooldown()
