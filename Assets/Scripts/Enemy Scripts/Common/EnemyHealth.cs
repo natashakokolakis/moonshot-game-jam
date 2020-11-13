@@ -62,6 +62,8 @@ public class EnemyHealth : MonoBehaviour
         if (invincibilityCooldown)
             return;
 
+        invincibilityCooldown = true;
+
         currentHealth -= amount;
 
         travelDirection = (this.transform.position - travelDirection).normalized;
@@ -72,8 +74,6 @@ public class EnemyHealth : MonoBehaviour
         }
 
         GetPushedBack(amount, travelDirection);
-
-        invincibilityCooldown = true;
 
         StartCoroutine("InvincibilityAfterDamage");
     }
