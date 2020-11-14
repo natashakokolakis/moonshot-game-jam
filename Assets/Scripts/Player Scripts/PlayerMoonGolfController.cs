@@ -66,8 +66,9 @@ public class PlayerMoonGolfController : BaseCharacterController
         if (!Physics.Raycast(ray, out hitInfo, Mathf.Infinity, groundMask.value))
             return;
 
-        attackDirection = Vector3.ProjectOnPlane(hitInfo.point - transform.position, transform.up).normalized;
         moveDirection = Vector3.zero;
+        attackDirection = Vector3.ProjectOnPlane(hitInfo.point - transform.position, transform.up).normalized;
+        
         movement.Rotate(attackDirection, 900, false);
         
 

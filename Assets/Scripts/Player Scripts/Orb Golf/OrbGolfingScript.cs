@@ -13,6 +13,7 @@ public class OrbGolfingScript : MonoBehaviour
     public TrailRenderer trailRenderer;
     public CapsuleCollider interactableCollider;
     public GameObject playerGO;
+    public EButtonIconController eButtonIndicator;
 
     public Transform orbDummyPlayer;
 
@@ -63,6 +64,7 @@ public class OrbGolfingScript : MonoBehaviour
         playerIndicators.SetUpAimLineAndPlayerModel();
         isGolfing = true;
         vCam.Priority = 11;
+        eButtonIndicator.disableIndicator();
     }
 
     public void ShootGolfBall(float golfForce, Vector3 direction)
@@ -91,7 +93,7 @@ public class OrbGolfingScript : MonoBehaviour
             return;
 
         attackDirection = Vector3.ProjectOnPlane(hitInfo.point - transform.position, transform.up).normalized;
-        Rotate(attackDirection, 9000, false);
+        Rotate(attackDirection, 1500, false);
 
 
         golfPower += golfPowerRate * Time.deltaTime;
@@ -120,6 +122,7 @@ public class OrbGolfingScript : MonoBehaviour
         golfBallCollider = this.GetComponent<SphereCollider>();
         trailRenderer = this.GetComponent<TrailRenderer>();
         interactableCollider = this.GetComponent<CapsuleCollider>();
+        eButtonIndicator = GetComponent<EButtonIconController>();
 
         golfBallRB.maxAngularVelocity = 100f;
     }
@@ -162,12 +165,6 @@ public class OrbGolfingScript : MonoBehaviour
             playerIndicators.RotateToFollowAim();
         }
 
-       
-/*        if ((orbDummyPlayer.transform.position == playerGO.transform.position))
-        {
-            playerIndicators.TurnOffPlayerModel();
-            playerGO.SetActive(true);
-        }*/
     }
 
     #endregion
