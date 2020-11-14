@@ -99,6 +99,18 @@ public class PlayerMoonGolfController : BaseCharacterController
 
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+            if (Input.GetKey(KeyCode.E))
+            {
+            if (other.CompareTag("GolfBall"))
+            {
+                other.GetComponent<OrbGolfingScript>().SetUpGolfMode();
+                this.gameObject.SetActive(false);
+            }
+            }
+    }
+
     #endregion
 
     #region Override Methods

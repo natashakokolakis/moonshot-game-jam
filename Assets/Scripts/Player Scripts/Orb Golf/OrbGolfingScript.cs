@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class OrbGolfingScript : MonoBehaviour
@@ -11,6 +12,16 @@ public class OrbGolfingScript : MonoBehaviour
     public SphereCollider golfBallCollider;
     public TrailRenderer trailRenderer;
     public CapsuleCollider interactableCollider;
+    public GameObject playerGO;
+
+    public Transform orbDummyPlayer;
+
+    public FollowOrb playerIndicators;
+
+    public CinemachineVirtualCamera vCam;
+
+    // Turns on golf mode
+    public bool isGolfing = false;
 
     // Stats
     public float basePower = 1f;
@@ -47,17 +58,25 @@ public class OrbGolfingScript : MonoBehaviour
         golfBallRB.MoveRotation(newRotation);
     }
 
-    
-
-    public void ShootGolfBall(float golfPower, Vector3 direction)
+    public void SetUpGolfMode()
     {
+        playerIndicators.SetUpAimLineAndPlayerModel();
+        isGolfing = true;
+        vCam.Priority = 11;
+    }
+
+    public void ShootGolfBall(float golfForce, Vector3 direction)
+    {
+        playerIndicators.TurnOffAimLine();
+        playerIndicators.StartCoroutine(playerIndicators.MoveDummyToPlayerPosition(playerGO));
         trailRenderer.Clear();
+
         golfBallRB.velocity = Vector3.zero;
-        direction = direction * golfPower * basePower;
+        direction = direction * golfForce * basePower;
 
         golfBallRB.isKinematic = false;
         golfBallRB.AddForce(direction, ForceMode.VelocityChange);
-
+        golfPower = 0f;
         isStopped = false;
 
     }
@@ -72,7 +91,7 @@ public class OrbGolfingScript : MonoBehaviour
             return;
 
         attackDirection = Vector3.ProjectOnPlane(hitInfo.point - transform.position, transform.up).normalized;
-        Rotate(attackDirection, 900, false);
+        Rotate(attackDirection, 9000, false);
 
 
         golfPower += golfPowerRate * Time.deltaTime;
@@ -87,7 +106,9 @@ public class OrbGolfingScript : MonoBehaviour
     public void HandleInput()
     {
         if (Input.GetButtonDown("Fire1"))
+        {
             ShootGolfBall(golfPower, attackDirection);
+        }
 
     }
 
@@ -108,14 +129,23 @@ public class OrbGolfingScript : MonoBehaviour
         if (isStopped)
             return;
 
-        if (velCheckTimer >= velCheckTimerStart)
+        // Waits to check ball velocity
+        if (velCheckTimer >= velCheckTimerStart & !isGolfing)
         {
+            // When is below a certain velocity, it is forced to stop
             if (golfBallRB.velocity.magnitude < 0.06f)
             {
                 isStopped = true;
                 velCheckTimer = 0f;
                 golfBallRB.isKinematic = true;
                 this.transform.rotation = Quaternion.Euler(Vector3.zero);
+                //isGolfing = false;
+                playerIndicators.TurnOffPlayerModel();
+                playerGO.SetActive(true);
+                //isGolfing = false;
+                //playerGO.transform.position = playerIndicators.orbPlayerModel.transform.position - new Vector3(0, 1, 0);
+                playerGO.transform.rotation = playerIndicators.orbPlayerModel.transform.rotation;
+                vCam.Priority = 9;
             }
         }
 
@@ -125,8 +155,19 @@ public class OrbGolfingScript : MonoBehaviour
 
     private void Update()
     {
-        AimGolfBall();
-        HandleInput();
+        if (isStopped & isGolfing)
+        {
+            AimGolfBall();
+            HandleInput();
+            playerIndicators.RotateToFollowAim();
+        }
+
+       
+/*        if ((orbDummyPlayer.transform.position == playerGO.transform.position))
+        {
+            playerIndicators.TurnOffPlayerModel();
+            playerGO.SetActive(true);
+        }*/
     }
 
     #endregion

@@ -7,6 +7,7 @@ TagManager:
   - Wall
   - Enemy that can be melee'd
   - Enemy
+  - GolfBall
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - 
   - Wall
   - Enemy
-  - 
+  - Ground
   - 
   - 
   - 
