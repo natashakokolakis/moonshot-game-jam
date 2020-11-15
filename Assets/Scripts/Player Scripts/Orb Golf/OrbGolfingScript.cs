@@ -14,6 +14,7 @@ public class OrbGolfingScript : MonoBehaviour
     public CapsuleCollider interactableCollider;
     public GameObject playerGO;
     public EButtonIconController eButtonIndicator;
+    public StrokeCounter strokeCounter;
 
     public Transform orbDummyPlayer;
 
@@ -69,6 +70,8 @@ public class OrbGolfingScript : MonoBehaviour
 
     public void ShootGolfBall(float golfForce, Vector3 direction)
     {
+        strokeCounter.IncreaseStroke();
+
         playerIndicators.TurnOffAimLine();
         playerIndicators.StartCoroutine(playerIndicators.MoveDummyToPlayerPosition(playerGO));
         trailRenderer.Clear();
@@ -123,6 +126,8 @@ public class OrbGolfingScript : MonoBehaviour
         trailRenderer = this.GetComponent<TrailRenderer>();
         interactableCollider = this.GetComponent<CapsuleCollider>();
         eButtonIndicator = GetComponent<EButtonIconController>();
+
+        strokeCounter = GameObject.Find("Stroke Counter").GetComponent<StrokeCounter>();
 
         golfBallRB.maxAngularVelocity = 100f;
     }
