@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Toon Rocks
+  m_Shader: {fileID: -6465566751694194690, guid: 6e8caaeb82611654e8f0631474c9bdf6,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_B2CE6AAF:
+        m_Texture: {fileID: 2800000, guid: 47db3c0e09af41a4f9bc1d545aff6c71, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: 693694a1d66086b4bb5636564dc03080, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_EC2BA51D_Texture_1:
+        m_Texture: {fileID: 2800000, guid: c021d051fa0cba84282b4a2577aa85c5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_38BD3441: 0.422
+    - Vector1_6FF6AA5E: 0.5
+    - Vector1_CF8B0D8D: 3
+    - Vector1_ED5ABFD9: 0.085
+    - Vector1_F3F6B787: -0.009
+    - _RimStrength: 0.25
+    - _Smoothness: 1
+    m_Colors:
+    - Color_28180829: {r: 0.16820936, g: 0.11080456, b: 0.2830189, a: 1}
+    - Color_57D43A16: {r: 0.47597015, g: 0.31772873, b: 0.7924528, a: 0}
+    - Color_F689E8B9: {r: 0.42352942, g: 0.28627452, b: 0.69803923, a: 1}
