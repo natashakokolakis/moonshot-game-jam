@@ -7,6 +7,7 @@ public class AOECircleBar : MonoBehaviour
 {
     public AOEAttackHandler aoeHandler;
     private Image circleImage;
+    private WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
 
     private void Awake()
     {
@@ -21,7 +22,7 @@ public class AOECircleBar : MonoBehaviour
         {
             circleImage.fillAmount = aoeHandler.currentTime / maxTime;
 
-            yield return new WaitForEndOfFrame();
+            yield return waitForEndOfFrame;
         }
 
         
