@@ -14,7 +14,7 @@ public class CanvasObjectBounce : MonoBehaviour
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        tweenPos = rectTransform.DOAnchorPos3DY(rectTransform.anchoredPosition.y + 3, 1).SetAutoKill(false).SetLoops(-1, LoopType.Yoyo);
+        tweenPos = rectTransform.DOAnchorPos3DY(rectTransform.anchoredPosition.y + 5, 1).SetAutoKill(false).SetLoops(-1, LoopType.Yoyo);
         
     }
 
