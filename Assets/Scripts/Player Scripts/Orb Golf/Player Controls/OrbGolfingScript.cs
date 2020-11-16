@@ -64,6 +64,7 @@ public class OrbGolfingScript : MonoBehaviour
     {
         playerIndicators.SetUpAimLineAndPlayerModel();
         isGolfing = true;
+        EventManagerNorth.TriggerEvent("ToggleGolfMode");
         vCam.Priority = 11;
         eButtonIndicator.disableIndicator();
     }
@@ -154,6 +155,7 @@ public class OrbGolfingScript : MonoBehaviour
                 //playerGO.transform.position = playerIndicators.orbPlayerModel.transform.position - new Vector3(0, 1, 0);
                 playerGO.transform.rotation = playerIndicators.orbPlayerModel.transform.rotation;
                 vCam.Priority = 9;
+                EventManagerNorth.TriggerEvent("ToggleGolfMode");
             }
         }
 
