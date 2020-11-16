@@ -37,6 +37,9 @@ public class PlayerMoonGolfController : BaseCharacterController
     public GameObject orbBallObject;
     public CapsuleCollider orbInteractionCollider;
 
+    public AOEAttackHandler aoeHandler;
+    public bool isInAOE = false;
+
     #endregion
 
     #region Custom Methods
@@ -80,6 +83,15 @@ public class PlayerMoonGolfController : BaseCharacterController
         if (golfPower <= 0)
             golfPowerRate = -golfPowerRate;
         
+    }
+
+    private void AOEAttack()
+    {
+        moveDirection = Vector3.zero;
+        isInAOE = true;
+        //pause = !pause;
+        StartCoroutine(aoeHandler.AOESpecial());
+
     }
 
     private void AttackCooldown()
@@ -155,7 +167,7 @@ public class PlayerMoonGolfController : BaseCharacterController
 
         //Do nothing if dead/ attacking
 
-        if (isAttacking | isDead)
+        if (isAttacking | isDead | isInAOE)
             return;
 
 
@@ -188,6 +200,10 @@ public class PlayerMoonGolfController : BaseCharacterController
             return;
         }
 
+        if (Input.GetKeyDown(KeyCode.Q))
+         {
+            AOEAttack();
+         }
 
         if (Input.GetButtonUp("Fire2"))
         {

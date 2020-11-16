@@ -10,9 +10,9 @@ public class GolfHoleHandler : MonoBehaviour
     {
         golfHoleCollider = GetComponent<BoxCollider>();
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("GolfBall"))
+        if (other.gameObject.CompareTag("GolfBall") & (!other.isTrigger))
             {
                 EventManagerNorth.TriggerEvent("GolfBallSunk");
                 Debug.Log("Hole Complete!");
