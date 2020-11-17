@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: b281c6895a1f79a43b958b81b1e4f75d
+guid: 5c7c1923e6fc3fa40a4eb6677a6d2b00
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CC0Textures_Rock031_2K-JPG
+    second: {fileID: 2100000, guid: 305a261c48cee9843b91b1ff3003e8a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RockTest
+    second: {fileID: 2100000, guid: 305a261c48cee9843b91b1ff3003e8a5, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
