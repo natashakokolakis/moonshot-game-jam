@@ -40,6 +40,8 @@ public class PlayerMoonGolfController : BaseCharacterController
     public AOEAttackHandler aoeHandler;
     public bool isInAOE = false;
 
+    public GameObject mapCameraController;
+
     #endregion
 
     #region Custom Methods
@@ -94,6 +96,13 @@ public class PlayerMoonGolfController : BaseCharacterController
 
     }
 
+    private void OpenMapMode()
+    {
+        moveDirection = Vector3.zero;
+        isInAOE = true;
+        mapCameraController.SetActive(true);
+    }
+
     private void AttackCooldown()
     {
         if (isPaused)
@@ -114,7 +123,7 @@ public class PlayerMoonGolfController : BaseCharacterController
 
     private void OnTriggerStay(Collider other)
     {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.E) & !isInAOE & !isAttacking & !isDead)
             {
             if (other.CompareTag("GolfBall"))
             {
@@ -182,6 +191,11 @@ public class PlayerMoonGolfController : BaseCharacterController
 
         crouch = Input.GetKey(KeyCode.C);
 
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            OpenMapMode();
+        }
+
         // Basic attack. Confirms where user clicked and sets isAttacking to true
 
         if (Input.GetButtonDown("Fire1"))
@@ -222,6 +236,8 @@ public class PlayerMoonGolfController : BaseCharacterController
             golfPower = 0;
             golfPowerRate = Mathf.Abs(golfPowerRate);
         }
+
+
 
         return;
         

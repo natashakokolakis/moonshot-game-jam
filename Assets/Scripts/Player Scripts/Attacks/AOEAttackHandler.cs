@@ -19,6 +19,9 @@ public class AOEAttackHandler : MonoBehaviour
     public float ballSpeed = 15f;
     public int aoeDamage = 4;
 
+    private WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
+    private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
+
     private void Awake()
     {
         playerMoonGolfController = GameObject.Find("ECM_Player").GetComponent<PlayerMoonGolfController>();
@@ -48,11 +51,11 @@ public class AOEAttackHandler : MonoBehaviour
                     enemiesTargeted.Add(hitInfo.transform.gameObject);
                     Vector3 targetPosition = hitInfo.transform.position + new Vector3(0,3,-4);
                     Instantiate(targetIcon, targetPosition, Quaternion.Euler(new Vector3(30, 0, 0)));
-                    Debug.Log("hit enemy");
+                    
                 }
             }
 
-            yield return new WaitForEndOfFrame();
+            yield return waitForEndOfFrame;
 
         }
 
@@ -62,9 +65,9 @@ public class AOEAttackHandler : MonoBehaviour
         StartCoroutine(MoveBallToTargets());
 
 
-        
 
-        yield return new WaitForEndOfFrame();
+
+        yield return waitForEndOfFrame;
     }
 
     IEnumerator MoveBallToTargets()
@@ -73,6 +76,9 @@ public class AOEAttackHandler : MonoBehaviour
         trailRenderer.enabled = true;
 
         Vector3 startingPos = transform.position;
+        Vector3 previousPos = startingPos;
+        Vector3 offset = new Vector3(0, 1.5f, 0);
+
 
         int maxNumbTargeted = enemiesTargeted.Count;
 
@@ -80,14 +86,13 @@ public class AOEAttackHandler : MonoBehaviour
 
         while (i < maxNumbTargeted)
         {
-            transform.position = Vector3.MoveTowards(transform.position, enemiesTargeted[i].transform.position + new Vector3(0, 1.5f, 0), ballSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, enemiesTargeted[i].transform.position + offset, ballSpeed * Time.deltaTime);
 
-            if (transform.position == enemiesTargeted[i].transform.position + new Vector3(0, 1.5f, 0))
+            if (transform.position == enemiesTargeted[i].transform.position + offset)
             {
                 i++;
-                Debug.Log("Hit Enemy");
             }
-            yield return new WaitForFixedUpdate();
+            yield return waitForFixedUpdate;
         }
 
 
@@ -98,12 +103,14 @@ public class AOEAttackHandler : MonoBehaviour
 
         EventManagerNorth.TriggerEvent("ToggleGolfMode");
 
-        yield return new WaitForFixedUpdate();
+        yield return waitForFixedUpdate;
         playerMoonGolfController.isInAOE = !playerMoonGolfController.isInAOE;
 
         for (int a = 0; a < maxNumbTargeted; a++)
         {
-            enemiesTargeted[a].GetComponent<EnemyHealth>().TakeDamage(aoeDamage, startingPos);
+            // Push Away -- enemiesTargeted[a].GetComponent<EnemyHealth>().TakeDamage(aoeDamage, startingPos);
+            enemiesTargeted[a].GetComponent<EnemyHealth>().TakeDamage(aoeDamage, previousPos);
+            previousPos = enemiesTargeted[a].transform.position;
         }
 
 

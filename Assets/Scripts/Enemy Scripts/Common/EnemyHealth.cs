@@ -44,17 +44,20 @@ public class EnemyHealth : MonoBehaviour
         enemyMovementController = this.GetComponent<CharacterMovement>();
     }
 
+    private void OnEnable()
+    {
+        EventManagerNorth.StartListening("GolfBallSunk", Death);
+    }
+
+    private void OnDisable()
+    {
+        EventManagerNorth.StopListening("GolfBallSunk", Death);
+    }
+
     IEnumerator InvincibilityAfterDamage()
     {
-        int i = 0;
-        while(i < 1)
-        {
-            i++;
-            yield return new WaitForSeconds(.5f);
-        }
-
+        yield return new WaitForSeconds(.5f);
         invincibilityCooldown = false;
-
     }
 
     public void TakeDamage(int amount, Vector3 travelDirection)
@@ -80,6 +83,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Death()
     {
+        EventManagerNorth.StopListening("GolfBallSunk", Death);
         Destroy(gameObject);
     }
 
