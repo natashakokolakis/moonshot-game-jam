@@ -22,6 +22,9 @@ public class AOEAttackHandler : MonoBehaviour
     private WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
     private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
 
+    private Vector3 targetImageOffset = new Vector3(0, 3, -4);
+    private Quaternion targetImageRotation = Quaternion.Euler(new Vector3(30, 0, 0));
+
     private void Awake()
     {
         playerMoonGolfController = GameObject.Find("ECM_Player").GetComponent<PlayerMoonGolfController>();
@@ -49,8 +52,8 @@ public class AOEAttackHandler : MonoBehaviour
                 if (!enemiesTargeted.Contains(hitInfo.transform.gameObject))
                 {
                     enemiesTargeted.Add(hitInfo.transform.gameObject);
-                    Vector3 targetPosition = hitInfo.transform.position + new Vector3(0,3,-4);
-                    Instantiate(targetIcon, targetPosition, Quaternion.Euler(new Vector3(30, 0, 0)));
+                    Vector3 targetPosition = hitInfo.transform.position + targetImageOffset;
+                    Instantiate(targetIcon, targetPosition, targetImageRotation);
                     
                 }
             }
@@ -119,13 +122,5 @@ public class AOEAttackHandler : MonoBehaviour
 
         yield return null;
     }
-
-/*    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            StartCoroutine(AOESpecial());
-        }
-    }*/
 
 }

@@ -10,6 +10,7 @@ public class MapCameraController : MonoBehaviour
     private Vector3 moveDirection;
     private PlayerMoonGolfController playerMoonGolfController;
     private float mapMoveSpeed = 20f;
+    private Vector3 cameraPosOffset = new Vector3(0, 19, -35);
 
     private void Awake()
     {
@@ -21,7 +22,7 @@ public class MapCameraController : MonoBehaviour
 
     public void TurnOnMapMode()
     {
-        this.transform.position = playerTrans.position + new Vector3(0, 19, -35);
+        this.transform.position = playerTrans.position + cameraPosOffset;
         thisCamera.Priority = 13;
         EventManagerNorth.TriggerEvent("ToggleGolfMode");
     }

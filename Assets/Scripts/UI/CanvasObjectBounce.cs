@@ -7,8 +7,6 @@ using UnityEngine;
 public class CanvasObjectBounce : MonoBehaviour
 {
     private RectTransform rectTransform;
-
-    private Tween tweenScale;
     private Tween tweenPos;
 
     private void Awake()
