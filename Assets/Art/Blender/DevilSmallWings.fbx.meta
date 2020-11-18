@@ -3,7 +3,12 @@ guid: 17bbb8f92220b9240bc2eb87d3cdedb7
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shared Texture
+    second: {fileID: 2100000, guid: 9e875e5aaa3862344aec8b00106c8661, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
