@@ -10,7 +10,7 @@ public class FollowOrb : MonoBehaviour
     public GameObject orbPlayerModel;
  
 
-    public float dummySpeed = 1f;
+    public float dummySpeed = 4f;
     private Vector3 dummyStartPos = new Vector3(0, .75f, -1);
 
     public void SetUpAimLineAndPlayerModel()

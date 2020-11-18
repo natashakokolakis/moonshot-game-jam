@@ -4,7 +4,8 @@ using UnityEngine;
 public class PlayerMoonGolfController : BaseCharacterController
 {
     #region VARIABLES AND DEPENDENCIES
-
+    [Header("Custom vars start--")]
+    [Space(1)]
     // groundMask is used to determine which layer is the ground in Unity
     public LayerMask groundMask = 1;
 
@@ -14,15 +15,18 @@ public class PlayerMoonGolfController : BaseCharacterController
     
     [Header("Attack")]
     // Used for basic attack
+    [HideInInspector]
     public bool isAttacking = false;
     public float attackCooldownMax = 1.0f;
+    [HideInInspector]
     protected float attackTimer;
+    [HideInInspector]
     public Vector3 attackDirection = Vector3.zero;
-
     public BoxCollider meleeBoxCollider;
     public Animator meleeAnimator;
 
     [Header("Ranged")]
+    [HideInInspector]
     public bool isAiming = false;
     public float golfPowerRate = 1f;
     public float golfPower = 0f;
@@ -33,11 +37,14 @@ public class PlayerMoonGolfController : BaseCharacterController
     public GameObject aimLine;
     public TrailRenderer golfBallTrail;
 
+    private Vector3 golfballOffset = new Vector3(0, 0.5f, 0);
+
     [Header("Orb Golf")]
     public GameObject orbBallObject;
     public CapsuleCollider orbInteractionCollider;
 
     public AOEAttackHandler aoeHandler;
+    [HideInInspector]
     public bool isInAOE = false;
 
     public GameObject mapCameraController;
@@ -128,7 +135,7 @@ public class PlayerMoonGolfController : BaseCharacterController
             if (other.CompareTag("GolfBall"))
             {
                 other.GetComponent<OrbGolfingScript>().SetUpGolfMode();
-                this.gameObject.SetActive(false);
+                gameObject.SetActive(false);
             }
             }
     }
@@ -226,7 +233,7 @@ public class PlayerMoonGolfController : BaseCharacterController
             isAttacking = true;
             moveDirection = Vector3.zero;
             golfBallObject.SetActive(true);
-            golfBallObject.transform.position = transform.localPosition + attackDirection.normalized + new Vector3(0, .5f, 0);
+            golfBallObject.transform.position = transform.localPosition + attackDirection.normalized + golfballOffset;
             golfPower = Mathf.Clamp(golfPower, 0, golfPowerMAX - 1);
             golfBallAttack.ShootGolfBall(golfPower, attackDirection);
             aimLine.SetActive(false);

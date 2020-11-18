@@ -67,6 +67,8 @@ public class OrbGolfingScript : MonoBehaviour
         EventManagerNorth.TriggerEvent("ToggleGolfMode");
         vCam.Priority = 11;
         eButtonIndicator.disableIndicator();
+        golfPowerRate = Mathf.Abs(golfPowerRate);
+        golfPower = 0;
     }
 
     public void ShootGolfBall(float golfForce, Vector3 direction)

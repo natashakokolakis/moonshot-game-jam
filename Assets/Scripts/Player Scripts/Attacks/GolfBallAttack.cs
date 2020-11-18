@@ -36,10 +36,6 @@ public class GolfBallAttack : MonoBehaviour
         {
             enemyTarget = collision.gameObject.GetComponent<EnemyHealth>();
             trailRenderer.Clear();
-
-/*            collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(baseGolfBAllDamage*(int)Mathf.Clamp(golfBallRB.velocity.magnitude / 8, 2f, 4f) , transform.position);
-            Debug.Log(baseGolfBAllDamage * (int)Mathf.Clamp(golfBallRB.velocity.magnitude / 8, 2f, 4f));
-            trailRenderer.Clear();*/
         }
     }
 
@@ -56,11 +52,7 @@ public class GolfBallAttack : MonoBehaviour
             return;
 
         enemyTarget.TakeDamage(baseGolfBAllDamage * (int)Mathf.Clamp(golfBallRB.velocity.magnitude / 7, 2f, 4f), transform.position);
-        Debug.Log(baseGolfBAllDamage * (int)Mathf.Clamp(golfBallRB.velocity.magnitude / 7, 2f, 4f));
         enemyTarget = null;
-
-
-
     }
 
 }
