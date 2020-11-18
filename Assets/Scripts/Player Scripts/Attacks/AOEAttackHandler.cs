@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AOEAttackHandler : MonoBehaviour
 {
+    #region Variables
 
     public float maxSpecialTimer = 5;
     public LayerMask enemyLayer;
@@ -24,6 +25,8 @@ public class AOEAttackHandler : MonoBehaviour
 
     private Vector3 targetImageOffset = new Vector3(0, 3, -4);
     private Quaternion targetImageRotation = Quaternion.Euler(new Vector3(30, 0, 0));
+
+    #endregion
 
     private void Awake()
     {
