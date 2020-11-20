@@ -18,6 +18,7 @@ public class IconBounce : MonoBehaviour
         subtleFloat = transform.DOMoveY(4.5f, .5f).SetAutoKill(false).SetLoops(-1, LoopType.Yoyo);
         stretchScale = transform.DOScale(.7f, .5f).SetAutoKill(false).SetLoops(-1, LoopType.Yoyo);
         fadeImage = imageToTween.DOFade(0, .5f).From().SetAutoKill(false);
+        //endSequence = DOTween.Sequence();
         endSequence.Append(subtleFloat.Pause()).Append(stretchScale.Pause());
     }
 
