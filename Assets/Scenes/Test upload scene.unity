@@ -582,6 +582,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemonMage
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8f50441deb7a4424f98ec01108cf9b0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 8f50441deb7a4424f98ec01108cf9b0e,
         type: 3}
       propertyPath: m_Controller
@@ -1723,6 +1728,80 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 62faf2da98bc83245959c25f0dd33242, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c5405de0014f44f9c22dbd2458ccb9, type: 3}
+--- !u!1001 &861510159
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 56d87cd4c1494ed45b07d4b81fce3fbd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56d87cd4c1494ed45b07d4b81fce3fbd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56d87cd4c1494ed45b07d4b81fce3fbd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56d87cd4c1494ed45b07d4b81fce3fbd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56d87cd4c1494ed45b07d4b81fce3fbd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56d87cd4c1494ed45b07d4b81fce3fbd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56d87cd4c1494ed45b07d4b81fce3fbd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56d87cd4c1494ed45b07d4b81fce3fbd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56d87cd4c1494ed45b07d4b81fce3fbd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56d87cd4c1494ed45b07d4b81fce3fbd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56d87cd4c1494ed45b07d4b81fce3fbd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 56d87cd4c1494ed45b07d4b81fce3fbd,
+        type: 3}
+      propertyPath: m_Name
+      value: DemonArm
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 56d87cd4c1494ed45b07d4b81fce3fbd,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0e5c2936809d8ec4fa99c0a61a2e027f, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 56d87cd4c1494ed45b07d4b81fce3fbd, type: 3}
 --- !u!1 &995326864
 GameObject:
   m_ObjectHideFlags: 0
@@ -3999,87 +4078,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063738735}
   m_CullTransparentMesh: 0
---- !u!1001 &2138581398
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -2764434123327163042, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2764434123327163042, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2764434123327163042, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 5da15d3c373b6f446aaa23a511e8c3f0,
-        type: 3}
-      propertyPath: m_Name
-      value: AnimatedDemonArm
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5da15d3c373b6f446aaa23a511e8c3f0, type: 3}
