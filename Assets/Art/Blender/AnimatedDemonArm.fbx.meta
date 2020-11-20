@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: 5da15d3c373b6f446aaa23a511e8c3f0
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      74: 785528167657185208
+    second: DemonArmsMetarig|Arm Death.001
+  - first:
+      74: 7495040031894423987
+    second: DemonArmsMetarig|Arm Death.002
+  - first:
+      74: -3419143845580363154
+    second: DemonArmsMetarig|Arm Death.003
+  - first:
+      74: -2779224668402727657
+    second: DemonArmsMetarig|Arm Giant Smack
+  - first:
+      74: -7795950571076679353
+    second: DemonArmsMetarig|Arm Giant Smack.001
+  - first:
+      74: -7022814580562900450
+    second: DemonArmsMetarig|Arm Hit
+  - first:
+      74: -4381146460069437221
+    second: DemonArmsMetarig|Arm Jump Attack
+  - first:
+      74: -1737670158508734537
+    second: DemonArmsMetarig|Arm Smack
+  - first:
+      74: 1073161474499223267
+    second: DemonArmsMetarig|Arm Smack2
+  - first:
+      74: -7830714480070594602
+    second: DemonArmsMetarig|Arm Walk2
+  - first:
+      74: 8540526492448082193
+    second: DemonArmsMetarig|Arm Walk
+  - first:
+      74: -4608008536224391976
+    second: DemonArmsMetarig|Arm Walk.001
+  - first:
+      74: -4480663628509275610
+    second: DemonArmsMetarig|Arm Walk2.001
+  - first:
+      74: -8598452458057108777
+    second: DemonArmsMetarig|Attack
+  - first:
+      74: 4093631221923411706
+    second: DemonArmsMetarig|Death
+  - first:
+      74: -6645863705610845549
+    second: DemonArmsMetarig|Hit
+  - first:
+      74: 7514690694355148185
+    second: DemonArmsMetarig|metarig.011|mixamo.com|Layer0
+  - first:
+      74: -4250787061266838282
+    second: DemonArmsMetarig|metarig.012|mixamo.com|Layer0
+  - first:
+      74: 2427005331916719069
+    second: DemonArmsMetarig|metarig.013|mixamo.com|Layer0
+  - first:
+      74: 1839742140772664461
+    second: DemonArmsMetarig|metarig.014|mixamo.com|Layer0
+  - first:
+      74: 5803344553635924786
+    second: DemonArmsMetarig|metarig.015|mixamo.com|Layer0
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shared Texture
+    second: {fileID: 2100000, guid: 97d9a3cc58b7bd34295884982cd890a5, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: DemonArmsMetarig|Attack
+      takeName: DemonArmsMetarig|Attack
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 107
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DemonArmsMetarig|Death
+      takeName: DemonArmsMetarig|Death
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DemonArmsMetarig|Hit
+      takeName: DemonArmsMetarig|Hit
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DemonArmsMetarig|metarig.011|mixamo.com|Layer0
+      takeName: DemonArmsMetarig|metarig.011|mixamo.com|Layer0
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DemonArmsMetarig|metarig.012|mixamo.com|Layer0
+      takeName: DemonArmsMetarig|metarig.012|mixamo.com|Layer0
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 61
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DemonArmsMetarig|metarig.013|mixamo.com|Layer0
+      takeName: DemonArmsMetarig|metarig.013|mixamo.com|Layer0
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DemonArmsMetarig|metarig.014|mixamo.com|Layer0
+      takeName: DemonArmsMetarig|metarig.014|mixamo.com|Layer0
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 26
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DemonArmsMetarig|metarig.015|mixamo.com|Layer0
+      takeName: DemonArmsMetarig|metarig.015|mixamo.com|Layer0
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: spine
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: thigh.L
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: thigh.R
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: shin.L
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: shin.R
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: foot.L
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: foot.R
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: spine.001
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: spine.002
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: spine.004
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: spine.005
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: shoulder.L
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: shoulder.R
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: upper_arm.L
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: upper_arm.R
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: forearm.L
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: forearm.R
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: hand.L
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: hand.R
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toe.L
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: toe.R
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: spine.006
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: spine.003
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: AnimatedDemonArm(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: DemonLongArms.001
+      parentName: AnimatedDemonArm(Clone)
+      position: {x: -0.0023746, y: -0.011579492, z: -0.01810202}
+      rotation: {x: -0.6198867, y: 0.12453697, z: 0.1358485, w: 0.7627426}
+      scale: {x: 10.7487545, y: 10.748755, z: 10.748755}
+    - name: DemonArmsMetarig
+      parentName: AnimatedDemonArm(Clone)
+      position: {x: -0.0151670035, y: -0.047868602, z: -0.10031909}
+      rotation: {x: -0.6265987, y: 0.10288006, z: 0.11986822, w: 0.76316535}
+      scale: {x: 53.74378, y: 53.74378, z: 53.74378}
+    - name: spine
+      parentName: DemonArmsMetarig
+      position: {x: 0.00029264236, y: 0.00031903211, z: 0.015222767}
+      rotation: {x: 0.7150479, y: -0.11673932, z: -0.10641746, w: 0.68099475}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.9999999}
+    - name: spine.001
+      parentName: spine
+      position: {x: -3.5527136e-17, y: 0.006826812, z: -2.9802322e-10}
+      rotation: {x: -0.06817582, y: -0.000000009313226, z: 0.000000018626451, w: 0.9976734}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: spine.002
+      parentName: spine.001
+      position: {x: -4.6566126e-11, y: 0.00662885, z: -5.820766e-13}
+      rotation: {x: -0.018234737, y: -0.000000027549149, z: -0.0000000017092401, w: 0.99983376}
+      scale: {x: 0.99999976, y: 1, z: 1}
+    - name: spine.003
+      parentName: spine.002
+      position: {x: -1.3038516e-10, y: 0.007365246, z: 1.1990778e-10}
+      rotation: {x: -0.032981977, y: 0.000000052604953, z: 0.000000003933653, w: 0.999456}
+      scale: {x: 1.0000001, y: 1.0000004, z: 1}
+    - name: spine.004
+      parentName: spine.003
+      position: {x: 1.3038516e-10, y: 0.010607807, z: -0.000054543576}
+      rotation: {x: 0.20741522, y: 0.00000003725652, z: -0.000000063336756, w: 0.978253}
+      scale: {x: 0.99999976, y: 1, z: 1}
+    - name: spine.005
+      parentName: spine.004
+      position: {x: 1.268927e-10, y: 0.0009932339, z: 0.0000000012246891}
+      rotation: {x: -0.008282958, y: -0.0000000335642, z: 0.00000002692614, w: 0.99996567}
+      scale: {x: 1, y: 1, z: 1}
+    - name: spine.006
+      parentName: spine.005
+      position: {x: 1.11758706e-10, y: 0.00060589873, z: -0.0000000017788261}
+      rotation: {x: -0.1196155, y: -0.00000012680053, z: 0.000000034813993, w: 0.9928203}
+      scale: {x: 0.9999999, y: 0.9999997, z: 0.9999999}
+    - name: shoulder.L
+      parentName: spine.003
+      position: {x: -0.0005055385, y: 0.0072304807, z: 0.0018406757}
+      rotation: {x: -0.43998986, y: 0.49644354, z: 0.4433607, w: 0.60281336}
+      scale: {x: 0.9999999, y: 0.9999997, z: 0.9999998}
+    - name: upper_arm.L
+      parentName: shoulder.L
+      position: {x: 0.0016341105, y: 0.008682906, z: -0.00078760367}
+      rotation: {x: -0.034638423, y: -0.7196554, z: 0.15315324, w: 0.67634344}
+      scale: {x: 1.0000001, y: 1.0000013, z: 1.0000001}
+    - name: forearm.L
+      parentName: upper_arm.L
+      position: {x: -0, y: 0.014282089, z: 5.9604643e-10}
+      rotation: {x: 0.013997933, y: -0.014854278, z: -0.04284615, w: 0.99887323}
+      scale: {x: 0.99999964, y: 0.9999989, z: 1.0000008}
+    - name: hand.L
+      parentName: forearm.L
+      position: {x: -0.0000000011920929, y: 0.014519091, z: 0.0000000035762786}
+      rotation: {x: 0.027695527, y: 0.0570427, z: 0.034447, w: 0.99739283}
+      scale: {x: 1.0000006, y: 1, z: 1}
+    - name: shoulder.R
+      parentName: spine.003
+      position: {x: 0.0005055395, y: 0.00723048, z: 0.0018406751}
+      rotation: {x: -0.43998986, y: -0.49644342, z: -0.44336063, w: 0.60281366}
+      scale: {x: 0.9999998, y: 0.9999999, z: 0.99999994}
+    - name: upper_arm.R
+      parentName: shoulder.R
+      position: {x: -0.001634111, y: 0.00868291, z: -0.00078759954}
+      rotation: {x: -0.034638602, y: 0.7196553, z: -0.15315306, w: 0.6763437}
+      scale: {x: 1.0000001, y: 1.0000005, z: 1.0000001}
+    - name: forearm.R
+      parentName: upper_arm.R
+      position: {x: -2.9802322e-10, y: 0.014282094, z: 7.8231094e-10}
+      rotation: {x: 0.013998269, y: 0.014854242, z: 0.042846292, w: 0.9988732}
+      scale: {x: 0.9999998, y: 0.9999997, z: 1.0000006}
+    - name: hand.R
+      parentName: forearm.R
+      position: {x: -7.45058e-10, y: 0.014519088, z: 0.0000000023003668}
+      rotation: {x: 0.027695753, y: -0.057042595, z: -0.0344471, w: 0.99739283}
+      scale: {x: 1, y: 1.0000004, z: 0.99999964}
+    - name: breast.L
+      parentName: spine.003
+      position: {x: -0.0058270246, y: 0.0002869062, z: -0.0019144955}
+      rotation: {x: -0.000000033507177, y: 0.6730312, z: 0.7396141, w: -0.00000014069197}
+      scale: {x: 0.9999998, y: 1.0000002, z: 0.99999994}
+    - name: breast.R
+      parentName: spine.003
+      position: {x: 0.0058270236, y: 0.0002869076, z: -0.0019144986}
+      rotation: {x: 0.000000054981594, y: 0.6730312, z: 0.7396141, w: -0.000000013015372}
+      scale: {x: 0.9999999, y: 1.0000004, z: 0.99999994}
+    - name: pelvis.L
+      parentName: spine
+      position: {x: -8.881785e-18, y: -6.2864275e-10, z: -2.7008354e-10}
+      rotation: {x: -0.32027528, y: 0.6343289, z: 0.5275206, w: 0.46558845}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000004}
+    - name: pelvis.R
+      parentName: spine
+      position: {x: -8.881785e-18, y: -6.2864275e-10, z: -2.7008354e-10}
+      rotation: {x: -0.32027543, y: -0.6343287, z: -0.5275206, w: 0.46558866}
+      scale: {x: 1.0000001, y: 1.0000005, z: 1.0000001}
+    - name: thigh.L
+      parentName: spine
+      position: {x: -0.009113031, y: -0.0005881978, z: 0.0009700248}
+      rotation: {x: 0.99546635, y: 0.07750086, z: -0.010087292, w: 0.054209795}
+      scale: {x: 1.0000001, y: 0.9999995, z: 1.0000002}
+    - name: shin.L
+      parentName: thigh.L
+      position: {x: 2.9802322e-10, y: 0.0072472375, z: -5.9604643e-10}
+      rotation: {x: -0.0071401875, y: 0.0038797497, z: -0.0622525, w: 0.99802744}
+      scale: {x: 1, y: 1.000001, z: 1}
+    - name: foot.L
+      parentName: shin.L
+      position: {x: -0.0000000012665987, y: 0.0058965473, z: 5.2154064e-10}
+      rotation: {x: -0.46792856, y: -0.0656591, z: 0.123526424, w: 0.8726243}
+      scale: {x: 0.99999994, y: 0.9999997, z: 1.0000002}
+    - name: toe.L
+      parentName: foot.L
+      position: {x: 3.1664968e-10, y: 0.00032281995, z: -0.0000000011920929}
+      rotation: {x: -0.000000014901159, y: 0.95396024, z: -0.29993317, w: -0.00000023469326}
+      scale: {x: 1.0000004, y: 1.0000007, z: 1.0000002}
+    - name: heel.02.L
+      parentName: foot.L
+      position: {x: 0.00031743592, y: 0.00012671248, z: 0.00030695347}
+      rotation: {x: -0.67455155, y: 0.67455256, z: -0.2120833, w: -0.21208437}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1.0000004}
+    - name: thigh.R
+      parentName: spine
+      position: {x: 0.009113031, y: -0.0005881978, z: 0.0009700206}
+      rotation: {x: 0.99546635, y: -0.07750092, z: 0.010086343, w: 0.054209825}
+      scale: {x: 0.9999988, y: 0.9999983, z: 0.99999934}
+    - name: shin.R
+      parentName: thigh.R
+      position: {x: -9.685754e-10, y: 0.007247237, z: 1.4901161e-10}
+      rotation: {x: -0.0071398085, y: -0.0038798638, z: 0.06225252, w: 0.9980274}
+      scale: {x: 1.0000002, y: 1.0000008, z: 0.99999934}
+    - name: foot.R
+      parentName: shin.R
+      position: {x: 1.8626451e-11, y: 0.0058965497, z: 1.4901161e-10}
+      rotation: {x: -0.4679292, y: 0.06565936, z: -0.1235269, w: 0.8726238}
+      scale: {x: 1, y: 0.9999998, z: 1.0000001}
+    - name: toe.R
+      parentName: foot.R
+      position: {x: 8.381903e-11, y: 0.00032282047, z: -5.587935e-10}
+      rotation: {x: -0.000000018626451, y: 0.95396024, z: -0.29993325, w: 0.000000063329935}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000001}
+    - name: heel.02.R
+      parentName: foot.R
+      position: {x: -0.00031743644, y: 0.00012671224, z: 0.00030695403}
+      rotation: {x: -0.67455035, y: -0.67455375, z: 0.21208309, w: -0.21208447}
+      scale: {x: 1.0000005, y: 1.0000002, z: 1.0000004}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
