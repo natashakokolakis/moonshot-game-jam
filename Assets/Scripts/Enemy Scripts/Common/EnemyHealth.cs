@@ -32,6 +32,7 @@ public class EnemyHealth : MonoBehaviour
     public bool invincibilityCooldown = false;
 
     Animator anim;
+    ChaseBehaviourPrefab chaseBehaviour;
     #endregion
 
     public void GetPushedBack(int damage, Vector3 travelDirection)
@@ -42,8 +43,9 @@ public class EnemyHealth : MonoBehaviour
     private void Awake()
     {
         currentHealth = startingHealth;
-        anim = GetComponent<Animator>();
-        enemyMovementController = this.GetComponent<CharacterMovement>();
+        anim = GetComponentInChildren<Animator>();
+        enemyMovementController = GetComponent<CharacterMovement>();
+        chaseBehaviour = GetComponent<ChaseBehaviourPrefab>();
     }
 
     private void OnEnable()
@@ -86,7 +88,9 @@ public class EnemyHealth : MonoBehaviour
     void Death()
     {
         //disappear (use MM feedbacks) then destroy self at end of animation
-        anim.SetBool("isDead", true);
+        //anim.SetBool("isDead", true);
+        anim.SetTrigger("Dead");
+        chaseBehaviour.speed = 0;
         EventManagerNorth.StopListening("GolfBallSunk", Death);
         Destroy(gameObject, 4f);
     }

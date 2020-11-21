@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public class EnemyAttacks : MonoBehaviour
 {
-    public int attackDamage;
+    public int attackDamage = 3;
     public GameObject projectile;
     public Transform projectileOrigin;
 
@@ -12,24 +12,32 @@ public class EnemyAttack : MonoBehaviour
     GameObject player;
     PlayerHealth playerHealth;
     Collider enemyCollider;
+    Animator anim;
 
     private void Awake()
     {
-        enemyAI = GetComponent<EnemyAI>();
+        enemyAI = GetComponentInParent<EnemyAI>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyCollider = GetComponent<Collider>();
+        anim = GetComponent<Animator>();
     }
 
     void MeleeAttack()
     {
         if ((player.transform.position - transform.position).magnitude <= enemyAI.attackRange)
-        playerHealth.TakeDamage(attackDamage);
+        {
+            playerHealth.TakeDamage(attackDamage);
+        }
     }
 
     void DiveAttack()
     {
-        enemyCollider.isTrigger = true;
+        while (anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+        {
+            enemyCollider.isTrigger = true;
+        }
+        enemyCollider.isTrigger = false;
     }
 
     void RangedAttack()
@@ -42,7 +50,7 @@ public class EnemyAttack : MonoBehaviour
          if (other.gameObject == player)
         {
             playerHealth.TakeDamage(attackDamage);
+            enemyCollider.isTrigger = false;
         }
-        enemyCollider.isTrigger = false;
     }
 }

@@ -6,14 +6,17 @@ public class EnemyAI : MonoBehaviour
 {
     #region Variables
     public ENEMY_STATE state;
-    public float attackRange;
-    public float attackDelay;
+    public float attackDelay = 1f;
+
+    [HideInInspector] public float attackRange;
+
+    [SerializeField] private bool onCooldown = false;
 
     private ChaseBehaviourPrefab chaseBehaviour;
     private float enemySpeed;
     private Animator anim;
-    private bool onCooldown = false;
     private float playerDistance;
+    private GameObject player;
 
     #endregion
 
@@ -33,10 +36,11 @@ public class EnemyAI : MonoBehaviour
     private void Awake()
     {
         chaseBehaviour = GetComponent<ChaseBehaviourPrefab>();
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>(); 
         state = ENEMY_STATE.Chase;
         enemySpeed = chaseBehaviour.speed;
-        playerDistance = (chaseBehaviour.chaseTarget.transform.position - transform.position).magnitude;
+        player = GameObject.FindGameObjectWithTag("Player");
+        attackRange = chaseBehaviour.brakingDistance;
     }
 
     void Start()
@@ -58,11 +62,12 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Chase()
     {
         //enter chase state, make sure movement speed set
-        chaseBehaviour.speed = enemySpeed;
+        chaseBehaviour.speed = enemySpeed; 
 
         //execute chase
         while (state == ENEMY_STATE.Chase)
         {
+            playerDistance = (player.transform.position - transform.position).magnitude;
             if (playerDistance <= attackRange && !onCooldown)
             {
                 state = ENEMY_STATE.Attack;
@@ -79,24 +84,34 @@ public class EnemyAI : MonoBehaviour
         chaseBehaviour.speed = 0;
 
         //execute attack
-        while (state == ENEMY_STATE.Attack)
-        {
+        //while (state == ENEMY_STATE.Attack)
+        //{
+            //maybe get rid of the cooldown check here, just send enemy into chase state
+            //after attack until cooldown is over
+            //if (playerDistance <= attackRange && !onCooldown)
+            //{
             anim.SetTrigger("isAttacking");
-            //damage and code gets enabled from within animation event
 
-            while (anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+            onCooldown = true;
+        //damage and code gets enabled from within animation event
+
+        while (anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
             {
                 yield return null;
             }
-            onCooldown = true;
-            StartCoroutine(StartCooldown());
 
-            if (playerDistance > attackRange)
-            {
-                state = ENEMY_STATE.Chase;
-                yield break;
-            }
-        }
+        //}
+        
+        StartCoroutine(StartCooldown());
+
+        //if (playerDistance > attackRange)
+        //{
+        //    state = ENEMY_STATE.Chase;
+        //    yield break;
+        //}
+        //}
+        //yield return null;
+        //}
         //exit attack state
         state = ENEMY_STATE.Chase;
         yield break;
@@ -105,6 +120,7 @@ public class EnemyAI : MonoBehaviour
     IEnumerator StartCooldown()
     {
         yield return new WaitForSeconds(attackDelay);
+
         onCooldown = false;
     }
     #endregion

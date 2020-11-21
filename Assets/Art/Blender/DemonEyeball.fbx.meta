@@ -5,7 +5,7 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: -2659912462087857712
-    second: Demon Eye|EyeballDive
+    second: Demon Eye|EyeballDive (read)
   - first:
       74: 5850931975590376323
     second: Demon Eye|EyeballFly
@@ -46,7 +46,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Demon Eye|EyeballDive
+      name: Demon Eye|EyeballDive (read)
       takeName: Demon Eye|EyeballDive
       internalID: 0
       firstFrame: 0
