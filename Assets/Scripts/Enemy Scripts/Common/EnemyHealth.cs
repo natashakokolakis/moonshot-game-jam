@@ -31,6 +31,7 @@ public class EnemyHealth : MonoBehaviour
     public int basePushback = 50;
     public bool invincibilityCooldown = false;
 
+    Animator anim;
     #endregion
 
     public void GetPushedBack(int damage, Vector3 travelDirection)
@@ -41,6 +42,7 @@ public class EnemyHealth : MonoBehaviour
     private void Awake()
     {
         currentHealth = startingHealth;
+        anim = GetComponent<Animator>();
         enemyMovementController = this.GetComponent<CharacterMovement>();
     }
 
@@ -65,10 +67,9 @@ public class EnemyHealth : MonoBehaviour
         if (invincibilityCooldown)
             return;
 
-
         invincibilityCooldown = true;
-
         currentHealth -= amount;
+        anim.SetBool("isHit", true);
 
         travelDirection = (this.transform.position - travelDirection).normalized;
         
@@ -84,7 +85,8 @@ public class EnemyHealth : MonoBehaviour
 
     void Death()
     {
-        //set animation bool to isDead, disappear (use MM feedbacks) then destroy self at end of animation
+        //disappear (use MM feedbacks) then destroy self at end of animation
+        anim.SetBool("isDead", true);
         EventManagerNorth.StopListening("GolfBallSunk", Death);
         Destroy(gameObject, 4f);
     }

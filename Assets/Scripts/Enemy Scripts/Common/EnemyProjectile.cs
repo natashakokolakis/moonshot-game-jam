@@ -18,7 +18,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         rb.velocity = transform.forward * speed;
 
-        Destroy(gameObject, 3);
+        Destroy(gameObject, 4);
     }
 
     private void OnTriggerEnter(Collider collision)
