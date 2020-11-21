@@ -7,10 +7,13 @@ public class EnemyAI : MonoBehaviour
     #region Variables
     public ENEMY_STATE state;
     public float attackRange;
+    public float attackDelay;
 
     private ChaseBehaviourPrefab chaseBehaviour;
     private float enemySpeed;
     private Animator anim;
+    private bool onCooldown = false;
+    private float playerDistance;
 
     #endregion
 
@@ -33,6 +36,7 @@ public class EnemyAI : MonoBehaviour
         anim = GetComponent<Animator>();
         state = ENEMY_STATE.Chase;
         enemySpeed = chaseBehaviour.speed;
+        playerDistance = (chaseBehaviour.chaseTarget.transform.position - transform.position).magnitude;
     }
 
     void Start()
@@ -53,47 +57,55 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator Chase()
     {
-        //enter chase state
+        //enter chase state, make sure movement speed set
+        chaseBehaviour.speed = enemySpeed;
 
         //execute chase
         while (state == ENEMY_STATE.Chase)
         {
-            //check if player within range, if it is switch state
-            //if (chaseBehaviour.chaseTarget.transform.position - transform.position < attackRange)
+            if (playerDistance <= attackRange && !onCooldown)
+            {
+                state = ENEMY_STATE.Attack;
+                yield break; 
+            }
 
             yield return null;
         }
-
-        //exit chase state
-
     }
 
     IEnumerator Attack()
     {
         //enter attack state
-        //stop moving for attack 
         chaseBehaviour.speed = 0;
-        anim.SetTrigger("isAttacking");
 
         //execute attack
-        //trigger attack animation, damage and code gets enabled from within animation event
-        //set state = ENEMY_STATE.Chase; after attack complete
-
-        while (anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack") )
+        while (state == ENEMY_STATE.Attack)
         {
-            yield return null;
-        }
+            anim.SetTrigger("isAttacking");
+            //damage and code gets enabled from within animation event
 
+            while (anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+            {
+                yield return null;
+            }
+            onCooldown = true;
+            StartCoroutine(StartCooldown());
+
+            if (playerDistance > attackRange)
+            {
+                state = ENEMY_STATE.Chase;
+                yield break;
+            }
+        }
         //exit attack state
-        //reset enemy speed
-        chaseBehaviour.speed = enemySpeed;
+        state = ENEMY_STATE.Chase;
+        yield break;
+    }
+
+    IEnumerator StartCooldown()
+    {
+        yield return new WaitForSeconds(attackDelay);
+        onCooldown = false;
     }
     #endregion
-
-    bool AnimationComplete (string animationTag)
-    {
-        var state = anim.GetCurrentAnimatorStateInfo(0);
-
-        return state.IsTag(animationTag) && state.normalizedTime >= 1;
-    }
 }
