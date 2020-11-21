@@ -65,6 +65,7 @@ public class EnemyHealth : MonoBehaviour
         if (invincibilityCooldown)
             return;
 
+
         invincibilityCooldown = true;
 
         currentHealth -= amount;

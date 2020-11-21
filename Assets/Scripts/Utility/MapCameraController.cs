@@ -11,9 +11,12 @@ public class MapCameraController : MonoBehaviour
     private PlayerMoonGolfController playerMoonGolfController;
     private float mapMoveSpeed = 20f;
     private Vector3 cameraPosOffset = new Vector3(0, 19, -35);
+    private GameObject mapModeCanvas;
+
 
     private void Awake()
     {
+        mapModeCanvas = transform.Find("MapModeCanvas").gameObject;
         thisCamera = GetComponent<CinemachineVirtualCamera>();
         playerMoonGolfController = GameObject.Find("ECM_Player").GetComponent<PlayerMoonGolfController>();
         playerTrans = GameObject.Find("ECM_Player").transform;
@@ -24,6 +27,7 @@ public class MapCameraController : MonoBehaviour
     {
         this.transform.position = playerTrans.position + cameraPosOffset;
         thisCamera.Priority = 13;
+        mapModeCanvas.SetActive(true);
         EventManagerNorth.TriggerEvent("ToggleGolfMode");
     }
 
@@ -35,10 +39,11 @@ public class MapCameraController : MonoBehaviour
     public void TurnOffMapMode()
     {
         thisCamera.Priority = 9;
+        mapModeCanvas.SetActive(false);
         moveDirection = Vector3.zero;
         playerMoonGolfController.isInAOE = false;
         EventManagerNorth.TriggerEvent("ToggleGolfMode");
-        gameObject.SetActive(false);
+        enabled = (false);
     }
 
     private void HandleInput()

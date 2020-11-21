@@ -40,14 +40,14 @@ public class PlayerMoonGolfController : BaseCharacterController
     private Vector3 golfballOffset = new Vector3(0, 0.5f, 0);
 
     [Header("Orb Golf")]
-    public GameObject orbBallObject;
-    public CapsuleCollider orbInteractionCollider;
+    //public GameObject orbBallObject;
+    //public CapsuleCollider orbInteractionCollider;
 
     public AOEAttackHandler aoeHandler;
     [HideInInspector]
     public bool isInAOE = false;
 
-    public GameObject mapCameraController;
+    public MapCameraController mapCameraController;
 
     #endregion
 
@@ -107,7 +107,7 @@ public class PlayerMoonGolfController : BaseCharacterController
     {
         moveDirection = Vector3.zero;
         isInAOE = true;
-        mapCameraController.SetActive(true);
+        mapCameraController.enabled = true;
     }
 
     private void AttackCooldown()

@@ -20,7 +20,9 @@ public class OrbGolfingScript : MonoBehaviour
 
     public FollowOrb playerIndicators;
 
+    // Cameras
     public CinemachineVirtualCamera vCam;
+    public MapCameraController mapCamera;
 
     // Turns on golf mode
     public bool isGolfing = false;
@@ -44,6 +46,13 @@ public class OrbGolfingScript : MonoBehaviour
 
     #endregion
 
+    private void Start()
+    {
+        vCam = GameObject.Find("OrbCinemaCam").GetComponent<CinemachineVirtualCamera>();
+        mapCamera = GameObject.Find("Map Camera").GetComponent<MapCameraController>();
+
+    }
+
     // Rotates player while aiming
     public void Rotate(Vector3 direction, float angularSpeed, bool onlyLateral = true)
     {
@@ -65,7 +74,11 @@ public class OrbGolfingScript : MonoBehaviour
         playerIndicators.SetUpAimLineAndPlayerModel();
         isGolfing = true;
         EventManagerNorth.TriggerEvent("ToggleGolfMode");
+        //mapCamera.Priority = 11;
+        mapCamera.enabled = true;
         vCam.Priority = 11;
+        vCam.Follow = transform;
+        vCam.LookAt = transform;
         eButtonIndicator.disableIndicator();
         golfPowerRate = Mathf.Abs(golfPowerRate);
         golfPower = 0;
@@ -73,6 +86,10 @@ public class OrbGolfingScript : MonoBehaviour
 
     public void ShootGolfBall(float golfForce, Vector3 direction)
     {
+        //mapCamera.Priority = 9;
+        mapCamera.TurnOffMapMode();
+        vCam.Priority = 11;
+
         strokeCounter.IncreaseStroke();
 
         playerIndicators.TurnOffAimLine();
@@ -118,6 +135,8 @@ public class OrbGolfingScript : MonoBehaviour
             ShootGolfBall(golfPower, attackDirection);
         }
 
+        if (Input.GetKeyDown(KeyCode.Tab) & !mapCamera.enabled)
+            mapCamera.enabled = true;
     }
 
     #region Monobehaviours
