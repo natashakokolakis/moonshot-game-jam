@@ -83,8 +83,9 @@ public class EnemyHealth : MonoBehaviour
 
     void Death()
     {
+        //set animation bool to isDead, disappear (use MM feedbacks) then destroy self at end of animation
         EventManagerNorth.StopListening("GolfBallSunk", Death);
-        Destroy(gameObject);
+        Destroy(gameObject, 4f);
     }
 
 
