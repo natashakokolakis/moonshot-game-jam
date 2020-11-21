@@ -4,19 +4,45 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+    #region Variables
     public ENEMY_STATE state;
+    public float attackRange;
+
+    private ChaseBehaviourPrefab chaseBehaviour;
+    private float enemySpeed;
+    private Animator anim;
+
+    #endregion
+
+
+    #region enum
+    public enum ENEMY_STATE
+    {
+        Chase,
+        Attack
+    }
+
+    #endregion
+
+
+    #region Unity Methods
 
     private void Awake()
     {
+        chaseBehaviour = GetComponent<ChaseBehaviourPrefab>();
+        anim = GetComponent<Animator>();
         state = ENEMY_STATE.Chase;
+        enemySpeed = chaseBehaviour.speed;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(EnemyFSM());
     }
+    #endregion
 
+
+    #region Coroutines
     IEnumerator EnemyFSM()
     {
         while (true)
@@ -32,6 +58,8 @@ public class EnemyAI : MonoBehaviour
         //execute chase
         while (state == ENEMY_STATE.Chase)
         {
+            //check if player within range, if it is switch state
+            //if (chaseBehaviour.chaseTarget.transform.position - transform.position < attackRange)
 
             yield return null;
         }
@@ -43,24 +71,29 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Attack()
     {
         //enter attack state
-        //chasebehaviourprefab speed = 0
+        //stop moving for attack 
+        chaseBehaviour.speed = 0;
+        anim.SetTrigger("isAttacking");
 
         //execute attack
-        while (state == ENEMY_STATE.Attack)
-        {
-            //trigger attack animation, damage and code gets enabled from within animation event
+        //trigger attack animation, damage and code gets enabled from within animation event
+        //set state = ENEMY_STATE.Chase; after attack complete
 
+        while (anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack") )
+        {
             yield return null;
         }
 
         //exit attack state
-        //chasebehaviourprefab speed = previous speed
+        //reset enemy speed
+        chaseBehaviour.speed = enemySpeed;
     }
+    #endregion
 
-    public enum ENEMY_STATE
+    bool AnimationComplete (string animationTag)
     {
-        Chase, 
-        Attack
-    }
+        var state = anim.GetCurrentAnimatorStateInfo(0);
 
+        return state.IsTag(animationTag) && state.normalizedTime >= 1;
+    }
 }
