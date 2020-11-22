@@ -1328,7 +1328,6 @@ MonoBehaviour:
   golfBallCollider: {fileID: 0}
   trailRenderer: {fileID: 0}
   interactableCollider: {fileID: 0}
-  playerGO: {fileID: 0}
   eButtonIndicator: {fileID: 0}
   strokeCounter: {fileID: 0}
   orbDummyPlayer: {fileID: 126695860345050675}

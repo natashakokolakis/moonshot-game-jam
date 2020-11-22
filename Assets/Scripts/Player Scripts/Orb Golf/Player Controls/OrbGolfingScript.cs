@@ -12,7 +12,7 @@ public class OrbGolfingScript : MonoBehaviour
     public SphereCollider golfBallCollider;
     public TrailRenderer trailRenderer;
     public CapsuleCollider interactableCollider;
-    public GameObject playerGO;
+    private GameObject playerGO;
     public EButtonIconController eButtonIndicator;
     public StrokeCounter strokeCounter;
 
@@ -48,6 +48,7 @@ public class OrbGolfingScript : MonoBehaviour
 
     private void Start()
     {
+        playerGO = GameObject.Find("ECM_Player");
         vCam = GameObject.Find("OrbCinemaCam").GetComponent<CinemachineVirtualCamera>();
         mapCamera = GameObject.Find("Map Camera").GetComponent<MapCameraController>();
 
