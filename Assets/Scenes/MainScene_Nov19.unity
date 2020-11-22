@@ -11366,6 +11366,7 @@ GameObject:
   - component: {fileID: 5282193213535745522}
   - component: {fileID: 3118203927741611066}
   - component: {fileID: 3118203927741611067}
+  - component: {fileID: 3118203927741611068}
   m_Layer: 0
   m_Name: Eyeball
   m_TagString: Untagged
@@ -11398,6 +11399,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe020f0d6f05fe47b92e1bdd8078c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &3118203927741611068
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3118203927741611065}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  m_Radius: 0.004
+  m_Height: 0.004
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &3611121697212291090
 Transform:
   m_ObjectHideFlags: 0
@@ -12033,7 +12048,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 62faf2da98bc83245959c25f0dd33242, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1

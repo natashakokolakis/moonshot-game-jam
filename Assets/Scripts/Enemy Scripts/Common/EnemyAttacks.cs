@@ -9,26 +9,18 @@ public class EnemyAttacks : MonoBehaviour
     public Transform projectileOrigin;
 
     EnemyAI enemyAI;
-    ChaseBehaviourPrefab chaseBehaviour;
     GameObject player;
     PlayerHealth playerHealth;
     SphereCollider diveCollider;
-    //Collider parentCollider;
-    Animator anim;
-    //float prevStoppingDistance;
-    float diveSpeed;
+    CapsuleCollider diveTrigger;
 
     private void Awake()
     {
         enemyAI = GetComponentInParent<EnemyAI>();
-        chaseBehaviour = GetComponentInParent<ChaseBehaviourPrefab>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
         diveCollider = GetComponentInChildren<SphereCollider>();
-        //parentCollider = GetComponentInParent<Collider>();
-        anim = GetComponent<Animator>();
-        //prevStoppingDistance = chaseBehaviour.stoppingDistance;
-        diveSpeed = chaseBehaviour.speed * 2;
+        diveTrigger = GetComponentInChildren<CapsuleCollider>();
     }
 
     void MeleeAttack()
@@ -42,11 +34,7 @@ public class EnemyAttacks : MonoBehaviour
     void DiveAttack()
     {
         diveCollider.enabled = true;
-        //StartCoroutine(IncreaseSpeed());
-        //diveCollider.isTrigger = true;
-        //parentCollider.enabled = false;
-        //chaseBehaviour.speed *= 2;
-        //chaseBehaviour.stoppingDistance = 0;
+        diveTrigger.enabled = true;
     }
 
     void RangedAttack()
@@ -54,35 +42,17 @@ public class EnemyAttacks : MonoBehaviour
         Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);
     }
 
-    /*public void OnChildTriggerEnter(Collider other)
+    public void OnChildTriggerEnter(Collider other)
     {
          if (other.gameObject == player)
         {
             playerHealth.TakeDamage(attackDamage);
         }
-    }*/
-
-    public void OnChildCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject == player)
-        {
-            playerHealth.TakeDamage(attackDamage);
-        }
     }
-
-    /*IEnumerator IncreaseSpeed()
-    {
-        transform.parent.position += Vector3.forward * diveSpeed * Time.deltaTime;
-        yield return new WaitForSeconds(2);
-    }*/
 
     void ResetCollider()
     {
         diveCollider.enabled = false;
-        //StopCoroutine(IncreaseSpeed());
-        //diveCollider.isTrigger = false;
-        //parentCollider.enabled = true;
-        //chaseBehaviour.speed = 0;
-        //chaseBehaviour.stoppingDistance = prevStoppingDistance;
+        diveTrigger.enabled = false;
     }
 }
