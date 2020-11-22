@@ -91,6 +91,7 @@ public class EnemyHealth : MonoBehaviour
         //anim.SetBool("isDead", true);
         anim.SetTrigger("Dead");
         chaseBehaviour.speed = 0;
+        //chaseBehaviour.enabled = false;
         EventManagerNorth.StopListening("GolfBallSunk", Death);
         Destroy(gameObject, 4f);
     }

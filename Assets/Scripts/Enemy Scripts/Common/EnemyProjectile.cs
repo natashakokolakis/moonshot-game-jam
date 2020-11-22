@@ -8,10 +8,12 @@ public class EnemyProjectile : MonoBehaviour
     public int damage = 2;
 
     Rigidbody rb;
+    PlayerHealth playerHealth;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     private void Start()
@@ -25,9 +27,8 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+            playerHealth.TakeDamage(damage);
             Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }
