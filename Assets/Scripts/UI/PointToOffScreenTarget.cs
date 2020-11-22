@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class HoleLocation : MonoBehaviour
+public class PointToOffScreenTarget : MonoBehaviour
 {
 
-    public Transform thisLevelHole;
+    public Transform targetTransform;
     public float iconMoveSpeed = 1;
 
     private RectTransform arrowIconTransform;
     private Image thisImage;
-    private Vector3 thisLevelWorlPosition;
+    private Vector3 targetWorldPosition;
 
     private Camera mainCamera;
     private float maxCamWidth;
@@ -47,7 +47,7 @@ public class HoleLocation : MonoBehaviour
 
     private bool CheckIfTargetOnScreen()
     {
-        if (CheckIfCoordinateOnScreen(thisLevelWorlPosition.x, maxCamWidth) & CheckIfCoordinateOnScreen(thisLevelWorlPosition.y, maxCamHeight))
+        if (CheckIfCoordinateOnScreen(targetWorldPosition.x, maxCamWidth) & CheckIfCoordinateOnScreen(targetWorldPosition.y, maxCamHeight))
             return true;
         else
             return false;
@@ -72,8 +72,8 @@ public class HoleLocation : MonoBehaviour
 
     private void MoveIndicator()
     {
-        thisLevelWorlPosition = mainCamera.WorldToScreenPoint(thisLevelHole.position);
-        arrowIconTransform.position = Vector3.Lerp(arrowIconTransform.position, thisLevelWorlPosition, iconMoveSpeed * Time.deltaTime);
+        targetWorldPosition = mainCamera.WorldToScreenPoint(targetTransform.position);
+        arrowIconTransform.position = Vector3.Lerp(arrowIconTransform.position, targetWorldPosition, iconMoveSpeed * Time.deltaTime);
         arrowIconTransform.position = new Vector3(Mathf.Clamp(arrowIconTransform.position.x, 0, maxCamWidth), Mathf.Clamp(arrowIconTransform.position.y, 0, maxCamHeight), arrowIconTransform.position.z);
     }
 }
