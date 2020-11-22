@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class PointToOffScreenTarget : MonoBehaviour
 {
+    // Apply this script to an image element on a canvas.
+
 
     public Transform targetTransform;
-    public float iconMoveSpeed = 1;
+    public float iconMoveSpeed = 5;
 
-    private RectTransform arrowIconTransform;
+    private RectTransform uiIconTransform;
     private Image thisImage;
     private Vector3 targetWorldPosition;
 
@@ -22,18 +24,22 @@ public class PointToOffScreenTarget : MonoBehaviour
     void Awake()
     {
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        arrowIconTransform = GetComponent<RectTransform>();
+        uiIconTransform = GetComponent<RectTransform>();
         thisImage = GetComponent<Image>();
 
         maxCamHeight = mainCamera.pixelHeight;
         maxCamWidth = mainCamera.pixelWidth;
     }
 
+    public void ChangeTargetTransform(Transform newTarget)
+    {
+        targetTransform = newTarget;
+    }
     
 
     private void OnEnable()
     {
-        arrowIconTransform.localPosition = Vector3.zero;
+        uiIconTransform.localPosition = Vector3.zero;
 
     }
 
@@ -73,7 +79,7 @@ public class PointToOffScreenTarget : MonoBehaviour
     private void MoveIndicator()
     {
         targetWorldPosition = mainCamera.WorldToScreenPoint(targetTransform.position);
-        arrowIconTransform.position = Vector3.Lerp(arrowIconTransform.position, targetWorldPosition, iconMoveSpeed * Time.deltaTime);
-        arrowIconTransform.position = new Vector3(Mathf.Clamp(arrowIconTransform.position.x, 0, maxCamWidth), Mathf.Clamp(arrowIconTransform.position.y, 0, maxCamHeight), arrowIconTransform.position.z);
+        uiIconTransform.position = Vector3.Lerp(uiIconTransform.position, targetWorldPosition, iconMoveSpeed * Time.deltaTime);
+        uiIconTransform.position = new Vector3(Mathf.Clamp(uiIconTransform.position.x, 0, maxCamWidth), Mathf.Clamp(uiIconTransform.position.y, 0, maxCamHeight), uiIconTransform.position.z);
     }
 }
