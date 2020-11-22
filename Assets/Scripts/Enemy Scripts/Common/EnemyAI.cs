@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     private Animator anim;
     private float playerDistance;
     private GameObject player;
+    private Rigidbody rb;
 
     #endregion
 
@@ -43,6 +44,7 @@ public class EnemyAI : MonoBehaviour
         enemySpeed = chaseBehaviour.speed;
         player = GameObject.FindGameObjectWithTag("Player");
         attackRange = chaseBehaviour.brakingDistance;
+        rb = GetComponent<Rigidbody>();
     }
 
     void Start()
@@ -68,7 +70,8 @@ public class EnemyAI : MonoBehaviour
         {
             StopAllCoroutines();
         }
-        chaseBehaviour.speed = enemySpeed; 
+        //chaseBehaviour.speed = enemySpeed; 
+        rb.WakeUp();
 
         //execute chase
         while (state == ENEMY_STATE.Chase)
@@ -87,7 +90,9 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Attack()
     {
         //enter attack state
-        chaseBehaviour.speed = 0;
+        //chaseBehaviour.speed = 0;
+        rb.velocity = Vector3.zero;
+        rb.Sleep();
 
         //execute attack
         //while (state == ENEMY_STATE.Attack)
