@@ -200,6 +200,7 @@ public class PlayerMoonGolfController : BaseCharacterController
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            EventManagerNorth.TriggerEvent("ToggleGolfMode");
             OpenMapMode();
         }
 

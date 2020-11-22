@@ -22,16 +22,17 @@ public class SetCurrentLevel : MonoBehaviour
     private GameObject enemyList;
     #endregion
 
+    #region Level Gates
+    private LevelGateController nextLevelGate;
+    [Header("Place 'Next Level Gate' from previous level here")]
+    public LevelGateController previousLevelGate;
     #endregion
 
-    void Awake()
-    {
-        InitializeCameraAndLocatorSettings();
-        InitializeEnemyGroup();
+    #endregion
 
+    // Need to set previous level gate in Scene
 
-    }
-
+    #region Initializtions
     private void InitializeCameraAndLocatorSettings()
     {
         currentCameraBounds = GameObject.Find("CurrentBounds").GetComponent<SetBoundingBox>();
@@ -50,6 +51,14 @@ public class SetCurrentLevel : MonoBehaviour
         enemyList = transform.Find("---- Enemies ----").gameObject;
     }
 
+    private void GetNextLevelGate()
+    {
+        nextLevelGate = transform.Find("Next Level Gate").GetComponent<LevelGateController>();
+    }
+
+    #endregion
+
+    #region Setting Up Current Level
     private void SetCameraConfinersAndLocatorTargets()
     {
         currentCameraBounds.ChangeBoundingBox(thisLevelCameraBounds);
@@ -62,12 +71,24 @@ public class SetCurrentLevel : MonoBehaviour
     {
         enemyList.SetActive(true);
     }
+    
+    private void SetUpLevelGates()
+    {
+        nextLevelGate.enabled = true;
+        if (previousLevelGate != null)
+        previousLevelGate.StopBacktracking();
+    }
 
     private void SetUpLevel()
     {
         SetCameraConfinersAndLocatorTargets();
         TurnOnEnemies();
+        SetUpLevelGates();
     }
+
+    #endregion
+
+    #region Monobehaviours
 
     private void OnTriggerEnter(Collider other)
     {
@@ -77,4 +98,11 @@ public class SetCurrentLevel : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        InitializeCameraAndLocatorSettings();
+        InitializeEnemyGroup();
+        GetNextLevelGate();
+    }
+    #endregion
 }

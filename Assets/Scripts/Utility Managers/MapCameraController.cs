@@ -18,9 +18,8 @@ public class MapCameraController : MonoBehaviour
 
     // for zoom controls
     private float defaultOrthoSize = 15;
-
-    public float maxOrthSize = 20;
-    public float minOrthSize = 10;
+    private float maxOrthSize = 20;
+    private float minOrthSize = 10;
     public float currentOrthSize;
 
     public float zoomSpeed = 1f;
@@ -57,7 +56,7 @@ public class MapCameraController : MonoBehaviour
         thisCamera.m_Lens.OrthographicSize = defaultOrthoSize;
         thisCamera.Priority = 13;
         mapModeCanvas.SetActive(true);
-        EventManagerNorth.TriggerEvent("ToggleGolfMode");
+        //EventManagerNorth.TriggerEvent("ToggleGolfMode");
         StartCoroutine(WaitforCameraTransition());
     }
 
@@ -70,9 +69,12 @@ public class MapCameraController : MonoBehaviour
     {
         thisCamera.Priority = 9;
         mapModeCanvas.SetActive(false);
-        moveDirection = Vector3.zero;
-        playerMoonGolfController.isInAOE = false;
-        EventManagerNorth.TriggerEvent("ToggleGolfMode");
+        if (playerMoonGolfController.gameObject.activeSelf)
+        {
+            moveDirection = Vector3.zero;
+            playerMoonGolfController.isInAOE = false;
+            EventManagerNorth.TriggerEvent("ToggleGolfMode");
+        }
         cameraTransitionOver = false;
         enabled = (false);
     }

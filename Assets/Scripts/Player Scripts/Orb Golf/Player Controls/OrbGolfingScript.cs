@@ -21,8 +21,8 @@ public class OrbGolfingScript : MonoBehaviour
     public FollowOrb playerIndicators;
 
     // Cameras
-    public CinemachineVirtualCamera vCam;
-    public MapCameraController mapCamera;
+    private CinemachineVirtualCamera ballFollowCam;
+    private MapCameraController mapCamera;
 
     // Turns on golf mode
     public bool isGolfing = false;
@@ -49,7 +49,7 @@ public class OrbGolfingScript : MonoBehaviour
     private void Start()
     {
         playerGO = GameObject.Find("ECM_Player");
-        vCam = GameObject.Find("OrbCinemaCam").GetComponent<CinemachineVirtualCamera>();
+        ballFollowCam = GameObject.Find("OrbCinemaCam").GetComponent<CinemachineVirtualCamera>();
         mapCamera = GameObject.Find("Map Camera").GetComponent<MapCameraController>();
 
     }
@@ -77,9 +77,9 @@ public class OrbGolfingScript : MonoBehaviour
         EventManagerNorth.TriggerEvent("ToggleGolfMode");
         //mapCamera.Priority = 11;
         mapCamera.enabled = true;
-        vCam.Priority = 11;
-        vCam.Follow = transform;
-        vCam.LookAt = transform;
+        ballFollowCam.Priority = 11;
+        ballFollowCam.Follow = transform;
+        ballFollowCam.LookAt = transform;
         eButtonIndicator.disableIndicator();
         golfPowerRate = Mathf.Abs(golfPowerRate);
         golfPower = 0;
@@ -89,7 +89,7 @@ public class OrbGolfingScript : MonoBehaviour
     {
         //mapCamera.Priority = 9;
         mapCamera.TurnOffMapMode();
-        vCam.Priority = 11;
+        ballFollowCam.Priority = 11;
 
         strokeCounter.IncreaseStroke();
 
@@ -136,7 +136,7 @@ public class OrbGolfingScript : MonoBehaviour
             ShootGolfBall(golfPower, attackDirection);
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab) & !mapCamera.enabled)
+        if (Input.GetKeyDown(KeyCode.Tab) & !mapCamera.enabled) 
             mapCamera.enabled = true;
     }
 
@@ -176,7 +176,7 @@ public class OrbGolfingScript : MonoBehaviour
                 //isGolfing = false;
                 //playerGO.transform.position = playerIndicators.orbPlayerModel.transform.position - new Vector3(0, 1, 0);
                 playerGO.transform.rotation = playerIndicators.orbPlayerModel.transform.rotation;
-                vCam.Priority = 9;
+                ballFollowCam.Priority = 9;
                 EventManagerNorth.TriggerEvent("ToggleGolfMode");
             }
         }
