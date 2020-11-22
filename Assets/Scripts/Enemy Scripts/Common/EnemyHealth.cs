@@ -66,7 +66,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int amount, Vector3 travelDirection)
     {
-        if (invincibilityCooldown)
+        if (invincibilityCooldown || currentHealth <= 0)
             return;
 
         invincibilityCooldown = true;
