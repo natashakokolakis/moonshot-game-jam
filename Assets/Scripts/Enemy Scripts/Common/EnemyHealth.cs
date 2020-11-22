@@ -9,11 +9,9 @@ public class EnemyHealth : MonoBehaviour
 {
     #region Stats and Dependencies
 
-    [Header("Health Stats")]
-    [SerializeField]
-    private int startingHealth = 20;
-    [SerializeField]
-    private int currentHealth;
+    [Header("Health Stats")] 
+    public int startingHealth = 20;
+    public int currentHealth;
     
     // Used for pushing back enemy
     private CharacterMovement enemyMovementController;

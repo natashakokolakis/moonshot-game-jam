@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private bool onCooldown = false;
 
     private ChaseBehaviourPrefab chaseBehaviour;
+    private EnemyHealth enemyHealth;
     private float enemySpeed;
     private Animator anim;
     private float playerDistance;
@@ -36,6 +37,7 @@ public class EnemyAI : MonoBehaviour
     private void Awake()
     {
         chaseBehaviour = GetComponent<ChaseBehaviourPrefab>();
+        enemyHealth = GetComponent<EnemyHealth>();
         anim = GetComponentInChildren<Animator>(); 
         state = ENEMY_STATE.Chase;
         enemySpeed = chaseBehaviour.speed;
@@ -62,6 +64,10 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Chase()
     {
         //enter chase state, make sure movement speed set
+        if (enemyHealth.currentHealth <= 0)
+        {
+            StopAllCoroutines();
+        }
         chaseBehaviour.speed = enemySpeed; 
 
         //execute chase
