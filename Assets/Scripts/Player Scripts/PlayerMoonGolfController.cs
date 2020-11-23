@@ -219,7 +219,7 @@ public class PlayerMoonGolfController : BaseCharacterController
         }
 
         //start aoe prep
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && !aoeHandler.coolingDown)
          {
             animate.EnterAttackMode();
 

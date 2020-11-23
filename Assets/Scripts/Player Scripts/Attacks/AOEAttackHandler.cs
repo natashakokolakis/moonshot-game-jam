@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class AOEAttackHandler : MonoBehaviour
 {
@@ -15,6 +17,11 @@ public class AOEAttackHandler : MonoBehaviour
     private PlayerAnimations animate;
 
     public AOECircleBar aoeCircleTimer;
+    public float aoeCooldown = 4;
+    private float timer;
+    private Slider aoeSlider;
+    private Tween aoeCooldownEnd;
+    public bool coolingDown = false;
 
     private MeshRenderer ballRender;
     private TrailRenderer trailRenderer;
@@ -35,16 +42,18 @@ public class AOEAttackHandler : MonoBehaviour
         ballRender = GetComponent<MeshRenderer>();
         trailRenderer = GetComponent<TrailRenderer>();
         animate = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimations>();
+        aoeSlider = GameObject.Find("AOE Slider").GetComponent<Slider>();
+        aoeCooldownEnd = aoeSlider.DOValue(0, 1).SetAutoKill(false).SetLoops(0, LoopType.Restart);
     }
 
-    public IEnumerator AOESpecial ()
+    public IEnumerator AOESpecial()
     {
         currentTime = maxSpecialTimer;
         aoeCircleTimer.enabled = true;
         StartCoroutine(aoeCircleTimer.CountDownAOETimer());
         EventManagerNorth.TriggerEvent("ToggleGolfMode");
 
-        while (currentTime > 0 )
+        while (currentTime > 0)
         {
             currentTime -= Time.deltaTime;
 
@@ -59,7 +68,7 @@ public class AOEAttackHandler : MonoBehaviour
                     enemiesTargeted.Add(hitInfo.transform.gameObject);
                     Vector3 targetPosition = hitInfo.transform.position + targetImageOffset;
                     Instantiate(targetIcon, targetPosition, targetImageRotation);
-                    
+
                 }
             }
 
@@ -83,6 +92,8 @@ public class AOEAttackHandler : MonoBehaviour
         }
 
         animate.RangedAttack(1, 1);
+        StartCoroutine(StartTimer(aoeCooldown));
+        StartCoroutine(AOECooldown());
         StartCoroutine(MoveBallToTargets());
 
         yield return waitForEndOfFrame;
@@ -134,4 +145,31 @@ public class AOEAttackHandler : MonoBehaviour
         yield return null;
     }
 
+
+    //nothing works
+    IEnumerator StartTimer(float maxTime)
+    {
+        timer = maxTime;
+
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+        yield return null;
+    }
+
+    IEnumerator AOECooldown()
+    {
+        //block aoe attack
+        coolingDown = true;
+
+        aoeSlider.value = 1;
+        yield return new WaitForSeconds((aoeCooldown - 1));
+        aoeCooldownEnd.Restart();
+        aoeCooldownEnd.Play();
+        yield return new WaitForSeconds(1);
+
+        //return aoe attack controls
+        coolingDown = false;
+    }
 }
