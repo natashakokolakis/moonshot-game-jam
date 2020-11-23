@@ -22,6 +22,7 @@ public class LevelGateController : MonoBehaviour
 
     public void StopBacktracking()
     {
+        if (gameObject)
         gateCollider.enabled = true;
     }
 

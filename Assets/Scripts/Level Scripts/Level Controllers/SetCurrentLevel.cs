@@ -28,6 +28,19 @@ public class SetCurrentLevel : MonoBehaviour
     public LevelGateController previousLevelGate;
     #endregion
 
+    #region IntroCamera
+    private IntroCameraController introCameraController;
+    #endregion
+
+    #region Player Controller
+    private PlayerMoonGolfController playerController;
+
+    #endregion
+
+    #region TriggerCollider
+    private BoxCollider startLevelTrigger;
+    #endregion
+
     #endregion
 
     // Need to set previous level gate in Scene
@@ -56,6 +69,32 @@ public class SetCurrentLevel : MonoBehaviour
         nextLevelGate = transform.Find("Next Level Gate").GetComponent<LevelGateController>();
     }
 
+    private void GetIntroCamera()
+    {
+        introCameraController = transform.Find("IntroCamera").GetComponent<IntroCameraController>();
+    }
+
+    private void GetPlayerComponents()
+    {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMoonGolfController>();
+    }
+
+    private void GetTriggerCollider()
+    {
+        startLevelTrigger = GetComponent<BoxCollider>();
+    }
+
+    // Grabs all above components
+    private void InitializeAll()
+    {
+        InitializeCameraAndLocatorSettings();
+        InitializeEnemyGroup();
+        GetNextLevelGate();
+        GetIntroCamera();
+        GetPlayerComponents();
+        GetTriggerCollider();
+    }
+
     #endregion
 
     #region Setting Up Current Level
@@ -75,8 +114,17 @@ public class SetCurrentLevel : MonoBehaviour
     private void SetUpLevelGates()
     {
         nextLevelGate.enabled = true;
-        if (previousLevelGate != null)
+        if (previousLevelGate.isActiveAndEnabled)
         previousLevelGate.StopBacktracking();
+    }
+
+    private void PlayLevelIntroAndPausePlayer()
+    {
+        introCameraController.enabled = true;
+        introCameraController.PlayLevelPreview();
+        playerController.isInAOE = true;
+        playerController.moveDirection = Vector3.zero;
+        EventManagerNorth.TriggerEvent("ToggleGolfMode");
     }
 
     private void SetUpLevel()
@@ -84,6 +132,8 @@ public class SetCurrentLevel : MonoBehaviour
         SetCameraConfinersAndLocatorTargets();
         TurnOnEnemies();
         SetUpLevelGates();
+        PlayLevelIntroAndPausePlayer();
+        startLevelTrigger.enabled = false;
     }
 
     #endregion
@@ -100,9 +150,7 @@ public class SetCurrentLevel : MonoBehaviour
 
     void Awake()
     {
-        InitializeCameraAndLocatorSettings();
-        InitializeEnemyGroup();
-        GetNextLevelGate();
+        InitializeAll();
     }
     #endregion
 }
