@@ -70,6 +70,8 @@ public class PlayerAnimations : MonoBehaviour
         {
             anim.SetInteger("attackStrength", 2);
         }
+        //reset attackStrength so it doesn't repeat
+        anim.SetInteger("attackStrength", 5);
     }
 
     public void EnterGolfMode()
@@ -78,6 +80,7 @@ public class PlayerAnimations : MonoBehaviour
     }
 
     //not called properly yet, waiting until dummy model no longer used for golf mode
+    //now currently called in OrbGolfingScript to activate on dummy model
     public void GolfSwing(float selectedPower, float maxPower)
     {
         anim.SetBool("golfMode", false);

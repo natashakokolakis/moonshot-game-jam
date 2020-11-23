@@ -195,7 +195,7 @@ public class PlayerMoonGolfController : BaseCharacterController
         {
             EventManagerNorth.TriggerEvent("ToggleGolfMode");
             OpenMapMode();
-            animate.EnterGolfMode();
+            //animate.EnterGolfMode();
         }
 
         // Basic attack. Confirms where user clicked and sets isAttacking to true

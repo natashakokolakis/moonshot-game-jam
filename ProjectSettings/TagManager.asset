@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - GolfBall
   - GolfClub
+  - Dummy
   layers:
   - Default
   - TransparentFX
