@@ -15,10 +15,10 @@ public class OrbGolfingScript : MonoBehaviour
     private GameObject playerGO;
     public EButtonIconController eButtonIndicator;
     public StrokeCounter strokeCounter;
-
     public Transform orbDummyPlayer;
-
     public FollowOrb playerIndicators;
+    //private PlayerAnimations animate;
+    private Animator dummyAnim;
 
     // Cameras
     private CinemachineVirtualCamera ballFollowCam;
@@ -45,14 +45,6 @@ public class OrbGolfingScript : MonoBehaviour
     public float golfPowerMAX = 33f;
 
     #endregion
-
-    private void Start()
-    {
-        playerGO = GameObject.Find("ECM_Player");
-        ballFollowCam = GameObject.Find("OrbCinemaCam").GetComponent<CinemachineVirtualCamera>();
-        mapCamera = GameObject.Find("Map Camera").GetComponent<MapCameraController>();
-
-    }
 
     // Rotates player while aiming
     public void Rotate(Vector3 direction, float angularSpeed, bool onlyLateral = true)
@@ -92,7 +84,9 @@ public class OrbGolfingScript : MonoBehaviour
         ballFollowCam.Priority = 11;
 
         strokeCounter.IncreaseStroke();
+        AnimateGolfSwing(golfForce);
 
+        //animate.GolfSwing(golfForce, golfPowerMAX);
         playerIndicators.TurnOffAimLine();
         playerIndicators.StartCoroutine(playerIndicators.MoveDummyToPlayerPosition(playerGO));
         trailRenderer.Clear();
@@ -109,6 +103,7 @@ public class OrbGolfingScript : MonoBehaviour
 
     public void AimGolfBall()
     {
+        //animate.EnterGolfMode();
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hitInfo;
@@ -140,6 +135,28 @@ public class OrbGolfingScript : MonoBehaviour
             mapCamera.enabled = true;
     }
 
+    void AnimateGolfSwing(float golfForce)
+    {
+        dummyAnim = GameObject.FindGameObjectWithTag("Dummy").GetComponent<Animator>();
+        float dummyGolfPower = golfForce / golfPowerMAX;
+        if (dummyGolfPower < 0.1f)
+        {
+            dummyAnim.SetInteger("golfStrength", 0);
+        }
+        else if (dummyGolfPower < 0.3f)
+        {
+            dummyAnim.SetInteger("golfStrength", 1);
+        }
+        else if (dummyGolfPower < 0.7f)
+        {
+            dummyAnim.SetInteger("golfStrength", 2);
+        }
+        else
+        {
+            dummyAnim.SetInteger("golfStrength", 3);
+        }
+    }
+
     #region Monobehaviours
 
     private void Awake()
@@ -153,6 +170,14 @@ public class OrbGolfingScript : MonoBehaviour
         strokeCounter = GameObject.Find("Stroke Counter").GetComponent<StrokeCounter>();
 
         golfBallRB.maxAngularVelocity = 100f;
+    }
+
+    private void Start()
+    {
+        playerGO = GameObject.Find("ECM_Player");
+        ballFollowCam = GameObject.Find("OrbCinemaCam").GetComponent<CinemachineVirtualCamera>();
+        mapCamera = GameObject.Find("Map Camera").GetComponent<MapCameraController>();
+        //animate = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimations>();
     }
 
     private void FixedUpdate()

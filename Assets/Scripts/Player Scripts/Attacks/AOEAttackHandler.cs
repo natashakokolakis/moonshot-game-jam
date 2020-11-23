@@ -12,6 +12,7 @@ public class AOEAttackHandler : MonoBehaviour
     public List<GameObject> enemiesTargeted = new List<GameObject>();
     public GameObject targetIcon;
     public PlayerMoonGolfController playerMoonGolfController;
+    private PlayerAnimations animate;
 
     public AOECircleBar aoeCircleTimer;
 
@@ -30,9 +31,10 @@ public class AOEAttackHandler : MonoBehaviour
 
     private void Awake()
     {
-        playerMoonGolfController = GameObject.Find("ECM_Player").GetComponent<PlayerMoonGolfController>();
+        playerMoonGolfController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMoonGolfController>();
         ballRender = GetComponent<MeshRenderer>();
         trailRenderer = GetComponent<TrailRenderer>();
+        animate = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimations>();
     }
 
     public IEnumerator AOESpecial ()
@@ -68,10 +70,20 @@ public class AOEAttackHandler : MonoBehaviour
         currentTime = 0f;
         aoeCircleTimer.enabled = false;
 
+        if (enemiesTargeted.Count < 1)
+        {
+            animate.CancelAiming();
+
+            EventManagerNorth.TriggerEvent("ToggleGolfMode");
+
+            yield return waitForFixedUpdate;
+            playerMoonGolfController.isInAOE = !playerMoonGolfController.isInAOE;
+
+            yield break;
+        }
+
+        animate.RangedAttack(1, 1);
         StartCoroutine(MoveBallToTargets());
-
-
-
 
         yield return waitForEndOfFrame;
     }
@@ -84,7 +96,6 @@ public class AOEAttackHandler : MonoBehaviour
         Vector3 startingPos = transform.position;
         Vector3 previousPos = startingPos;
         Vector3 offset = new Vector3(0, 1.5f, 0);
-
 
         int maxNumbTargeted = enemiesTargeted.Count;
 
@@ -100,7 +111,6 @@ public class AOEAttackHandler : MonoBehaviour
             }
             yield return waitForFixedUpdate;
         }
-
 
         ballRender.enabled = false;
         trailRenderer.enabled = false;
@@ -119,9 +129,7 @@ public class AOEAttackHandler : MonoBehaviour
             previousPos = enemiesTargeted[a].transform.position;
         }
 
-
         enemiesTargeted.Clear();
-
 
         yield return null;
     }

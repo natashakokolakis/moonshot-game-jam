@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     private Animator anim;
     private float playerDistance;
     private GameObject player;
+    private PlayerHealth playerHealth;
     private Rigidbody rb;
 
     #endregion
@@ -43,6 +44,7 @@ public class EnemyAI : MonoBehaviour
         state = ENEMY_STATE.Chase;
         enemySpeed = chaseBehaviour.speed;
         player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.GetComponent<PlayerHealth>();
         attackRange = chaseBehaviour.brakingDistance;
         rb = GetComponent<Rigidbody>();
     }
@@ -77,7 +79,7 @@ public class EnemyAI : MonoBehaviour
         while (state == ENEMY_STATE.Chase)
         {
             playerDistance = (player.transform.position - transform.position).magnitude;
-            if (playerDistance <= attackRange && !onCooldown)
+            if (playerDistance <= attackRange && !onCooldown && !playerHealth.isDead)
             {
                 state = ENEMY_STATE.Attack;
                 yield break; 

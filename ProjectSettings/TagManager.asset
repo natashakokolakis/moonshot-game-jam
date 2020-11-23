@@ -8,6 +8,8 @@ TagManager:
   - Enemy that can be melee'd
   - Enemy
   - GolfBall
+  - GolfClub
+  - Dummy
   layers:
   - Default
   - TransparentFX

@@ -39,8 +39,8 @@ public class MapCameraController : MonoBehaviour
         currentOrthSize = defaultOrthoSize;
         mapModeCanvas = transform.Find("MapModeCanvas").gameObject;
         thisCamera = GetComponent<CinemachineVirtualCamera>();
-        playerMoonGolfController = GameObject.Find("ECM_Player").GetComponent<PlayerMoonGolfController>();
-        playerTrans = GameObject.Find("ECM_Player").transform;
+        playerMoonGolfController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMoonGolfController>();
+        playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
 
     }
 
