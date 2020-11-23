@@ -24,8 +24,7 @@ public class AOECircleBar : MonoBehaviour
 
             yield return waitForEndOfFrame;
         }
-
-        
+        circleImage.fillAmount = 0;
         yield return null;
     }
 

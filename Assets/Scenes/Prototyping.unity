@@ -1862,17 +1862,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79f30b4d6abf4b4c8f1de4e6a915c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  golfBallRB: {fileID: 0}
-  golfBallCollider: {fileID: 0}
-  trailRenderer: {fileID: 0}
-  interactableCollider: {fileID: 0}
-  playerGO: {fileID: 1582167312}
-  eButtonIndicator: {fileID: 0}
-  strokeCounter: {fileID: 0}
+  golfBallRB: {fileID: 730557911}
+  golfBallCollider: {fileID: 730557913}
+  trailRenderer: {fileID: 730557909}
+  interactableCollider: {fileID: 730557910}
+  eButtonIndicator: {fileID: 730557917}
+  strokeCounter: {fileID: 1973147665}
   orbDummyPlayer: {fileID: 1640429158}
   playerIndicators: {fileID: 1970723108}
-  vCam: {fileID: 174941691}
-  mapCamera: {fileID: 0}
   isGolfing: 0
   basePower: 2
   isStopped: 1
@@ -2332,7 +2329,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh109568
+  m_Name: pb_Mesh170954
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2923,6 +2920,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ECM_Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5213806474320981891, guid: 21d21e3bcf4982443bc6fd884c71d295,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5213806474320981893, guid: 21d21e3bcf4982443bc6fd884c71d295,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2961,7 +2963,7 @@ PrefabInstance:
     - target: {fileID: 5213806474320981893, guid: 21d21e3bcf4982443bc6fd884c71d295,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5213806474320981893, guid: 21d21e3bcf4982443bc6fd884c71d295,
         type: 3}
@@ -3445,8 +3447,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1e11a5b20c86942aea308b0f52dc6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxOrthSize: 20
-  minOrthSize: 10
   currentOrthSize: 0
   zoomSpeed: 1
 --- !u!114 &1310356907
@@ -4238,7 +4238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1529212291
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4414,7 +4414,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1582167313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4559,7 +4559,7 @@ MonoBehaviour:
   attackCooldownMax: 0.5
   attackDirection: {x: 0, y: 0, z: 0}
   meleeBoxCollider: {fileID: 1878032838}
-  meleeAnimator: {fileID: 1878032837}
+  meleeAnimator: {fileID: 0}
   isAiming: 0
   golfPowerRate: 50
   golfPower: 0
@@ -4809,7 +4809,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh109886
+  m_Name: pb_Mesh171266
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5986,7 +5986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1906203588
 Transform:
   m_ObjectHideFlags: 0
@@ -6088,7 +6088,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 9.949951, y: -3.400055}
+  m_AnchoredPosition: {x: 9.949951, y: -3.4000244}
   m_SizeDelta: {x: 311.5, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1973147663
@@ -6512,7 +6512,7 @@ PrefabInstance:
     - target: {fileID: 8589963928691357828, guid: 05460550cee99e24eb39a0bdb7adf850,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8589963928691357828, guid: 05460550cee99e24eb39a0bdb7adf850,
         type: 3}
@@ -6940,6 +6940,95 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1564519095125401969}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1828073555792675885
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5838273064863691626, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: m_Name
+      value: ECM_GolfDad
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838273064863691628, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838273064863691628, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838273064863691628, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838273064863691628, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838273064863691628, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838273064863691628, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838273064863691628, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838273064863691628, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838273064863691628, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838273064863691628, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838273064863691628, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838273064863691629, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: golfBallObject
+      value: 
+      objectReference: {fileID: 1479156731}
+    - target: {fileID: 5838273064863691629, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: golfBallAttack
+      value: 
+      objectReference: {fileID: 1479156738}
+    - target: {fileID: 5838273064863691629, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: golfBallTrail
+      value: 
+      objectReference: {fileID: 1479156739}
+    - target: {fileID: 5838273064863691629, guid: fd7782afdf7e79a4e832d84b3dd54602,
+        type: 3}
+      propertyPath: mapCameraController
+      value: 
+      objectReference: {fileID: 1310356906}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fd7782afdf7e79a4e832d84b3dd54602, type: 3}
 --- !u!1001 &6051703270472194841
 PrefabInstance:
   m_ObjectHideFlags: 0

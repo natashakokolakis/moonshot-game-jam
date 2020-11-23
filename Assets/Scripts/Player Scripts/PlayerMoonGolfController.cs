@@ -24,6 +24,7 @@ public class PlayerMoonGolfController : BaseCharacterController
     public Vector3 attackDirection = Vector3.zero;
     public BoxCollider meleeBoxCollider;
     public Animator meleeAnimator;
+    private PlayerAnimations animate;
 
     [Header("Ranged")]
     [HideInInspector]
@@ -67,6 +68,8 @@ public class PlayerMoonGolfController : BaseCharacterController
         isAttacking = true;
         meleeBoxCollider.enabled = true;
         meleeAnimator.SetTrigger("MeleeAttack");
+
+        animate.MeleeAttack();
     }
 
     private void RangedAttack()
@@ -91,7 +94,6 @@ public class PlayerMoonGolfController : BaseCharacterController
 
         if (golfPower <= 0)
             golfPowerRate = -golfPowerRate;
-        
     }
 
     private void AOEAttack()
@@ -144,17 +146,11 @@ public class PlayerMoonGolfController : BaseCharacterController
 
     #region Override Methods
 
-    protected override void Animate()
-    {
-        
-    }
-
     protected override void UpdateRotation()
     {
         if (useRootMotion && applyRootMotion && useRootMotionRotation)
         {
             // Use animation angular velocity to rotate character
-
             Quaternion q = Quaternion.Euler(Vector3.Project(rootMotionController.animAngularVelocity, transform.up));
 
             movement.rotation *= q;
@@ -162,24 +158,21 @@ public class PlayerMoonGolfController : BaseCharacterController
         else if (isAttacking)
         {
             // Rotate towards player click
-
             movement.Rotate(attackDirection, 900, false);
 
         }
         else
         {
             // Rotate towards movement direction (input)
-
             RotateTowardsMoveDirection();
         }
     }
 
+    // Handle user input
     protected override void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.P))
             pause = !pause;
-
-        // Handle user input
 
         //Do nothing if dead/ attacking
 
@@ -202,10 +195,10 @@ public class PlayerMoonGolfController : BaseCharacterController
         {
             EventManagerNorth.TriggerEvent("ToggleGolfMode");
             OpenMapMode();
+            animate.EnterGolfMode();
         }
 
         // Basic attack. Confirms where user clicked and sets isAttacking to true
-
         if (Input.GetButtonDown("Fire1"))
         {
             MeleeAttack();
@@ -214,23 +207,29 @@ public class PlayerMoonGolfController : BaseCharacterController
             golfPowerRate = Mathf.Abs(golfPowerRate);
         }
 
-        if (Input.GetButton("Fire2") & !isAttacking)
+        //start ranged attack prep
+        if (Input.GetButtonDown("Fire2") & !isAttacking)
         {
             RangedAttack();
             isAiming = true;
             aimLine.SetActive(true);
+            animate.EnterAttackMode();
+
             return;
         }
 
+        //start aoe prep
         if (Input.GetKeyDown(KeyCode.Q))
          {
+            animate.EnterAttackMode();
+
             AOEAttack();
          }
 
+        //execute ranged attack
         if (Input.GetButtonUp("Fire2"))
         {
             isAiming = false;
-
             isAttacking = true;
             moveDirection = Vector3.zero;
             golfBallObject.SetActive(true);
@@ -239,6 +238,8 @@ public class PlayerMoonGolfController : BaseCharacterController
             golfBallAttack.ShootGolfBall(golfPower, attackDirection);
             aimLine.SetActive(false);
             isAttacking = true;
+
+            animate.RangedAttack(golfPower, golfPowerMAX);
             meleeAnimator.SetTrigger("MeleeAttack");
 
             golfPower = 0;
@@ -259,8 +260,8 @@ public class PlayerMoonGolfController : BaseCharacterController
     {
         base.Awake();
         attackTimer = attackCooldownMax;
-        meleeAnimator = transform.Find("Player").transform.Find("GolfClub").GetComponent<Animator>();
-        
+        meleeAnimator = GameObject.FindGameObjectWithTag("GolfClub").GetComponent<Animator>();
+        animate = GetComponent<PlayerAnimations>();
     }
 
     public override void FixedUpdate()

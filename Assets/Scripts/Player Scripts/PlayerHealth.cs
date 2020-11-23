@@ -13,16 +13,19 @@ public class PlayerHealth : MonoBehaviour
 
     PlayerMoonGolfController playerController;
     CharacterMovement characterMovement;
+    PlayerAnimations animate;
 
     private void Awake()
     {
         playerController = GetComponent<PlayerMoonGolfController>();
         currentHealth = maxHealth;
+        animate = GetComponent<PlayerAnimations>();
     }
 
     public void TakeDamage(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, maxHealth);
+        animate.Damaged(amount);
         //healthSlider.value = currentHealth;
 
         if (currentHealth <= 0 && !isDead)
@@ -34,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
     public void Death()
     {
         isDead = true;
+        animate.Death();
         playerController.moveDirection = Vector3.zero;
         playerController.isDead = true;
     }

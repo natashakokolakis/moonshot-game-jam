@@ -6,16 +6,12 @@ public class PlayerAnimations : MonoBehaviour
 {
     Animator anim;
     PlayerMoonGolfController playerController;
-    PlayerHealth playerHealth;
     float golfPower;
-    Vector3 speedValue;
 
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
         playerController = GetComponent<PlayerMoonGolfController>();
-        playerHealth = GetComponent<PlayerHealth>();
-        golfPower = playerController.golfPower / playerController.golfPowerMAX;
     }
 
     private void Update()
@@ -26,7 +22,7 @@ public class PlayerAnimations : MonoBehaviour
 
     void CheckForEnemies()
     {
-        if (GameObject.FindGameObjectWithTag("Enemy"))
+        if (GameObject.FindGameObjectWithTag("Enemy") != null)
         {
             anim.SetBool("enemiesPresent", true);
         }
@@ -38,8 +34,7 @@ public class PlayerAnimations : MonoBehaviour
 
     void CheckMovment()
     {
-        speedValue = playerController.moveDirection.normalized;
-        if (speedValue != new Vector3(0, 0, 0))
+        if (playerController.moveDirection != new Vector3(0, 0, 0))
         {
             anim.SetFloat("Speed", 1);
         }
@@ -49,53 +44,94 @@ public class PlayerAnimations : MonoBehaviour
         }
     }
 
-    void MeleeAttack()
+    public void MeleeAttack()
     {
         anim.SetTrigger("melee");
     }
 
-    void RangedAttack()
+    public void EnterAttackMode()
     {
+        anim.SetBool("attackMode", true);
+    }
+
+    public void RangedAttack(float power, float maxPower)
+    {
+        anim.SetBool("attackMode", false);
+        golfPower = power / maxPower;
         if (golfPower < 0.3f)
         {
-            anim.SetTrigger("weakAttack");
+            anim.SetInteger("attackStrength", 0);
         }
         else if (golfPower < 0.7f)
         {
-            anim.SetTrigger("mediumAttack");
+            anim.SetInteger("attackStrength", 1);
         }
         else
         {
-            anim.SetTrigger("strongAttack");
+            anim.SetInteger("attackStrength", 2);
         }
     }
 
-    void Golfing()
+    public void EnterGolfMode()
     {
+        anim.SetBool("golfMode", true);
+    }
+
+    //not called properly yet, waiting until dummy model no longer used for golf mode
+    public void GolfSwing(float selectedPower, float maxPower)
+    {
+        anim.SetBool("golfMode", false);
+        golfPower = selectedPower / maxPower;
         if (golfPower < 0.1f)
         {
-            anim.SetTrigger("golfFail");
+            anim.SetInteger("golfStrength", 0);
         }
         else if (golfPower < 0.3f)
         {
-            anim.SetTrigger("golfPut");
+            anim.SetInteger("golfStrength", 1);
         }
         else if (golfPower < 0.7f)
         {
-            anim.SetTrigger("golfChip");
+            anim.SetInteger("golfStrength", 2);
         }
         else
         {
-            anim.SetTrigger("golfDrive");
+            anim.SetInteger("golfStrength", 3);
         }
     }
 
-    void Damaged()
+    //golf mode and range attack cancel doesn't exist yet, not used there
+    public void CancelAiming()
     {
-        anim.SetTrigger("damaged");
+        anim.SetBool("attackMode", false);
+        anim.SetBool("golfMode", false);
+        anim.SetTrigger("cancel");
     }
 
-    void Death()
+    public void GolfInHole()
+    {
+        anim.SetTrigger("golfInHole");
+    }
+
+    //not called anywhere yet
+    public void PickUp()
+    {
+        anim.SetTrigger("pickUp"); 
+    }
+
+    public void Damaged(float damageValue)
+    {
+        if (damageValue < 5)
+        {
+            anim.SetTrigger("smallDamage");
+        }
+        else
+        {
+            anim.SetTrigger("bigDamage");
+        }
+    }
+
+    public void Death()
     {
         anim.SetBool("isDead", true);
     }
