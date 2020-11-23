@@ -5,7 +5,8 @@ using UnityEngine;
 
 public sealed class ChaseBehaviourPrefab : BaseAgentController
 {
-    public GameObject chaseTarget;
+    GameObject chaseTarget;
+
     protected override void HandleInput()
     {
         //if (Input.GetKeyDown(KeyCode.P))
@@ -24,7 +25,7 @@ public sealed class ChaseBehaviourPrefab : BaseAgentController
 
     public void OnEnable()
     {
-        chaseTarget = GameObject.Find("ECM_Player");
+        chaseTarget = GameObject.FindGameObjectWithTag("Player");
         EventManagerNorth.StartListening("ToggleGolfMode", PauseWhenGolfing);
     }
 
