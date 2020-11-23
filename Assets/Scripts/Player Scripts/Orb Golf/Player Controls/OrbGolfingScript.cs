@@ -50,7 +50,7 @@ public class OrbGolfingScript : MonoBehaviour
         playerGO = GameObject.Find("ECM_Player");
         ballFollowCam = GameObject.Find("OrbCinemaCam").GetComponent<CinemachineVirtualCamera>();
         mapCamera = GameObject.Find("Map Camera").GetComponent<MapCameraController>();
-        //animate = GetComponent<PlayerAnimations>();
+        animate = GetComponent<PlayerAnimations>();
     }
 
     // Rotates player while aiming
@@ -92,7 +92,7 @@ public class OrbGolfingScript : MonoBehaviour
 
         strokeCounter.IncreaseStroke();
 
-        //animate.GolfSwing(golfForce, golfPowerMAX);
+        animate.GolfSwing(golfForce, golfPowerMAX);
         playerIndicators.TurnOffAimLine();
         playerIndicators.StartCoroutine(playerIndicators.MoveDummyToPlayerPosition(playerGO));
         trailRenderer.Clear();

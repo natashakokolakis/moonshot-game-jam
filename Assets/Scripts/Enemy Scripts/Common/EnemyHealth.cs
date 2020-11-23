@@ -31,20 +31,16 @@ public class EnemyHealth : MonoBehaviour
     
     Rigidbody rb;
     Animator anim;
-    ChaseBehaviourPrefab chaseBehaviour;
+    //ChaseBehaviourPrefab chaseBehaviour;
     #endregion
 
-    public void GetPushedBack(int damage, Vector3 travelDirection)
-    {
-        enemyMovementController.ApplyForce(travelDirection * damage * basePushback, ForceMode.Impulse);
-    }
 
     private void Awake()
     {
         currentHealth = startingHealth;
         anim = GetComponentInChildren<Animator>();
         enemyMovementController = GetComponent<CharacterMovement>();
-        chaseBehaviour = GetComponent<ChaseBehaviourPrefab>();
+        //chaseBehaviour = GetComponent<ChaseBehaviourPrefab>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -56,12 +52,6 @@ public class EnemyHealth : MonoBehaviour
     private void OnDisable()
     {
         EventManagerNorth.StopListening("GolfBallSunk", Death);
-    }
-
-    IEnumerator InvincibilityAfterDamage()
-    {
-        yield return new WaitForSeconds(.5f);
-        invincibilityCooldown = false;
     }
 
     public void TakeDamage(int amount, Vector3 travelDirection)
@@ -83,6 +73,17 @@ public class EnemyHealth : MonoBehaviour
         GetPushedBack(amount, travelDirection);
 
         StartCoroutine("InvincibilityAfterDamage");
+    }
+
+    public void GetPushedBack(int damage, Vector3 travelDirection)
+    {
+        enemyMovementController.ApplyForce(travelDirection * damage * basePushback, ForceMode.Impulse);
+    }
+
+    IEnumerator InvincibilityAfterDamage()
+    {
+        yield return new WaitForSeconds(.5f);
+        invincibilityCooldown = false;
     }
 
     void Death()

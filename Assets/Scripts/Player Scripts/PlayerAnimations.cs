@@ -103,8 +103,14 @@ public class PlayerAnimations : MonoBehaviour
     //golf mode and range attack cancel doesn't exist yet, not used there
     public void CancelAiming()
     {
-        anim.SetBool("attackMode", false);
-        anim.SetBool("golfMode", false);
+        if (anim.GetBool("attackMode") == true)
+        {
+            anim.SetBool("attackMode", false);
+        }
+        else 
+        {
+            anim.SetBool("golfMode", false);
+        }
         anim.SetTrigger("cancel");
     }
 
