@@ -1,25 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 
 public class StrokeCounter : MonoBehaviour
 {
-
-    public int strokeCount = 0;
-    private TMP_Text strokeCountText;
+    [HideInInspector] public int strokeNumber = 0;
+    [HideInInspector] public int par = 4;
+    [HideInInspector] public TextMeshProUGUI strokeCounterText;
 
     void Start()
     {
-        strokeCountText = GetComponent<TMP_Text>();
-        strokeCountText.text = strokeCount.ToString();
+        strokeCounterText = GameObject.Find("Stroke Counter").GetComponent<TextMeshProUGUI>();
+        strokeCounterText.text = strokeNumber + "/" + par;
     }
 
     public void IncreaseStroke()
     {
-        strokeCount++;
-        strokeCountText.text = strokeCount.ToString();
-
+        strokeNumber++;
+        strokeCounterText.text = strokeNumber + "/" + par;
     }
 
+    public void UpdatePar(int newPar)
+    {
+        par = newPar;
+        strokeNumber = 0;
+        strokeCounterText.text = strokeNumber + "/" + par;
+    }
 }

@@ -6,12 +6,14 @@ public class PlayerAnimations : MonoBehaviour
 {
     Animator anim;
     PlayerMoonGolfController playerController;
+    PlayerHealth playerHealth;
     float golfPower;
 
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
         playerController = GetComponent<PlayerMoonGolfController>();
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     private void Update()
@@ -101,6 +103,8 @@ public class PlayerAnimations : MonoBehaviour
         {
             anim.SetInteger("golfStrength", 3);
         }
+        //reset golfStrength so it doesn't repeat if there are issues
+        //anim.SetInteger("golfStrength", 5);
     }
 
     //golf mode and range attack cancel doesn't exist yet, not used there
@@ -129,8 +133,8 @@ public class PlayerAnimations : MonoBehaviour
     }
 
     public void Damaged(float damageValue)
-    {
-        if (damageValue < 5)
+    { 
+        if (damageValue < playerHealth.maxHealth / 4)
         {
             anim.SetTrigger("smallDamage");
         }
@@ -142,7 +146,8 @@ public class PlayerAnimations : MonoBehaviour
 
     public void Death()
     {
-        anim.SetBool("isDead", true);
+        //anim.SetBool("isDead", true);
+        anim.SetTrigger("Death");
     }
 
 }

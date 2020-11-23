@@ -67,7 +67,7 @@ public class PlayerMoonGolfController : BaseCharacterController
         moveDirection = Vector3.zero;
         isAttacking = true;
         meleeBoxCollider.enabled = true;
-        meleeAnimator.SetTrigger("MeleeAttack");
+        //meleeAnimator.SetTrigger("MeleeAttack");
 
         animate.MeleeAttack();
     }
@@ -240,7 +240,7 @@ public class PlayerMoonGolfController : BaseCharacterController
             isAttacking = true;
 
             animate.RangedAttack(golfPower, golfPowerMAX);
-            meleeAnimator.SetTrigger("MeleeAttack");
+            //meleeAnimator.SetTrigger("MeleeAttack");
 
             golfPower = 0;
             golfPowerRate = Mathf.Abs(golfPowerRate);
