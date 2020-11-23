@@ -3594,7 +3594,7 @@ GameObject:
   - component: {fileID: 357738425}
   - component: {fileID: 357738424}
   m_Layer: 5
-  m_Name: Special 1
+  m_Name: AOE Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12014,7 +12014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada730fdba9a07a42875efb14d0ee748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aoeHandler: {fileID: 2083985181}
 --- !u!114 &1134585853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12137,7 +12136,7 @@ GameObject:
   - component: {fileID: 1150714237}
   - component: {fileID: 1150714238}
   m_Layer: 5
-  m_Name: Special 1 Slider
+  m_Name: AOE Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12161,7 +12160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -497.48, y: 207.7}
+  m_AnchoredPosition: {x: -497.27, y: 207.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1150714238
@@ -12210,7 +12209,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.644
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -15168,7 +15167,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.644
+  m_FillAmount: 0
   m_FillClockwise: 0
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -24930,6 +24929,7 @@ MonoBehaviour:
     type: 3}
   playerMoonGolfController: {fileID: 8477834157062060930}
   aoeCircleTimer: {fileID: 1134585852}
+  aoeCooldown: 4
   ballSpeed: 20
   aoeDamage: 4
 --- !u!96 &2083985182
@@ -27202,7 +27202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada730fdba9a07a42875efb14d0ee748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aoeHandler: {fileID: 8477834157628692872}
 --- !u!222 &8477834156883503467
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28105,6 +28104,7 @@ MonoBehaviour:
     type: 3}
   playerMoonGolfController: {fileID: 8477834157062060930}
   aoeCircleTimer: {fileID: 8477834156883503465}
+  aoeCooldown: 3
   ballSpeed: 20
   aoeDamage: 4
 --- !u!4 &8477834157628692873

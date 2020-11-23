@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class AOECircleBar : MonoBehaviour
 {
-    public AOEAttackHandler aoeHandler;
+    private AOEAttackHandler aoeHandler;
     private Image circleImage;
     private WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
 
     private void Awake()
     {
+        aoeHandler = GameObject.Find("AOE Handler").GetComponent<AOEAttackHandler>();
         circleImage = GetComponent<Image>();
     }
 
