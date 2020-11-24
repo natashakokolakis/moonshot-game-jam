@@ -210,10 +210,15 @@ public class PlayerMoonGolfController : BaseCharacterController
         //start ranged attack prep
         if (Input.GetButtonDown("Fire2") & !isAttacking)
         {
+            animate.EnterAttackMode();
+            return;
+        }
+
+        if (Input.GetButton("Fire2") & !isAttacking)
+        {
             RangedAttack();
             isAiming = true;
             aimLine.SetActive(true);
-            animate.EnterAttackMode();
 
             return;
         }
