@@ -5,7 +5,8 @@ using UnityEngine;
 
 public sealed class ChaseBehaviourPrefab : BaseAgentController
 {
-    public GameObject chaseTarget;
+    GameObject chaseTarget;
+
     protected override void HandleInput()
     {
         //if (Input.GetKeyDown(KeyCode.P))

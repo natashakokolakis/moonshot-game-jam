@@ -79,6 +79,16 @@ public class EnemyAI : MonoBehaviour
         while (state == ENEMY_STATE.Chase)
         {
             playerDistance = (player.transform.position - transform.position).magnitude;
+
+            if (chaseBehaviour.moveDirection != new Vector3(0, 0, 0))
+            {
+                anim.SetFloat("Speed", 1);
+            }
+            else
+            {
+                anim.SetFloat("Speed", 0);
+            }
+
             if (playerDistance <= attackRange && !onCooldown && !playerHealth.isDead)
             {
                 state = ENEMY_STATE.Attack;

@@ -22,8 +22,8 @@ public class PlayerMoonGolfController : BaseCharacterController
     protected float attackTimer;
     [HideInInspector]
     public Vector3 attackDirection = Vector3.zero;
-    public BoxCollider meleeBoxCollider;
-    public Animator meleeAnimator;
+    private BoxCollider meleeBoxCollider;
+    //public Animator meleeAnimator;
     private PlayerAnimations animate;
 
     [Header("Ranged")]
@@ -264,8 +264,9 @@ public class PlayerMoonGolfController : BaseCharacterController
     {
         base.Awake();
         attackTimer = attackCooldownMax;
-        meleeAnimator = GameObject.FindGameObjectWithTag("GolfClub").GetComponent<Animator>();
+        //meleeAnimator = GameObject.FindGameObjectWithTag("GolfClub").GetComponent<Animator>();
         animate = GetComponent<PlayerAnimations>();
+        meleeBoxCollider = GameObject.FindGameObjectWithTag("GolfClub").GetComponent<BoxCollider>();
     }
 
     public override void FixedUpdate()

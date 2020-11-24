@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     PlayerMoonGolfController playerController;
     CharacterMovement characterMovement;
     PlayerAnimations animate;
+    GameObject deathText;
 
     private void Awake()
     {
@@ -24,6 +25,8 @@ public class PlayerHealth : MonoBehaviour
         healthSlider.maxValue = maxHealth;
         healthSlider.value = maxHealth;
         animate = GetComponent<PlayerAnimations>();
+        deathText = GameObject.Find("Death Text");
+        deathText.SetActive(false);
     }
 
     public void TakeDamage(int amount)
@@ -47,5 +50,6 @@ public class PlayerHealth : MonoBehaviour
         animate.Death();
         playerController.moveDirection = Vector3.zero;
         playerController.isDead = true;
+        deathText.SetActive(true);
     }
 }
