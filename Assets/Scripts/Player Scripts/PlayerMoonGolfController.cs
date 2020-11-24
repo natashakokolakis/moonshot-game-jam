@@ -15,7 +15,7 @@ public class PlayerMoonGolfController : BaseCharacterController
     
     [Header("Attack")]
     // Used for basic attack
-    [HideInInspector]
+    
     public bool isAttacking = false;
     public float attackCooldownMax = 1.0f;
     [HideInInspector]
@@ -80,6 +80,8 @@ public class PlayerMoonGolfController : BaseCharacterController
 
         if (!Physics.Raycast(ray, out hitInfo, Mathf.Infinity, groundMask.value))
             return;
+
+        Debug.Log("Ranged Attack");
 
         moveDirection = Vector3.zero;
         attackDirection = Vector3.ProjectOnPlane(hitInfo.point - transform.position, transform.up).normalized;
@@ -207,13 +209,15 @@ public class PlayerMoonGolfController : BaseCharacterController
             golfPowerRate = Mathf.Abs(golfPowerRate);
         }
 
-        //start ranged attack prep
         if (Input.GetButtonDown("Fire2") & !isAttacking)
+            animate.EnterAttackMode();
+
+        //start ranged attack prep
+        if (Input.GetButton("Fire2") & !isAttacking)
         {
             RangedAttack();
             isAiming = true;
             aimLine.SetActive(true);
-            animate.EnterAttackMode();
 
             return;
         }

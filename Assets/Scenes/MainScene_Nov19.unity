@@ -12133,6 +12133,31 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_ConfineScreenEdges: 1
   m_Damping: 0.45
+--- !u!1 &822346267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 126695860345050672, guid: 142525349079c1c4bba07133e00c8d27,
+    type: 3}
+  m_PrefabInstance: {fileID: 126695860903338069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &822346272
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822346267}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!43 &828323763
 Mesh:
   m_ObjectHideFlags: 0
@@ -18143,7 +18168,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 15.47856
+    OrthographicSize: 15.24729
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -29468,6 +29493,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ---- Orb Golf ----
+      objectReference: {fileID: 0}
+    - target: {fileID: 126695860345050672, guid: 142525349079c1c4bba07133e00c8d27,
+        type: 3}
+      propertyPath: m_TagString
+      value: Dummy
       objectReference: {fileID: 0}
     - target: {fileID: 126695861516012941, guid: 142525349079c1c4bba07133e00c8d27,
         type: 3}

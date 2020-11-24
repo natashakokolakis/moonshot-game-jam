@@ -24,7 +24,7 @@ public sealed class ChaseBehaviourPrefab : BaseAgentController
 
     public void OnEnable()
     {
-        chaseTarget = GameObject.Find("ECM_Player");
+        chaseTarget = GameObject.FindGameObjectWithTag("Player");
         EventManagerNorth.StartListening("ToggleGolfMode", PauseWhenGolfing);
     }
 

@@ -174,7 +174,7 @@ public class OrbGolfingScript : MonoBehaviour
 
     private void Start()
     {
-        playerGO = GameObject.Find("ECM_Player");
+        playerGO = GameObject.FindGameObjectWithTag("Player");
         ballFollowCam = GameObject.Find("OrbCinemaCam").GetComponent<CinemachineVirtualCamera>();
         mapCamera = GameObject.Find("Map Camera").GetComponent<MapCameraController>();
         //animate = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimations>();
