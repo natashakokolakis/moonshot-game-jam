@@ -30,6 +30,8 @@ public class SetCurrentLevel : MonoBehaviour
 
     #region IntroCamera
     private IntroCameraController introCameraController;
+    public bool ignoreIntroCameras = false;
+
     #endregion
 
     #region Player Controller
@@ -71,7 +73,8 @@ public class SetCurrentLevel : MonoBehaviour
 
     private void GetIntroCamera()
     {
-        introCameraController = transform.Find("IntroCamera").GetComponent<IntroCameraController>();
+        if (!ignoreIntroCameras)
+            introCameraController = transform.Find("IntroCamera").GetComponent<IntroCameraController>();
     }
 
     private void GetPlayerComponents()
@@ -132,7 +135,8 @@ public class SetCurrentLevel : MonoBehaviour
         SetCameraConfinersAndLocatorTargets();
         TurnOnEnemies();
         SetUpLevelGates();
-        PlayLevelIntroAndPausePlayer();
+        if (!ignoreIntroCameras)
+            PlayLevelIntroAndPausePlayer();
         startLevelTrigger.enabled = false;
     }
 
