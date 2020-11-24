@@ -34,7 +34,7 @@ public class PlayerMoonGolfController : BaseCharacterController
     public float golfPowerMin = 0f;
     public float golfPowerMAX = 33f;
     public GameObject golfBallObject;
-    public GolfBallAttack golfBallAttack;
+    private GolfBallAttack golfBallAttack;
     public GameObject aimLine;
     public TrailRenderer golfBallTrail;
 
@@ -267,6 +267,7 @@ public class PlayerMoonGolfController : BaseCharacterController
         //meleeAnimator = GameObject.FindGameObjectWithTag("GolfClub").GetComponent<Animator>();
         animate = GetComponent<PlayerAnimations>();
         meleeBoxCollider = GameObject.FindGameObjectWithTag("GolfClub").GetComponent<BoxCollider>();
+        golfBallAttack = golfBallObject.GetComponent<GolfBallAttack>();
     }
 
     public override void FixedUpdate()

@@ -13,11 +13,11 @@ public class AOEAttackHandler : MonoBehaviour
     public float currentTime = 0f;
     public List<GameObject> enemiesTargeted = new List<GameObject>();
     public GameObject targetIcon;
-    public PlayerMoonGolfController playerMoonGolfController;
+    private PlayerMoonGolfController playerMoonGolfController;
     private PlayerAnimations animate;
 
-    public AOECircleBar aoeCircleTimer;
     public float aoeCooldown = 4;
+    private AOECircleBar aoeCircleTimer;
     private float timer;
     private Slider aoeSlider;
     private Tween aoeCooldownEnd;
@@ -44,6 +44,7 @@ public class AOEAttackHandler : MonoBehaviour
         animate = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimations>();
         aoeSlider = GameObject.Find("AOE Slider").GetComponent<Slider>();
         aoeCooldownEnd = aoeSlider.DOValue(0, 1).SetAutoKill(false).SetLoops(0, LoopType.Restart);
+        aoeCircleTimer = GetComponentInChildren<AOECircleBar>();
     }
 
     public IEnumerator AOESpecial()
