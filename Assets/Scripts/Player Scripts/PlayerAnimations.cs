@@ -73,7 +73,7 @@ public class PlayerAnimations : MonoBehaviour
             anim.SetInteger("attackStrength", 2);
         }
         //reset attackStrength so it doesn't repeat
-        anim.SetInteger("attackStrength", 5);
+        //anim.SetInteger("attackStrength", 5);
     }
 
     public void EnterGolfMode()
@@ -103,8 +103,6 @@ public class PlayerAnimations : MonoBehaviour
         {
             anim.SetInteger("golfStrength", 3);
         }
-        //reset golfStrength so it doesn't repeat if there are issues
-        //anim.SetInteger("golfStrength", 5);
     }
 
     //golf mode and range attack cancel doesn't exist yet, not used there
