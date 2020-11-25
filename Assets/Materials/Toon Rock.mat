@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Toon Rock no norm
+  m_Name: Toon Rock
   m_Shader: {fileID: -6465566751694194690, guid: e5db2715eda61ad44833657d317dcc49,
     type: 3}
   m_ShaderKeywords: 
@@ -30,6 +30,6 @@ Material:
     - Vector1_ED5ABFD9: 0
     - Vector1_F3F6B787: 0.084
     m_Colors:
-    - Color_28180829: {r: 0.30255836, g: 0.2202741, b: 0.4716981, a: 1}
-    - Color_57D43A16: {r: 0.72077686, g: 0.59126914, b: 0.9716981, a: 0}
-    - Color_F689E8B9: {r: 0.6496008, g: 0.4764151, b: 1, a: 1}
+    - Color_28180829: {r: 0.48631766, g: 0.36445352, b: 0.735849, a: 1}
+    - Color_57D43A16: {r: 0.9907182, g: 0.9858491, b: 1, a: 0}
+    - Color_F689E8B9: {r: 0.8402211, g: 0.759434, b: 1, a: 1}

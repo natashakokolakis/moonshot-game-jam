@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5c7c1923e6fc3fa40a4eb6677a6d2b00
+guid: c8fc526e23ca46e40926d2f9b70ebb22
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: CC0Textures_Rock031_2K-JPG
-    second: {fileID: 2100000, guid: 18b2745ab651b3d48802d21bc0b3c403, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: RockTest
-    second: {fileID: 2100000, guid: 18b2745ab651b3d48802d21bc0b3c403, type: 2}
+    second: {fileID: 2100000, guid: 97682b72834dc4741a76aa5a8cf6e54c, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -91,7 +86,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 2
+    globalScale: 0.02
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
