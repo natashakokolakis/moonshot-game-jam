@@ -2697,6 +2697,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &209829030 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 126695861552262495, guid: 142525349079c1c4bba07133e00c8d27,
+    type: 3}
+  m_PrefabInstance: {fileID: 383481216}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &213676888
 GameObject:
   m_ObjectHideFlags: 0
@@ -4122,6 +4128,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ---- Orb Golf ----
       objectReference: {fileID: 0}
+    - target: {fileID: 126695861516012936, guid: 142525349079c1c4bba07133e00c8d27,
+        type: 3}
+      propertyPath: eButton
+      value: 
+      objectReference: {fileID: 209829030}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 142525349079c1c4bba07133e00c8d27, type: 3}
 --- !u!4 &383481217 stripped
@@ -7000,6 +7011,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &706364971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 126695861552262495, guid: 142525349079c1c4bba07133e00c8d27,
+    type: 3}
+  m_PrefabInstance: {fileID: 1486082664}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &707987439 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9206997330041767508, guid: 96e71050dae6a0c4698481a4cd558061,
@@ -14759,6 +14776,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ---- Orb Golf ----
       objectReference: {fileID: 0}
+    - target: {fileID: 126695861516012936, guid: 142525349079c1c4bba07133e00c8d27,
+        type: 3}
+      propertyPath: eButton
+      value: 
+      objectReference: {fileID: 706364971}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 142525349079c1c4bba07133e00c8d27, type: 3}
 --- !u!4 &1486082665 stripped

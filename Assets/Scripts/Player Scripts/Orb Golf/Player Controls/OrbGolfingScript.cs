@@ -126,8 +126,8 @@ public class OrbGolfingScript : MonoBehaviour
             ballFollowCam.Priority = 11;
 
             strokeCounter.IncreaseStroke();
-            golfPower = golfForce;
-            AnimateGolfSwing(golfPower);
+            golfForce = golfPower;
+            AnimateGolfSwing(golfForce);
             //animate.GolfSwing(golfForce, golfPowerMAX);
             playerIndicators.TurnOffAimLine();
         }
