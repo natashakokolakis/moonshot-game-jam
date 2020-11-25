@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class EButtonIconController : MonoBehaviour
 {
-    public Transform eButtonPosition;
-    public IconBounce eButtonObject;
-    public Transform orbPosition;
+    public GameObject eButton;
+    Transform eButtonPosition;
+    IconBounce eButtonBounce;
+    Transform orbPosition;
     
-    CapsuleCollider interactableCollider;
-
-    
+    //CapsuleCollider interactableCollider;
 
     private void Awake()
     {
-        interactableCollider = GetComponent<CapsuleCollider>();
+        eButtonPosition = eButton.transform;
+        eButtonBounce = eButton.GetComponent<IconBounce>();
+        //interactableCollider = GetComponent<CapsuleCollider>();
         orbPosition = this.transform;
     }
 
     public void disableIndicator()
     {
-        eButtonObject.TurnOffIndicator();
+        eButtonBounce.TurnOffIndicator();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,7 +29,7 @@ public class EButtonIconController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             eButtonPosition.position = orbPosition.position + new Vector3(0, 4, -12);
-            eButtonObject.SetUpIndicator();
+            eButtonBounce.SetUpIndicator();
         }
     }
 

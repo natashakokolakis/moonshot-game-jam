@@ -44,11 +44,11 @@ public class PlayerMoonGolfController : BaseCharacterController
     //public GameObject orbBallObject;
     //public CapsuleCollider orbInteractionCollider;
 
-    public AOEAttackHandler aoeHandler;
+    private AOEAttackHandler aoeHandler;
     [HideInInspector]
     public bool isInAOE = false;
 
-    public MapCameraController mapCameraController;
+    MapCameraController mapCameraController;
 
     #endregion
 
@@ -279,6 +279,8 @@ public class PlayerMoonGolfController : BaseCharacterController
         animate = GetComponent<PlayerAnimations>();
         meleeBoxCollider = GameObject.FindGameObjectWithTag("GolfClub").GetComponent<BoxCollider>();
         golfBallAttack = golfBallObject.GetComponent<GolfBallAttack>();
+        aoeHandler = GetComponentInChildren<AOEAttackHandler>();
+        mapCameraController = GameObject.Find("Map Camera").GetComponent<MapCameraController>();
     }
 
     public override void FixedUpdate()

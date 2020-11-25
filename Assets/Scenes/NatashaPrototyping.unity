@@ -7776,13 +7776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79f30b4d6abf4b4c8f1de4e6a915c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  golfBallRB: {fileID: 0}
-  golfBallCollider: {fileID: 0}
-  trailRenderer: {fileID: 0}
-  interactableCollider: {fileID: 0}
   playerGO: {fileID: 0}
-  eButtonIndicator: {fileID: 0}
-  strokeCounter: {fileID: 0}
   orbDummyPlayer: {fileID: 881010277}
   playerIndicators: {fileID: 1970723108}
   isGolfing: 0
@@ -7885,9 +7879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b6110c56fc084418fa4a26f3a4199d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eButtonPosition: {fileID: 703745293}
-  eButtonObject: {fileID: 703745291}
-  orbPosition: {fileID: 0}
+  eButton: {fileID: 703745290}
 --- !u!1 &740044472
 GameObject:
   m_ObjectHideFlags: 0
@@ -14606,18 +14598,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8589963927217707896}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1479156738 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8589963928691359610, guid: 05460550cee99e24eb39a0bdb7adf850,
-    type: 3}
-  m_PrefabInstance: {fileID: 8589963927217707896}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479156731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ed4124f0e3d1ce4ab6a8be9557c4166, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!96 &1479156739 stripped
 TrailRenderer:
   m_CorrespondingSourceObject: {fileID: 8589963928691359611, guid: 05460550cee99e24eb39a0bdb7adf850,
@@ -17293,18 +17273,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 92047314281563698}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1582167313 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 92047313237046053, guid: 00495824cfb24094993af9edbbdc5b43,
-    type: 3}
-  m_PrefabInstance: {fileID: 92047314281563698}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582167312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53176308a121ee54d986e94f72af3fab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1582167318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 92047313237046052, guid: 00495824cfb24094993af9edbbdc5b43,
@@ -18575,24 +18543,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1614928289 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2931278607890481824, guid: 00495824cfb24094993af9edbbdc5b43,
-    type: 3}
-  m_PrefabInstance: {fileID: 92047314281563698}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1614928293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614928289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91fab4ceb914093408b8048ae39124c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1640429157
 GameObject:
   m_ObjectHideFlags: 0
@@ -24497,16 +24447,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 92047312741667119, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: playerMoonGolfController
-      value: 
-      objectReference: {fileID: 1582167313}
-    - target: {fileID: 92047313121555762, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 92047313237046050, guid: 00495824cfb24094993af9edbbdc5b43,
         type: 3}
       propertyPath: m_Name
@@ -24574,109 +24514,9 @@ PrefabInstance:
       objectReference: {fileID: 1479156731}
     - target: {fileID: 92047313237046053, guid: 00495824cfb24094993af9edbbdc5b43,
         type: 3}
-      propertyPath: golfBallAttack
-      value: 
-      objectReference: {fileID: 1479156738}
-    - target: {fileID: 92047313237046053, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
       propertyPath: golfBallTrail
       value: 
       objectReference: {fileID: 1479156739}
-    - target: {fileID: 92047313237046053, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: mapCameraController
-      value: 
-      objectReference: {fileID: 1310356906}
-    - target: {fileID: 2586806651205179418, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2586806651205179418, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2586806651205179418, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180017644952246565, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.012034689
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180017644952246565, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.0039411765
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180017644952246565, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_Center.x
-      value: 0.0017152005
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180017644952246565, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_Center.y
-      value: -0.0001139272
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180017644952246565, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_Center.z
-      value: -0.011805763
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180017644952246565, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 0.031701084
-      objectReference: {fileID: 0}
-    - target: {fileID: 6931580310018277368, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 139.919
-      objectReference: {fileID: 0}
-    - target: {fileID: 6931580310018277368, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -104.371994
-      objectReference: {fileID: 0}
-    - target: {fileID: 6931580310018277368, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -10.205994
-      objectReference: {fileID: 0}
-    - target: {fileID: 6931580310018277368, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.59777534
-      objectReference: {fileID: 0}
-    - target: {fileID: 6931580310018277368, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.21841747
-      objectReference: {fileID: 0}
-    - target: {fileID: 6931580310018277368, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.7205418
-      objectReference: {fileID: 0}
-    - target: {fileID: 6931580310018277368, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.2752781
-      objectReference: {fileID: 0}
-    - target: {fileID: 8111954821463073919, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0067685787
-      objectReference: {fileID: 0}
-    - target: {fileID: 8932154013075699570, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0056350147
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00495824cfb24094993af9edbbdc5b43, type: 3}
 --- !u!1001 &103054133076005382
@@ -26799,9 +26639,7 @@ MonoBehaviour:
   golfBallObject: {fileID: 0}
   aimLine: {fileID: 8477834156793349350}
   golfBallTrail: {fileID: 0}
-  aoeHandler: {fileID: 8477834157628692872}
   isInAOE: 0
-  mapCameraController: {fileID: 0}
 --- !u!4 &8477834157062060931
 Transform:
   m_ObjectHideFlags: 0

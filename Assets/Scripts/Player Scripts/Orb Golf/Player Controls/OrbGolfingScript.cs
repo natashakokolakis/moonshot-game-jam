@@ -8,13 +8,13 @@ public class OrbGolfingScript : MonoBehaviour
     #region Variables and Dependencies
 
     // Components
-    public Rigidbody golfBallRB;
-    public SphereCollider golfBallCollider;
-    public TrailRenderer trailRenderer;
-    public CapsuleCollider interactableCollider;
+    Rigidbody golfBallRB;
+    SphereCollider golfBallCollider;
+    TrailRenderer trailRenderer;
+    CapsuleCollider interactableCollider;
     [HideInInspector] public GameObject playerGO;
-    public EButtonIconController eButtonIndicator;
-    public StrokeCounter strokeCounter;
+    EButtonIconController eButtonIndicator;
+    StrokeCounter strokeCounter;
     public Transform orbDummyPlayer;
     public FollowOrb playerIndicators;
     //private PlayerAnimations animate;
@@ -167,7 +167,6 @@ public class OrbGolfingScript : MonoBehaviour
         trailRenderer = this.GetComponent<TrailRenderer>();
         interactableCollider = this.GetComponent<CapsuleCollider>();
         eButtonIndicator = GetComponent<EButtonIconController>();
-
         strokeCounter = GameObject.Find("Stroke Counter").GetComponent<StrokeCounter>();
 
         golfBallRB.maxAngularVelocity = 100f;
