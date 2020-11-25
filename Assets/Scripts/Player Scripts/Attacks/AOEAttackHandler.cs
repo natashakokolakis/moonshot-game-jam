@@ -95,12 +95,14 @@ public class AOEAttackHandler : MonoBehaviour
         animate.RangedAttack(1, 1);
         StartCoroutine(StartTimer(aoeCooldown));
         StartCoroutine(AOECooldown());
-        StartCoroutine(MoveBallToTargets());
+        playerMoonGolfController.ShootAttackBall();
+
+        //StartCoroutine(MoveBallToTargets());
 
         yield return waitForEndOfFrame;
     }
 
-    IEnumerator MoveBallToTargets()
+    public IEnumerator MoveBallToTargets()
     {
         ballRender.enabled = true;
         trailRenderer.enabled = true;

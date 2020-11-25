@@ -98,6 +98,30 @@ public class PlayerMoonGolfController : BaseCharacterController
             golfPowerRate = -golfPowerRate;
     }
 
+    public void ShootAttackBall()
+    {
+        if (isInAOE)
+            StartCoroutine(aoeHandler.MoveBallToTargets());
+        else
+        { 
+            isAiming = false;
+            isAttacking = true;
+            moveDirection = Vector3.zero;
+            golfBallObject.SetActive(true);
+            golfBallObject.transform.position = transform.localPosition + attackDirection.normalized + golfballOffset;
+            golfPower = Mathf.Clamp(golfPower, 0, golfPowerMAX - 1);
+            golfBallAttack.ShootGolfBall(golfPower, attackDirection);
+            aimLine.SetActive(false);
+            isAttacking = true;
+
+            animate.RangedAttack(golfPower, golfPowerMAX);
+            //meleeAnimator.SetTrigger("MeleeAttack");
+
+            golfPower = 0;
+            golfPowerRate = Mathf.Abs(golfPowerRate);
+        }
+    }
+
     private void AOEAttack()
     {
         moveDirection = Vector3.zero;
@@ -233,21 +257,9 @@ public class PlayerMoonGolfController : BaseCharacterController
         //execute ranged attack
         if (Input.GetButtonUp("Fire2"))
         {
-            isAiming = false;
-            isAttacking = true;
-            moveDirection = Vector3.zero;
-            golfBallObject.SetActive(true);
-            golfBallObject.transform.position = transform.localPosition + attackDirection.normalized + golfballOffset;
-            golfPower = Mathf.Clamp(golfPower, 0, golfPowerMAX - 1);
-            golfBallAttack.ShootGolfBall(golfPower, attackDirection);
-            aimLine.SetActive(false);
-            isAttacking = true;
 
-            animate.RangedAttack(golfPower, golfPowerMAX);
-            //meleeAnimator.SetTrigger("MeleeAttack");
+            ShootAttackBall();
 
-            golfPower = 0;
-            golfPowerRate = Mathf.Abs(golfPowerRate);
         }
 
 
