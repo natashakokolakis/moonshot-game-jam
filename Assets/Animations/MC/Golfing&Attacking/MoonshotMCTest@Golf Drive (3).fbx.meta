@@ -8,7 +8,7 @@ ModelImporter:
     second: Golf Drive (3)
   - first:
       74: 6716045234006153233
-    second: Golf Drive
+    second: Golf Drive 3
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -38,11 +38,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Golf Drive
+      name: Golf Drive 3
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 0
-      lastFrame: 392
+      firstFrame: 160
+      lastFrame: 359
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

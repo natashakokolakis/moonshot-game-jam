@@ -39,7 +39,8 @@ public class EnemyAttacks : MonoBehaviour
 
     void RangedAttack()
     {
-        Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);
+        if (projectile != null)
+            Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);
     }
 
     public void OnChildTriggerEnter(Collider other)

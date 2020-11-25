@@ -6,15 +6,15 @@ public class GolfBallAttack : MonoBehaviour
 {
     #region Variables and Dependencies
 
-    public Rigidbody golfBallRB;
-    public SphereCollider golfBallCollider;
+    private Rigidbody golfBallRB;
+    private SphereCollider golfBallCollider;
     public float basePower = 1f;
     public int baseGolfBAllDamage = 1;
     private Vector3 currentVelocity = Vector3.zero;
-    public TrailRenderer trailRenderer;
+    private TrailRenderer trailRenderer;
     public float trailTimer = 3f;
 
-    public EnemyHealth enemyTarget;
+    [HideInInspector] public EnemyHealth enemyTarget;
 
     #endregion
 

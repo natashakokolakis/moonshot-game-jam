@@ -17,13 +17,13 @@ public class EnemyHealth : MonoBehaviour
     private CharacterMovement enemyMovementController;
 
 
-    [Header("Weaknesses")]
+    /*[Header("Weaknesses")]
     [SerializeField]
     private int meleeWeakness = 1;
     [SerializeField]
     private int rangedWeakness = 1;
     [SerializeField]
-    private int specialWeakness = 1;
+    private int specialWeakness = 1;*/
 
 
     public int basePushback = 50;

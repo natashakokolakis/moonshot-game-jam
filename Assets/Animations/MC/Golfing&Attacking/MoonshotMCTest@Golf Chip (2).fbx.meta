@@ -8,7 +8,7 @@ ModelImporter:
     second: Golf Chip (2)
   - first:
       74: -6426182936773038163
-    second: Golf Chip
+    second: Golf Chip 2
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -38,7 +38,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Golf Chip
+      name: Golf Chip 2
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
