@@ -91,7 +91,6 @@ public class OrbGolfingScript : MonoBehaviour
 
         golfBallRB.isKinematic = false;
 
-        Debug.Log(golfPowerToShoot);
 
         golfBallRB.AddForce(direction, ForceMode.VelocityChange);
         golfPower = 0f;
@@ -149,7 +148,7 @@ public class OrbGolfingScript : MonoBehaviour
 
     void AnimateGolfSwing(float golfForceForAnimation)
     {
-        Debug.Log("animate golf swing");
+
         dummyAnim = GameObject.FindGameObjectWithTag("Dummy").GetComponent<Animator>();
         float dummyGolfPower = golfForceForAnimation / golfPowerMAX;
         if (dummyGolfPower < 0.1f)
@@ -203,7 +202,7 @@ public class OrbGolfingScript : MonoBehaviour
             // When is below a certain velocity, it is forced to stop
             if (golfBallRB.velocity.magnitude < 0.06f)
             {
-                Debug.Log("ball is stopped and is not golfing");
+
 
                 isStopped = true;
                 velCheckTimer = 0f;

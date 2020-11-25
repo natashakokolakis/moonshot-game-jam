@@ -23,13 +23,13 @@ public class AnimationEvents : MonoBehaviour
 
     public void ShootGolfBall()
     {
-        Debug.Log("shooting ball");
+
         golfingScript.ShootGolfBall(golfingScript.golfForce, golfingScript.attackDirectionLock);
     }
 
     public void ReactivatePlayer()
     {
-        Debug.Log("reactivating player");
+
         StartCoroutine(followOrb.MoveDummyToPlayerPosition(golfingScript.playerGO));
     }
 }

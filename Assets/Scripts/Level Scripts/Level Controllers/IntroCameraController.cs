@@ -64,7 +64,6 @@ public class IntroCameraController : MonoBehaviour
         if (CheckIfFinishedMove())
         {
             TurnOffIntroCamAndUnPausePlayer();
-            Debug.Log("turning off");
         }
     }
 

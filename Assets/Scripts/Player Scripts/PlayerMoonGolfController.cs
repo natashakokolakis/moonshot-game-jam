@@ -81,8 +81,6 @@ public class PlayerMoonGolfController : BaseCharacterController
         if (!Physics.Raycast(ray, out hitInfo, Mathf.Infinity, groundMask.value))
             return;
 
-        Debug.Log("Ranged Attack");
-
         moveDirection = Vector3.zero;
         attackDirection = Vector3.ProjectOnPlane(hitInfo.point - transform.position, transform.up).normalized;
         
