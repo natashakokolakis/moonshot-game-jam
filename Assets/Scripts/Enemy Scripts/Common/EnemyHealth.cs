@@ -31,6 +31,8 @@ public class EnemyHealth : MonoBehaviour
     
     Rigidbody rb;
     Animator anim;
+    CapsuleCollider capsuleCollider;
+    SphereCollider sphereCollider;
     //ChaseBehaviourPrefab chaseBehaviour;
     #endregion
 
@@ -42,6 +44,8 @@ public class EnemyHealth : MonoBehaviour
         enemyMovementController = GetComponent<CharacterMovement>();
         //chaseBehaviour = GetComponent<ChaseBehaviourPrefab>();
         rb = GetComponent<Rigidbody>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
+        sphereCollider = GetComponentInChildren<SphereCollider>();
     }
 
     private void OnEnable()
@@ -93,6 +97,7 @@ public class EnemyHealth : MonoBehaviour
         anim.SetTrigger("Dead");
         rb.velocity = Vector3.zero;
         rb.Sleep();
+        //capsuleCollider.enabled = false;
         //chaseBehaviour.speed = 0;
         //chaseBehaviour.enabled = false;
         EventManagerNorth.StopListening("GolfBallSunk", Death);

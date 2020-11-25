@@ -26,8 +26,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114314937537783965}
-  m_LocalRotation: {x: 1, y: -3.5527133e-15, z: 0.00000043312576, w: -2.8837094e-14}
-  m_LocalPosition: {x: 0, y: -0.0000000011920929, z: 0.0110659385}
+  m_LocalRotation: {x: 1, y: 2.6521305e-23, z: 0.00000043312576, w: -6.123234e-17}
+  m_LocalPosition: {x: -0, y: 0.00089793577, z: 0.011065937}
   m_LocalScale: {x: 1, y: 0.99999964, z: 0.99999964}
   m_Children:
   - {fileID: 4128544452171870029}
@@ -480,7 +480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7826557944554046172
 Transform:
   m_ObjectHideFlags: 0
@@ -604,9 +604,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 5
   currentHealth: 0
-  meleeWeakness: 1
-  rangedWeakness: 1
-  specialWeakness: 1
   basePushback: 50
   invincibilityCooldown: 0
 --- !u!114 &2485276832543824253
@@ -647,7 +644,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
-  chaseTarget: {fileID: 0}
 --- !u!114 &8731297874774137076
 MonoBehaviour:
   m_ObjectHideFlags: 0
