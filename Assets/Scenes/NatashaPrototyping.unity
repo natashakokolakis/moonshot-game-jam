@@ -7790,6 +7790,7 @@ MonoBehaviour:
   playerGO: {fileID: 0}
   orbDummyPlayer: {fileID: 881010277}
   playerIndicators: {fileID: 1970723108}
+  dummyAnim: {fileID: 0}
   isGolfing: 0
   basePower: 2
   isStopped: 1
@@ -7799,6 +7800,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   attackDirection: {x: 0, y: 0, z: 0}
+  attackDirectionLock: {x: 0, y: 0, z: 0}
   golfPowerRate: 25
   golfPower: 0
   golfForce: 0
@@ -23810,7 +23812,7 @@ PrefabInstance:
     - target: {fileID: 5797765094863165848, guid: d738dedfe571aaf4ba617d85953079cd,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5797765094863165859, guid: d738dedfe571aaf4ba617d85953079cd,
         type: 3}
