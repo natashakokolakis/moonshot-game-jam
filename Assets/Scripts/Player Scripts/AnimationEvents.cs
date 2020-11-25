@@ -11,7 +11,8 @@ public class AnimationEvents : MonoBehaviour
     private void Awake()
     {
         playerController = GetComponentInParent<PlayerMoonGolfController>();
-        golfingScript = GameObject.FindGameObjectWithTag("GolfBall").GetComponent<OrbGolfingScript>();
+        if (!transform.parent.CompareTag("Player"))
+        golfingScript = transform.parent.transform.parent.GetComponentInChildren<OrbGolfingScript>();
         followOrb = GetComponentInParent<FollowOrb>();
     }
 
@@ -23,7 +24,7 @@ public class AnimationEvents : MonoBehaviour
     public void ShootGolfBall()
     {
         Debug.Log("shooting ball");
-        golfingScript.ShootGolfBall(golfingScript.golfForce, golfingScript.attackDirection);
+        golfingScript.ShootGolfBall(golfingScript.golfForce, golfingScript.attackDirectionLock);
     }
 
     public void ReactivatePlayer()

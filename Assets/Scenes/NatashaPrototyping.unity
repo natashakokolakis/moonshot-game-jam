@@ -422,7 +422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 25.300049, y: -45.3}
+  m_AnchoredPosition: {x: 25.299805, y: -45.30005}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &45201501
@@ -5946,7 +5946,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh93260
+  m_Name: pb_Mesh39822
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6854,7 +6854,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh93346
+  m_Name: pb_Mesh39908
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7796,6 +7796,7 @@ MonoBehaviour:
   playerGO: {fileID: 0}
   orbDummyPlayer: {fileID: 881010277}
   playerIndicators: {fileID: 1970723108}
+  dummyAnim: {fileID: 0}
   isGolfing: 0
   basePower: 2
   isStopped: 1
@@ -7805,6 +7806,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   attackDirection: {x: 0, y: 0, z: 0}
+  attackDirectionLock: {x: 0, y: 0, z: 0}
   golfPowerRate: 25
   golfPower: 0
   golfForce: 0
@@ -7977,7 +7979,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740044472}
   m_LocalRotation: {x: 0.2453074, y: -0, z: -0, w: 0.96944535}
-  m_LocalPosition: {x: -5.7666664, y: 8.548784, z: -4.5863285}
+  m_LocalPosition: {x: -5.7584667, y: 8.548784, z: -4.5863285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 390617646}
@@ -8619,7 +8621,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh94210
+  m_Name: pb_Mesh40762
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8810,7 +8812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 364, y: -45.7}
+  m_AnchoredPosition: {x: 364, y: -45.69995}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798580806
@@ -13773,7 +13775,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 15.41608
+    OrthographicSize: 15.25064
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -14656,7 +14658,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 169, y: -19.539978}
+  m_AnchoredPosition: {x: 169, y: -19.54004}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1482902168
@@ -17567,7 +17569,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh94194
+  m_Name: pb_Mesh40746
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18100,7 +18102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 91.8, y: -92.9}
+  m_AnchoredPosition: {x: 91.799805, y: -92.8999}
   m_SizeDelta: {x: 75.2, y: 63.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1597934959
@@ -18408,7 +18410,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh94028
+  m_Name: pb_Mesh40600
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19034,7 +19036,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-162800
+  m_Name: pb_Mesh-17604
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21105,7 +21107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150.4, y: -53.399994}
+  m_AnchoredPosition: {x: 150.3999, y: -53.399902}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1833311386
@@ -23072,7 +23074,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh93240
+  m_Name: pb_Mesh39802
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -23606,7 +23608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 239.1, y: -45.4}
+  m_AnchoredPosition: {x: 239.1001, y: -45.399902}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2068749000

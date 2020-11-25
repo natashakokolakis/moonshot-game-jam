@@ -49,7 +49,7 @@ public class FollowOrb : MonoBehaviour
 
             yield return null;
         }
-
+        Debug.Log("lined up");
         orbController.isGolfing = false;
 
         yield break;
