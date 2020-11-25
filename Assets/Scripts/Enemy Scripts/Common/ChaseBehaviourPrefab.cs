@@ -5,7 +5,7 @@ using UnityEngine;
 
 public sealed class ChaseBehaviourPrefab : BaseAgentController
 {
-    GameObject chaseTarget;
+    [HideInInspector] public GameObject chaseTarget;
 
     protected override void HandleInput()
     {
