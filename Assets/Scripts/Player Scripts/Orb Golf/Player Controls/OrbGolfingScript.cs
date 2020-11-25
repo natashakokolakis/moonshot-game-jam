@@ -12,7 +12,7 @@ public class OrbGolfingScript : MonoBehaviour
     public SphereCollider golfBallCollider;
     public TrailRenderer trailRenderer;
     public CapsuleCollider interactableCollider;
-    private GameObject playerGO;
+    [HideInInspector] public GameObject playerGO;
     public EButtonIconController eButtonIndicator;
     public StrokeCounter strokeCounter;
     public Transform orbDummyPlayer;
@@ -41,6 +41,7 @@ public class OrbGolfingScript : MonoBehaviour
 
     public float golfPowerRate = 1f;
     public float golfPower = 0f;
+    [HideInInspector] public float golfForce;
     public float golfPowerMin = 0f;
     public float golfPowerMAX = 33f;
 
@@ -79,16 +80,7 @@ public class OrbGolfingScript : MonoBehaviour
 
     public void ShootGolfBall(float golfForce, Vector3 direction)
     {
-        //mapCamera.Priority = 9;
-        mapCamera.TurnOffMapMode();
-        ballFollowCam.Priority = 11;
-
-        strokeCounter.IncreaseStroke();
-        AnimateGolfSwing(golfForce);
-
-        //animate.GolfSwing(golfForce, golfPowerMAX);
-        playerIndicators.TurnOffAimLine();
-        playerIndicators.StartCoroutine(playerIndicators.MoveDummyToPlayerPosition(playerGO));
+        //playerIndicators.StartCoroutine(playerIndicators.MoveDummyToPlayerPosition(playerGO));
         trailRenderer.Clear();
 
         golfBallRB.velocity = Vector3.zero;
@@ -98,7 +90,6 @@ public class OrbGolfingScript : MonoBehaviour
         golfBallRB.AddForce(direction, ForceMode.VelocityChange);
         golfPower = 0f;
         isStopped = false;
-
     }
 
     public void AimGolfBall()
@@ -128,7 +119,17 @@ public class OrbGolfingScript : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            ShootGolfBall(golfPower, attackDirection);
+            //ShootGolfBall(golfPower, attackDirection);
+
+            //mapCamera.Priority = 9;
+            mapCamera.TurnOffMapMode();
+            ballFollowCam.Priority = 11;
+
+            strokeCounter.IncreaseStroke();
+            golfPower = golfForce;
+            AnimateGolfSwing(golfPower);
+            //animate.GolfSwing(golfForce, golfPowerMAX);
+            playerIndicators.TurnOffAimLine();
         }
 
         if (Input.GetKeyDown(KeyCode.Tab) & !mapCamera.enabled) 
@@ -186,7 +187,7 @@ public class OrbGolfingScript : MonoBehaviour
             return;
 
         // Waits to check ball velocity
-        if (velCheckTimer >= velCheckTimerStart & !isGolfing)
+        if (velCheckTimer >= velCheckTimerStart && !isGolfing)
         {
             // When is below a certain velocity, it is forced to stop
             if (golfBallRB.velocity.magnitude < 0.06f)

@@ -114,7 +114,6 @@ public class PlayerMoonGolfController : BaseCharacterController
             aimLine.SetActive(false);
             isAttacking = true;
 
-            animate.RangedAttack(golfPower, golfPowerMAX);
             //meleeAnimator.SetTrigger("MeleeAttack");
 
             golfPower = 0;
@@ -257,8 +256,8 @@ public class PlayerMoonGolfController : BaseCharacterController
         //execute ranged attack
         if (Input.GetButtonUp("Fire2"))
         {
-
-            ShootAttackBall();
+            animate.RangedAttack(golfPower, golfPowerMAX);
+            //ShootAttackBall();
 
         }
 

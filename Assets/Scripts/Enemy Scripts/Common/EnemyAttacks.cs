@@ -39,7 +39,7 @@ public class EnemyAttacks : MonoBehaviour
 
     void RangedAttack()
     {
-        if (projectile != null)
+        if (projectile != null && projectileOrigin != null)
             Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);
     }
 

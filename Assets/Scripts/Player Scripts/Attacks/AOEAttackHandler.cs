@@ -95,7 +95,7 @@ public class AOEAttackHandler : MonoBehaviour
         animate.RangedAttack(1, 1);
         StartCoroutine(StartTimer(aoeCooldown));
         StartCoroutine(AOECooldown());
-        playerMoonGolfController.ShootAttackBall();
+        //playerMoonGolfController.ShootAttackBall();
 
         //StartCoroutine(MoveBallToTargets());
 
