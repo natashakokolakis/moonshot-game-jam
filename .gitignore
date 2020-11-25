@@ -140,3 +140,6 @@ Assets/MMFeedbacks/NiceVibrations/OlderVersions/v1.7/NiceVibrations-v-1-7.unityp
 Assets/MMFeedbacks/NiceVibrations/OlderVersions/v2.0.1/NiceVibrations-v-2-0-1.unitypackage.meta
 Assets/Plugins/Easy performant outline/Legacy version.meta
 Assets/Scripts/Level Scripts/Environment.meta
+Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
+Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset
+fmod_editor.log
