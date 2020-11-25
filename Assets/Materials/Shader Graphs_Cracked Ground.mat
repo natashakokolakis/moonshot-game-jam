@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_Cracked Ground
+  m_Shader: {fileID: -6465566751694194690, guid: 1801f39397da0114cb3c8216df556d29,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_36DB22A6:
+        m_Texture: {fileID: 2800000, guid: a72dcc5468d861f438f510eb0d447e19, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_50368E40:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_92AB0DCA:
+        m_Texture: {fileID: 2800000, guid: 0725f0d85c077224c9e275d7e9f700db, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_99EA200E:
+        m_Texture: {fileID: 2800000, guid: bf91be97dfc012c43b500dcb2b099521, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_A3CA9552:
+        m_Texture: {fileID: 2800000, guid: 5b1bfb7769d450843ae280fce271be9f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_65E62D19_Texture_1:
+        m_Texture: {fileID: 2800000, guid: bf91be97dfc012c43b500dcb2b099521, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_DB8EFA54_Texture_1:
+        m_Texture: {fileID: 2800000, guid: bb88b197320ae294598225a1670753a3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_61BE95CC: 0.00003
+    m_Colors:
+    - Color_472A59D6: {r: 0.36300138, g: 0.2415895, b: 0.8396226, a: 0}
+    - Color_A2C491A3: {r: 0.23418044, g: 0.052627277, b: 1.5938537, a: 0}
+    - Vector2_10EAD75C: {r: 0.8, g: 0.5, b: 0, a: 0}
+    - Vector2_AA59A422: {r: 2, g: 2, b: 0, a: 0}
