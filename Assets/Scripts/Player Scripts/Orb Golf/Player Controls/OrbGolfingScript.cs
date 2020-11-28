@@ -151,11 +151,11 @@ public class OrbGolfingScript : MonoBehaviour
 
         dummyAnim = GameObject.FindGameObjectWithTag("Dummy").GetComponent<Animator>();
         float dummyGolfPower = golfForceForAnimation / golfPowerMAX;
-        if (dummyGolfPower < 0.1f)
+        /*if (dummyGolfPower < 0.1f)
         {
             dummyAnim.SetInteger("golfStrength", 0);
-        }
-        else if (dummyGolfPower < 0.3f)
+        }*/
+        if (dummyGolfPower < 0.3f)
         {
             dummyAnim.SetInteger("golfStrength", 1);
         }
