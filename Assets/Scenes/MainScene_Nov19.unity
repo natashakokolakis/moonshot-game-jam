@@ -41115,7 +41115,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 15.3028
+    OrthographicSize: 15.45465
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -64922,6 +64922,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8897515423252293137, guid: 21c066e9ce78cbc4b97a283e9b42b749,
+        type: 3}
+      propertyPath: golfSunkMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e044c899ad224c49a365cf038dc3dd0, type: 2}
     - target: {fileID: 8897515423252293138, guid: 21c066e9ce78cbc4b97a283e9b42b749,
         type: 3}
       propertyPath: m_Name

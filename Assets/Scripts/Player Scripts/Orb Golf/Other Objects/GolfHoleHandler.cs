@@ -11,6 +11,8 @@ public class GolfHoleHandler : MonoBehaviour
     [FMODUnity.EventRef]
     public string BallSinkEvent = "";
 
+    public Material golfSunkMat;
+
     private MMFeedbacks sunkHoleFeedback;
 
     private void Awake()
@@ -30,7 +32,8 @@ public class GolfHoleHandler : MonoBehaviour
             enabled = false;
             Debug.Log("Hole Complete!");
             golfHoleCollider.enabled = false;
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
+            other.gameObject.GetComponent<MeshRenderer>().material = golfSunkMat;
         }
     }
 }

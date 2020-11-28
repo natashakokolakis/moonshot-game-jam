@@ -23,6 +23,11 @@ public class IntroCameraController : MonoBehaviour
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMoonGolfController>();
     }
 
+    private void OnEnable()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/WindWhistle", playerController.transform.position);
+    }
+
     private void SwitchToIntroCam()
     {
         introCamera.Priority = 15;
