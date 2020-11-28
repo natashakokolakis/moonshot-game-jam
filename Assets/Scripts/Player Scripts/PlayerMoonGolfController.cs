@@ -153,6 +153,7 @@ public class PlayerMoonGolfController : BaseCharacterController
 
     }
 
+
     private void OnTriggerStay(Collider other)
     {
             if (Input.GetKey(KeyCode.E) & !isInAOE & !isAttacking & !isDead)

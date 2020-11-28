@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 433415590457038535}
   - component: {fileID: 957047367146572924}
   - component: {fileID: 5828750808219585725}
+  - component: {fileID: 1849187111}
   m_Layer: 0
   m_Name: MoonshotMC
   m_TagString: Untagged
@@ -257,6 +258,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1849187111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957047367146572925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91fab4ceb914093408b8048ae39124c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GolfBallHitEvent: event:/Golf Related/Hit Ball
+  PuttHitEvent: event:/Golf Related/BallHitRandomizer
+  SwingClubEvent: event:/Golf Related/Swing
 --- !u!1 &1080139079729204312
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,8 +756,9 @@ GameObject:
   - component: {fileID: 5838273064863691629}
   - component: {fileID: 5838273064863691627}
   - component: {fileID: 5838273064863691621}
+  - component: {fileID: 493900924}
   m_Layer: 0
-  m_Name: ECM_GolfDad
+  m_Name: ECM_GolfDad (old)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -876,20 +893,15 @@ MonoBehaviour:
   isAttacking: 0
   attackCooldownMax: 0.5
   attackDirection: {x: 0, y: 0, z: 0}
-  meleeBoxCollider: {fileID: 5838273065675589564}
-  meleeAnimator: {fileID: 5838273065675589567}
   isAiming: 0
   golfPowerRate: 50
   golfPower: 0
   golfPowerMin: 0.1
   golfPowerMAX: 33
   golfBallObject: {fileID: 0}
-  golfBallAttack: {fileID: 0}
   aimLine: {fileID: 5838273065131330569}
   golfBallTrail: {fileID: 0}
-  aoeHandler: {fileID: 5838273065428226407}
   isInAOE: 0
-  mapCameraController: {fileID: 0}
 --- !u!114 &5838273064863691627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,6 +929,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced16738761ff9d42aed8749a3117990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &493900924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5838273064863691626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 5838273064863691626}
+  ListenerNumber: -1
 --- !u!1 &5838273065131330569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,7 +1166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada730fdba9a07a42875efb14d0ee748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aoeHandler: {fileID: 5838273065428226407}
 --- !u!1 &5838273065280615557
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,8 +1321,8 @@ MonoBehaviour:
   enemiesTargeted: []
   targetIcon: {fileID: 8345524651693352782, guid: d5c3aadc9cbe5134cbf912787161b09c,
     type: 3}
-  playerMoonGolfController: {fileID: 5838273064863691629}
-  aoeCircleTimer: {fileID: 5838273065200640390}
+  aoeCooldown: 4
+  coolingDown: 0
   ballSpeed: 20
   aoeDamage: 4
 --- !u!33 &5838273065428226395
@@ -1798,10 +1823,10 @@ BoxCollider:
   m_GameObject: {fileID: 5838273065675589561}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.95, y: 4.17, z: 1.36}
+  m_Center: {x: 0, y: 0, z: -0.22}
 --- !u!95 &5838273065675589567
 Animator:
   serializedVersion: 3

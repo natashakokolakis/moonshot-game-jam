@@ -17,6 +17,14 @@ public class PlayerHealth : MonoBehaviour
     PlayerAnimations animate;
     GameObject deathText;
 
+    [FMODUnity.EventRef]
+    public string PlayerHurtEvent = "";
+
+    [FMODUnity.EventRef]
+    public string PlayerDeathEvent = "";
+
+
+
     private void Awake()
     {
         playerController = GetComponent<PlayerMoonGolfController>();
@@ -37,10 +45,12 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0 && !isDead)
         {
             Death();
+            FMODUnity.RuntimeManager.PlayOneShot(PlayerDeathEvent, transform.position);
         }
         else
         {
             animate.Damaged(amount);
+            FMODUnity.RuntimeManager.PlayOneShot(PlayerHurtEvent, transform.position);
         }
     }
 
