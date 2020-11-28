@@ -33,6 +33,13 @@ public class EnemyHealth : MonoBehaviour
     Animator anim;
     ChaseBehaviourPrefab chaseBehaviour;
     BossAttack bossAttack;
+
+    [FMODUnity.EventRef]
+    public string EnemyImpactEvent = "";
+
+    [FMODUnity.EventRef]
+    public string EnemyHurtEvent = "";
+
     #endregion
 
 
@@ -64,6 +71,9 @@ public class EnemyHealth : MonoBehaviour
     {
         if (invincibilityCooldown || currentHealth <= 0)
             return;
+
+        PlayHurtSound(amount);
+        FMODUnity.RuntimeManager.PlayOneShot(EnemyHurtEvent, transform.position);
 
         invincibilityCooldown = true;
         currentHealth -= amount;
@@ -110,6 +120,17 @@ public class EnemyHealth : MonoBehaviour
         chaseBehaviour.chaseTarget = null;
         EventManagerNorth.StopListening("GolfBallSunk", Death);
         Destroy(gameObject, 4f);
+    }
+
+    public void PlayHurtSound(float damageAmount)
+    {
+        FMOD.Studio.EventInstance enemyHurtSound = FMODUnity.RuntimeManager.CreateInstance(EnemyImpactEvent);
+
+
+        enemyHurtSound.setParameterByName("EnemyDamageAmount", damageAmount, true);
+        enemyHurtSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        enemyHurtSound.start();
+        enemyHurtSound.release();
     }
 
 
