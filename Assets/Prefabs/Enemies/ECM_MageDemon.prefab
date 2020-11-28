@@ -1190,7 +1190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9206997330041767508
 Transform:
   m_ObjectHideFlags: 0
@@ -1316,6 +1316,8 @@ MonoBehaviour:
   currentHealth: 0
   basePushback: 50
   invincibilityCooldown: 0
+  EnemyImpactEvent: event:/Enemies/Enemy Impact
+  EnemyHurtEvent: event:/Enemies/BasicEnemyHurt
 --- !u!114 &3541286904097119733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1355,6 +1357,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   chaseTarget: {fileID: 0}
+  bossCanRotate: 1
 --- !u!114 &7670644575285992572
 MonoBehaviour:
   m_ObjectHideFlags: 0

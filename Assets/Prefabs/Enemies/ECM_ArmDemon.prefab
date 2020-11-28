@@ -327,7 +327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5797765094863165859
 Transform:
   m_ObjectHideFlags: 0
@@ -453,6 +453,8 @@ MonoBehaviour:
   currentHealth: 0
   basePushback: 50
   invincibilityCooldown: 0
+  EnemyImpactEvent: event:/Enemies/Enemy Impact
+  EnemyHurtEvent: event:/Enemies/BasicEnemyHurt
 --- !u!114 &2203722866968871426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,6 +494,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   chaseTarget: {fileID: 0}
+  bossCanRotate: 1
 --- !u!114 &5027008329576383371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -989,7 +992,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7724369459666893400}
   m_LocalRotation: {x: -0.12483619, y: 0.63910276, z: 0.7443201, w: -0.14815988}
-  m_LocalPosition: {x: -0.00030312428, y: 0.00030925573, z: 0.012502392}
+  m_LocalPosition: {x: -0.000058411424, y: 0.00030694305, z: 0.012890327}
   m_LocalScale: {x: 0.99999994, y: 1.0000002, z: 1}
   m_Children:
   - {fileID: 3939593435835741818}
