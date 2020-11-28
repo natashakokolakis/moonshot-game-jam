@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba2abb30c92bdf44587435c883a66458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 5
+  startingHealth: 10
   currentHealth: 0
   basePushback: 50
   invincibilityCooldown: 0
