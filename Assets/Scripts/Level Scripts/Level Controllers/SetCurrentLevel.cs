@@ -43,6 +43,8 @@ public class SetCurrentLevel : MonoBehaviour
     private BoxCollider startLevelTrigger;
     #endregion
 
+    public PlayerHealth playerHealthController;
+
     #endregion
 
     // Need to set previous level gate in Scene
@@ -96,6 +98,9 @@ public class SetCurrentLevel : MonoBehaviour
         GetIntroCamera();
         GetPlayerComponents();
         GetTriggerCollider();
+
+        playerHealthController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+
     }
 
     #endregion
@@ -138,6 +143,9 @@ public class SetCurrentLevel : MonoBehaviour
         if (!ignoreIntroCameras)
             PlayLevelIntroAndPausePlayer();
         startLevelTrigger.enabled = false;
+
+        playerHealthController.currentHealth = playerHealthController.maxHealth;
+
     }
 
     #endregion
