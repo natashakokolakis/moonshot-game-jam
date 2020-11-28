@@ -29,6 +29,7 @@ public class GolfHoleHandler : MonoBehaviour
             animatePlayer.GolfInHole();
             enabled = false;
             Debug.Log("Hole Complete!");
+            golfHoleCollider.enabled = false;
         }
     }
 }
