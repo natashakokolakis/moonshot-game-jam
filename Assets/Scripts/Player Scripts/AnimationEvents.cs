@@ -17,6 +17,9 @@ public class AnimationEvents : MonoBehaviour
     [FMODUnity.EventRef]
     public string SwingClubEvent = "";
 
+    [FMODUnity.EventRef]
+    public string FootstepEvent = "";
+
     private void Awake()
     {
         playerController = GetComponentInParent<PlayerMoonGolfController>();
@@ -67,6 +70,12 @@ public class AnimationEvents : MonoBehaviour
     public void PlaySwingSound()
     {
         FMODUnity.RuntimeManager.PlayOneShot(SwingClubEvent, transform.position);
+    }
+
+
+    public void PlayFootStepSound()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(FootstepEvent, transform.position);
     }
 
 }

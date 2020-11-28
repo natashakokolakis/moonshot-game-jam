@@ -36,6 +36,9 @@ public class EnemyHealth : MonoBehaviour
     [FMODUnity.EventRef]
     public string EnemyImpactEvent = "";
 
+    [FMODUnity.EventRef]
+    public string EnemyHurtEvent = "";
+
 
     #endregion
 
@@ -65,6 +68,7 @@ public class EnemyHealth : MonoBehaviour
             return;
 
         PlayHurtSound(amount);
+        FMODUnity.RuntimeManager.PlayOneShot(EnemyHurtEvent, transform.position);
 
         invincibilityCooldown = true;
         currentHealth -= amount;
