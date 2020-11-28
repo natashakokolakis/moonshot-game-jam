@@ -11,7 +11,11 @@ public class FollowOrb : MonoBehaviour
  
 
     public float dummySpeed = 4f;
-    private Vector3 dummyStartPos = new Vector3(0, .75f, -1);
+
+    //original values == private Vector3 dummyStartPos = new Vector3(0, .75f, -1);
+    private Vector3 dummyStartPos = new Vector3(0, .5f, -1);
+
+    private Vector3 dummyRelativeY = new Vector3(0, .5f, 0);
 
     public void SetUpAimLineAndPlayerModel()
     {
@@ -41,10 +45,12 @@ public class FollowOrb : MonoBehaviour
     {
         bool isLinedUp = false;
 
+        Vector3 targetPosition = target.transform.localPosition + dummyRelativeY;
+
         while (!isLinedUp)
         {
-            orbPlayerModel.transform.position = Vector3.MoveTowards(orbPlayerModel.transform.position, target.transform.position + Vector3.up, dummySpeed * Time.deltaTime);
-            if (orbPlayerModel.transform.position == target.transform.position + Vector3.up)
+            orbPlayerModel.transform.position = Vector3.MoveTowards(orbPlayerModel.transform.position, targetPosition, dummySpeed * Time.deltaTime);
+            if ((orbPlayerModel.transform.position.x - targetPosition.x) < 0.1f && (orbPlayerModel.transform.position.z - targetPosition.z) < 0.1f)
                 isLinedUp = true;
 
             yield return null;
