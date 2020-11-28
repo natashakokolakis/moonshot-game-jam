@@ -266,7 +266,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5204305726922884427}
-  - {fileID: 5252853172586567961}
   m_Father: {fileID: 2502311299359374877}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -602,90 +601,3 @@ Transform:
   m_Father: {fileID: 6427639604270054835}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -18.092443, y: 173.09314, z: -86.20935}
---- !u!1 &8718790581489973571
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5252853172586567961}
-  - component: {fileID: 8139552022784375653}
-  m_Layer: 0
-  m_Name: DemonEye.001
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &5252853172586567961
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8718790581489973571}
-  m_LocalRotation: {x: -0.7071067, y: 0.000000026167097, z: -0.000000035650142, w: 0.7071068}
-  m_LocalPosition: {x: -0.000000043869015, y: -0.00000015485286, z: 0.000000022888182}
-  m_LocalScale: {x: 20, y: 20, z: 20.000002}
-  m_Children: []
-  m_Father: {fileID: 2477198163546607699}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &8139552022784375653
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8718790581489973571}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 97d9a3cc58b7bd34295884982cd890a5, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 1595199925943715464, guid: fe05d2c3617613744ba0a0ae2c665319, type: 3}
-  m_Bones:
-  - {fileID: 6427639604270054835}
-  - {fileID: 280968093836358568}
-  - {fileID: 9135489977048887470}
-  - {fileID: 6583617671516707195}
-  - {fileID: 4978604437233852788}
-  m_BlendShapeWeights: []
-  m_RootBone: {fileID: 6427639604270054835}
-  m_AABB:
-    m_Center: {x: -0.000000009313226, y: -0.012169178, z: -0.006779831}
-    m_Extent: {x: 0.034023114, y: 0.025379814, z: 0.023332488}
-  m_DirtyAABB: 0

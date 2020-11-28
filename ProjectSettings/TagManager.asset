@@ -10,6 +10,7 @@ TagManager:
   - GolfBall
   - GolfClub
   - Dummy
+  - Boss
   layers:
   - Default
   - TransparentFX

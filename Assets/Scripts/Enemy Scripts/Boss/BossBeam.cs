@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class BossBeam : MonoBehaviour
 {
-    public int damage = 4;
+    ChaseBehaviourPrefab chaseBehaviour;
+    BossAttack bossAttack;
+
     private void OnEnable()
     {
+        chaseBehaviour = GetComponentInParent<ChaseBehaviourPrefab>();
+        bossAttack = GetComponentInParent<BossAttack>();
         StartCoroutine(BeamOff(3f));
     }
 
@@ -14,13 +18,14 @@ public class BossBeam : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(bossAttack.ultimateDamage);
         }
     }
 
     IEnumerator BeamOff(float duration)
     {
         yield return new WaitForSeconds(duration);
+        chaseBehaviour.bossCanRotate = true;
         gameObject.SetActive(false);
     }
 }

@@ -32,7 +32,7 @@ public class GolfBallAttack : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && golfBallRB.velocity.magnitude > 3.5f)
+        if ((collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss")) && golfBallRB.velocity.magnitude > 3.5f)
         {
             enemyTarget = collision.gameObject.GetComponent<EnemyHealth>();
             trailRenderer.Clear();

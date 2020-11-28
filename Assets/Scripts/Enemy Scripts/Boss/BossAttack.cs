@@ -2,63 +2,99 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.AI;
 
 public class BossAttack : MonoBehaviour
 {
-    public GameObject minion;
+    /*IDEAS FOR POSSIBLE ATTACK/MECHANIC ALTERNATIVES
+     * SUMMON - maybe change to be a list of enemies to summon at random
+     * STOMP - do damage and push back everything (player/minions) within a radius. Use either a trigger to 
+     *                  determine what's inside on activation or a reg collider that scales and pushes everything outward
+     * CHARGE BEAM - either charge to shoot or takes a few sec to recover (breathing heavily), during which
+     *                  time boss takes extra damage
+     */
+
+    GameObject minion;
+    public List<GameObject> minions;
+
     public Transform minionSpawnPoint; //center point of where minions will spawn
+    public Vector3 minionSpawnRange = new Vector3(10, 1, 10);
     public GameObject projectile;
     public Transform projectileOrigin;
     public GameObject chargeBeam;
-    public int attackRange = 2;
+    public float meleeAttackRange = 2;
+    public int meleeDamage = 5;
+    public int rangedDamage = 4;
+    public int ultimateDamage = 10;
 
+    float enragedMultiplier = 1;
+    [HideInInspector] public bool isEnraged = false;
     bool isAttacking = false;
     bool onCooldown;
     GameObject player;
     PlayerHealth playerHealth;
+    EnemyHealth enemyHealth;
+    SphereCollider sphereCollider;
+    ChaseBehaviourPrefab chaseBehaviour;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
+        enemyHealth = GetComponentInParent<EnemyHealth>();
+        chaseBehaviour = GetComponentInParent<ChaseBehaviourPrefab>();
+        meleeDamage = (int)(meleeDamage * enragedMultiplier);
+        rangedDamage = (int)(rangedDamage * enragedMultiplier);
+        ultimateDamage = (int)(ultimateDamage * enragedMultiplier);
+        sphereCollider = GetComponent<SphereCollider>();
     }
 
     void Update()
     {
         if (isAttacking == false && onCooldown == false && playerHealth.currentHealth > 0)
         {
+            if (isEnraged)
+            {
+                enragedMultiplier = 1.5f;
+            }
+
             int num = Random.Range(0, 6);
 
             if (num == 0)
             {
+                //play charging animation
                 ChargedAttack();
             }
             if (num < 3 && num > 0)
             {
+                //play summon animation
                 SummonMinions();
             }
             else
             {
-                if (Vector2.Distance(transform.position, player.transform.position) <= attackRange)
+                if (Vector2.Distance(transform.position, player.transform.position) <= meleeAttackRange)
                 {
+                    //play melee animation
                     MeleeAttack();
                 }
+                //player ranged attack animation
                 RangedAttack();
             }
         }
     }
 
-    void ChargedAttack()
+    public void ChargedAttack()
     {
         //modify so that boss charges before activating beam
         isAttacking = true;
         onCooldown = true;
+        chaseBehaviour.bossCanRotate = false;
         chargeBeam.SetActive(true);
 
         StartCoroutine(AttackDuration(10f, 3f));
     }
 
-    void SummonMinions()
+    public void SummonMinions()
     {
         isAttacking = true;
         onCooldown = true;
@@ -66,14 +102,27 @@ public class BossAttack : MonoBehaviour
         //summon 5 minions at random positions
         for (int i = 0; i < 5; i++)
         {
-            Vector3 randomPosition = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
-            Instantiate(minion, minionSpawnPoint.position + randomPosition, minionSpawnPoint.rotation);
+            minion = minions[Random.Range(0, minions.Count - 1)];
+            //NavMeshHit hit;
+            //NavMesh.SamplePosition(minionSpawnPoint.position + randomPosition, out hit, 1, 1);
+            //randomPosition = hit.position;
+
+            Vector3 randomPosition = new Vector3(Random.Range(-minionSpawnRange.x, minionSpawnRange.x), 0, Random.Range(-minionSpawnRange.y, minionSpawnRange.y));
+
+            Instantiate(minion, randomPosition, minionSpawnPoint.rotation);
+            NavMeshAgent minionNav = minion.GetComponent<NavMeshAgent>();
+
+            if (!minionNav.isOnNavMesh)
+            {
+                NavMeshHit hit;
+                NavMesh.FindClosestEdge(randomPosition, out hit, NavMesh.AllAreas);
+            }
         }
 
         StartCoroutine(AttackDuration(2f, 7f));
     }
 
-    void MeleeAttack()
+    public void MeleeAttack()
     {
         isAttacking = true;
         onCooldown = true;
@@ -82,15 +131,24 @@ public class BossAttack : MonoBehaviour
         StartCoroutine(AttackDuration(1f, 3f));
     }
 
-    void RangedAttack()
+    //not called yet, swap in when ready and make sure collider gets deactivated
+    public void MeleeStomp()
     {
         isAttacking = true;
         onCooldown = true;
-        Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);
+        sphereCollider.enabled = true;
+    }
+
+    public void RangedAttack()
+    {
+        isAttacking = true;
+        onCooldown = true;
+        Instantiate(projectile, projectileOrigin.position, transform.rotation);
 
         StartCoroutine(AttackDuration(1f, 3f));
     }
 
+    //remove this method after animations get coded in
     IEnumerator AttackDuration(float duration, float minTimeBetweenAttack)
     {
         yield return new WaitForSeconds(duration);
@@ -100,12 +158,21 @@ public class BossAttack : MonoBehaviour
 
     IEnumerator NextAttackDelay(float minTimeBetweenAttack)
     {
+        //instead of running two coroutines, call this at end of each attack animation
+        //isAttacking = false;
         yield return new WaitForSeconds(minTimeBetweenAttack);
         onCooldown = false;
     }
 
-    void DealDamage(int attackDamage)
+    public void DealDamage(int attackDamage)
     {
+        //call this from each attack animation, create one for each attack to pass trhrough damage value
         playerHealth.TakeDamage(attackDamage);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(minionSpawnPoint.position, minionSpawnRange);
     }
 }

@@ -231,14 +231,16 @@ public class PlayerMoonGolfController : BaseCharacterController
         }
 
         if (Input.GetButtonDown("Fire2") & !isAttacking)
+        { 
             animate.EnterAttackMode();
+            isAiming = true;
+            aimLine.SetActive(true);
+        }
 
 
         if (Input.GetButton("Fire2") & !isAttacking)
         {
             RangedAttack();
-            isAiming = true;
-            aimLine.SetActive(true);
 
             return;
         }

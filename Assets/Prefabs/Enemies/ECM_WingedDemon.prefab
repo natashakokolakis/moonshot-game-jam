@@ -406,117 +406,6 @@ Transform:
   m_Father: {fileID: 4511215639840517733}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3493769447872083876
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7039679481421470962}
-  - component: {fileID: 691027551010428744}
-  m_Layer: 0
-  m_Name: DemonSmallWings.001
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &7039679481421470962
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3493769447872083876}
-  m_LocalRotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
-  m_Children: []
-  m_Father: {fileID: 8171986531676274684}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &691027551010428744
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3493769447872083876}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 97d9a3cc58b7bd34295884982cd890a5, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 6591576820096022029, guid: 6660d2c84f7de5f44a02d26b8786956b, type: 3}
-  m_Bones:
-  - {fileID: 5536716535650862029}
-  - {fileID: 1194545786171404149}
-  - {fileID: 8030709124206077485}
-  - {fileID: 5847344043892658022}
-  - {fileID: 6953990978052230673}
-  - {fileID: 6276055146093268144}
-  - {fileID: 8200645555627965758}
-  - {fileID: 7745241637570559300}
-  - {fileID: 2549799797008994011}
-  - {fileID: 8191228068888147704}
-  - {fileID: 3144562099165135350}
-  - {fileID: 4949431010988362563}
-  - {fileID: 3887477067746234214}
-  - {fileID: 7113330179289779717}
-  - {fileID: 8161250583092473516}
-  - {fileID: 7323243122945151502}
-  - {fileID: 477371203791771594}
-  - {fileID: 2883050586670819017}
-  - {fileID: 3929867780797628437}
-  - {fileID: 5199063361169582653}
-  - {fileID: 3428720316771531528}
-  - {fileID: 4219126486284164832}
-  - {fileID: 3149834684735072800}
-  - {fileID: 1961939549085951188}
-  - {fileID: 2504925334087975962}
-  - {fileID: 4511215639840517733}
-  - {fileID: 7900189372698878716}
-  - {fileID: 2395902542900613286}
-  - {fileID: 5912620914210522801}
-  m_BlendShapeWeights: []
-  m_RootBone: {fileID: 5536716535650862029}
-  m_AABB:
-    m_Center: {x: -0.0001905039, y: 0.027637545, z: -0.00693308}
-    m_Extent: {x: 0.0332102, y: 0.037126463, z: 0.025855323}
-  m_DirtyAABB: 0
 --- !u!1 &3735135380817800584
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +685,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
+  chaseTarget: {fileID: 0}
 --- !u!114 &6051703271614183609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1244,7 +1134,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4690410080254194490}
-  - {fileID: 7039679481421470962}
   m_Father: {fileID: 5065900714909180561}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1365,7 +1254,7 @@ MonoBehaviour:
   - edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
     backEdgeDilateAmount: 5
-    Renderer: {fileID: 691027551010428744}
+    Renderer: {fileID: 0}
     SubmeshIndex: 0
     ForceRecalculateBounds: 0
     CutoutDescriptionType: 0

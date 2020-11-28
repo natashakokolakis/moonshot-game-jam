@@ -32,6 +32,7 @@ public class EnemyHealth : MonoBehaviour
     Rigidbody rb;
     Animator anim;
     ChaseBehaviourPrefab chaseBehaviour;
+    BossAttack bossAttack;
     #endregion
 
 
@@ -42,6 +43,11 @@ public class EnemyHealth : MonoBehaviour
         enemyMovementController = GetComponent<CharacterMovement>();
         chaseBehaviour = GetComponent<ChaseBehaviourPrefab>();
         rb = GetComponent<Rigidbody>();
+
+        if (gameObject.CompareTag("Boss"))
+        {
+            bossAttack = GetComponentInChildren<BossAttack>();
+        }
     }
 
     private void OnEnable()
@@ -65,6 +71,15 @@ public class EnemyHealth : MonoBehaviour
 
         travelDirection = (this.transform.position - travelDirection).normalized;
         
+        if (gameObject.CompareTag("Boss"))
+        {
+            if (currentHealth < startingHealth / 2 && !bossAttack.isEnraged)
+            {
+                anim.SetTrigger("Enraged");
+                bossAttack.isEnraged = true;
+            }
+        }
+
         if (currentHealth <= 0)
         {
             Death();
