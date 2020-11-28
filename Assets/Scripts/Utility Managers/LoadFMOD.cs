@@ -9,7 +9,7 @@ public class LoadFMOD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (FMODUnity.RuntimeManager.HasBankLoaded("Master Bank"))
+        if (FMODUnity.RuntimeManager.HasBankLoaded("Master"))
         {
             Debug.Log("Master Bank Loaded");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
