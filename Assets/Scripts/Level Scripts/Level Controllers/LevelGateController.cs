@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class LevelGateController : MonoBehaviour
 {
-    private MeshCollider gateCollider;
+    private BoxCollider gateCollider;
     private MeshRenderer gateRenderer;
 
     private void Awake()
     {
-        gateCollider = GetComponent<MeshCollider>();
+        gateCollider = GetComponent<BoxCollider>();
         gateRenderer = GetComponent<MeshRenderer>();
     }
 

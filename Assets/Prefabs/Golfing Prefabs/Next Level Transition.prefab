@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4031913471406309003}
   - component: {fileID: 4031913471406309002}
   - component: {fileID: 4506578018566758411}
+  - component: {fileID: 1943773538}
   m_Layer: 0
   m_Name: Next Level Transition
   m_TagString: Untagged
@@ -307,7 +308,7 @@ MeshCollider:
   m_GameObject: {fileID: 4031913471406309004}
   m_Material: {fileID: 13400000, guid: d69f9208670daff40ae2e2f13441b8db, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -319,8 +320,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4031913471406309004}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: caedb0c79e84cca4996fb0b5249dc822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1943773538
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4031913471406309004}
+  m_Material: {fileID: 13400000, guid: d69f9208670daff40ae2e2f13441b8db, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7, y: 16.88, z: 7}
+  m_Center: {x: 3.5, y: 1, z: -3.5}
