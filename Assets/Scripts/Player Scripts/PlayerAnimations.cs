@@ -87,11 +87,11 @@ public class PlayerAnimations : MonoBehaviour
     {
         anim.SetBool("golfMode", false);
         golfPower = selectedPower / maxPower;
-        if (golfPower < 0.1f)
+        /*if (golfPower < 0.1f)
         {
             anim.SetInteger("golfStrength", 0);
-        }
-        else if (golfPower < 0.3f)
+        }*/
+        if (golfPower < 0.3f)
         {
             anim.SetInteger("golfStrength", 1);
         }
