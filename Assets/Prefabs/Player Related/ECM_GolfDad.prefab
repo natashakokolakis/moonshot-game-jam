@@ -1103,6 +1103,8 @@ MonoBehaviour:
   maxHealth: 30
   currentHealth: 30
   isDead: 0
+  PlayerHurtEvent: event:/Player Sounds/PlayerHurt
+  PlayerDeathEvent: event:/Player Sounds/PlayerDeath
 --- !u!114 &92047313237046058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1799,6 +1801,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91fab4ceb914093408b8048ae39124c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GolfBallHitEvent: event:/Golf Related/Hit Ball
+  PuttHitEvent: event:/Golf Related/BallHitRandomizer
+  SwingClubEvent: event:/Golf Related/Swing
+  FootstepEvent: event:/Player Sounds/Footsteps
 --- !u!1 &2952468787201758914
 GameObject:
   m_ObjectHideFlags: 0
