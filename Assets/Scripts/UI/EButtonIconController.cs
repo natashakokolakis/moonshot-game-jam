@@ -8,7 +8,10 @@ public class EButtonIconController : MonoBehaviour
     Transform eButtonPosition;
     IconBounce eButtonBounce;
     Transform orbPosition;
-    
+
+    [FMODUnity.EventRef]
+    public string playerThinkEvent = "";
+
     //CapsuleCollider interactableCollider;
 
     private void Awake()
@@ -28,6 +31,7 @@ public class EButtonIconController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            FMODUnity.RuntimeManager.PlayOneShot(playerThinkEvent, transform.position);
             eButtonPosition.position = orbPosition.position + new Vector3(0, 4, -12);
             eButtonBounce.SetUpIndicator();
         }

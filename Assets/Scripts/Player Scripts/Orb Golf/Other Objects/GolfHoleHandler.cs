@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class GolfHoleHandler : MonoBehaviour
@@ -7,8 +8,14 @@ public class GolfHoleHandler : MonoBehaviour
     private BoxCollider golfHoleCollider;
     PlayerAnimations animatePlayer;
 
+    [FMODUnity.EventRef]
+    public string BallSinkEvent = "";
+
+    private MMFeedbacks sunkHoleFeedback;
+
     private void Awake()
     {
+        sunkHoleFeedback = transform.GetComponentInChildren<MMFeedbacks>();
         golfHoleCollider = GetComponent<BoxCollider>();
         animatePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAnimations>();
     }
@@ -16,8 +23,11 @@ public class GolfHoleHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("GolfBall") & (!other.isTrigger))
         {
+            FMODUnity.RuntimeManager.PlayOneShot(BallSinkEvent, transform.position);
+            sunkHoleFeedback.PlayFeedbacks();
             EventManagerNorth.TriggerEvent("GolfBallSunk");
             animatePlayer.GolfInHole();
+            enabled = false;
             Debug.Log("Hole Complete!");
         }
     }
