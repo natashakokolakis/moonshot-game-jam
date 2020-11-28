@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     PlayerMoonGolfController playerController;
     CharacterMovement characterMovement;
     PlayerAnimations animate;
-    GameObject deathText;
+    Menus menus;
 
     [FMODUnity.EventRef]
     public string PlayerHurtEvent = "";
@@ -33,8 +33,7 @@ public class PlayerHealth : MonoBehaviour
         healthSlider.maxValue = maxHealth;
         healthSlider.value = maxHealth;
         animate = GetComponent<PlayerAnimations>();
-        deathText = GameObject.Find("Death Text");
-        deathText.SetActive(false);
+        menus = GameObject.Find("LevelDetailsCanvas").GetComponent<Menus>();
     }
 
     public void TakeDamage(int amount)
@@ -60,6 +59,6 @@ public class PlayerHealth : MonoBehaviour
         animate.Death();
         playerController.moveDirection = Vector3.zero;
         playerController.isDead = true;
-        deathText.SetActive(true);
+        menus.TurnOnDeathMenu();
     }
 }
