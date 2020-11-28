@@ -26,6 +26,10 @@ public class BossAttack : MonoBehaviour
     public int meleeDamage = 5;
     public int rangedDamage = 4;
     public int ultimateDamage = 10;
+    public float meleeCooldown = 3;
+    public float rangedCooldown = 3;
+    public float spawnCooldown = 5;
+    public float ultimateCooldown = 7;
 
     float enragedMultiplier = 1;
     [HideInInspector] public bool isEnraged = false;
@@ -36,6 +40,7 @@ public class BossAttack : MonoBehaviour
     EnemyHealth enemyHealth;
     SphereCollider sphereCollider;
     ChaseBehaviourPrefab chaseBehaviour;
+    [HideInInspector] Animator animate;
 
     private void Awake()
     {
@@ -47,6 +52,7 @@ public class BossAttack : MonoBehaviour
         rangedDamage = (int)(rangedDamage * enragedMultiplier);
         ultimateDamage = (int)(ultimateDamage * enragedMultiplier);
         sphereCollider = GetComponent<SphereCollider>();
+        animate = GetComponent<Animator>();
     }
 
     void Update()
@@ -75,7 +81,8 @@ public class BossAttack : MonoBehaviour
                 if (Vector2.Distance(transform.position, player.transform.position) <= meleeAttackRange)
                 {
                     //play melee animation
-                    MeleeAttack();
+                    //MeleeAttack();
+                    animate.SetTrigger("MeleeAOE");
                 }
                 //player ranged attack animation
                 RangedAttack();
@@ -146,6 +153,26 @@ public class BossAttack : MonoBehaviour
         Instantiate(projectile, projectileOrigin.position, transform.rotation);
 
         StartCoroutine(AttackDuration(1f, 3f));
+    }
+
+    public void MeleeComplete()
+    {
+        StartCoroutine(NextAttackDelay(meleeCooldown));
+    }
+
+    public void RangedComplete()
+    {
+        StartCoroutine(NextAttackDelay(rangedCooldown));
+    }
+
+    public void SpawnComplete()
+    {
+        StartCoroutine(NextAttackDelay(spawnCooldown));
+    }
+
+    public void UltimateComplete()
+    {
+        StartCoroutine(NextAttackDelay(ultimateCooldown));
     }
 
     //remove this method after animations get coded in
