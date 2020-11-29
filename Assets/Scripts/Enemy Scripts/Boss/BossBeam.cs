@@ -11,7 +11,7 @@ public class BossBeam : MonoBehaviour
     {
         chaseBehaviour = GetComponentInParent<ChaseBehaviourPrefab>();
         bossAttack = GetComponentInParent<BossAttack>();
-        StartCoroutine(BeamOff(3f));
+        //StartCoroutine(BeamOff(3f));
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -26,6 +26,10 @@ public class BossBeam : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         chaseBehaviour.bossCanRotate = true;
+        gameObject.SetActive(false);
+    }
+    public void TurnBeamOff()
+    {
         gameObject.SetActive(false);
     }
 }

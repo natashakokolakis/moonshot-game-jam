@@ -7,8 +7,8 @@ using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 10;
-    public int currentHealth= 1;
+    public int maxHealth = 30;
+    [SerializeField] public int currentHealth;
     public bool isDead = false;
     
     Slider healthSlider;

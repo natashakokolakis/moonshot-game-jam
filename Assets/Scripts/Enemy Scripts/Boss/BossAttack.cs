@@ -22,25 +22,28 @@ public class BossAttack : MonoBehaviour
     public GameObject projectile;
     public Transform projectileOrigin;
     public GameObject chargeBeam;
-    public float meleeAttackRange = 2;
-    public int meleeDamage = 5;
-    public int rangedDamage = 4;
-    public int ultimateDamage = 10;
-    public float meleeCooldown = 3;
-    public float rangedCooldown = 3;
-    public float spawnCooldown = 5;
-    public float ultimateCooldown = 7;
+    public float meleeAttackRange;
+    public int meleeDamage;
+    public int rangedDamage;
+    public int ultimateDamage;
+    public float meleeCooldown;
+    public float rangedCooldown;
+    public float spawnCooldown;
+    public float ultimateCooldown;
 
     float enragedMultiplier = 1;
     [HideInInspector] public bool isEnraged = false;
     bool isAttacking = false;
     bool onCooldown;
+    string lastAttack; //set value to be name of last type, don't repeat special/ult too many times
     GameObject player;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
     SphereCollider sphereCollider;
     ChaseBehaviourPrefab chaseBehaviour;
-    [HideInInspector] Animator animate;
+    BossBeam bossBeam;
+    Animator animate;
+    GameObject bossParent;
 
     private void Awake()
     {
@@ -48,44 +51,58 @@ public class BossAttack : MonoBehaviour
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponentInParent<EnemyHealth>();
         chaseBehaviour = GetComponentInParent<ChaseBehaviourPrefab>();
+        bossBeam = chargeBeam.GetComponent<BossBeam>();
         meleeDamage = (int)(meleeDamage * enragedMultiplier);
         rangedDamage = (int)(rangedDamage * enragedMultiplier);
         ultimateDamage = (int)(ultimateDamage * enragedMultiplier);
         sphereCollider = GetComponent<SphereCollider>();
         animate = GetComponent<Animator>();
+        bossParent = GameObject.FindGameObjectWithTag("Boss");
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (isAttacking == false && onCooldown == false && playerHealth.currentHealth > 0)
+        if (onCooldown = false && playerHealth.currentHealth <= 0)
         {
-            if (isEnraged)
+            animate.SetBool("PlayerDead", true);
+            onCooldown = true;
+        }
+
+        else if (isAttacking == false && onCooldown == false && playerHealth.currentHealth > 0)
+        {
+            /*if (isEnraged)
             {
                 enragedMultiplier = 1.5f;
-            }
+            }*/
 
-            int num = Random.Range(0, 6);
+            int num = Random.Range(0, 5);
 
-            if (num == 0)
+            if (num < 1)
             {
                 //play charging animation
-                ChargedAttack();
+                //ChargedAttack();
+                animate.SetTrigger("ChargeAttack");
             }
-            if (num < 3 && num > 0)
+            else if (num < 3 && num >=1)
             {
                 //play summon animation
-                SummonMinions();
+                //SummonMinions();
+                animate.SetTrigger("SummonMinions");
             }
             else
             {
-                if (Vector2.Distance(transform.position, player.transform.position) <= meleeAttackRange)
+                if (Vector3.Distance(bossParent.transform.position, player.transform.position) <= meleeAttackRange)
                 {
                     //play melee animation
                     //MeleeAttack();
-                    animate.SetTrigger("MeleeAOE");
+                    animate.SetTrigger("MeleeAttack");
                 }
-                //player ranged attack animation
-                RangedAttack();
+                else
+                {
+                    //player ranged attack animation
+                    //RangedAttack();
+                    animate.SetTrigger("RangedAttack");
+                }
             }
         }
     }
@@ -98,7 +115,7 @@ public class BossAttack : MonoBehaviour
         chaseBehaviour.bossCanRotate = false;
         chargeBeam.SetActive(true);
 
-        StartCoroutine(AttackDuration(10f, 3f));
+        //StartCoroutine(AttackDuration(10f, 3f));
     }
 
     public void SummonMinions()
@@ -126,16 +143,16 @@ public class BossAttack : MonoBehaviour
             }
         }
 
-        StartCoroutine(AttackDuration(2f, 7f));
+        //StartCoroutine(AttackDuration(2f, 7f));
     }
 
     public void MeleeAttack()
     {
         isAttacking = true;
         onCooldown = true;
-        DealDamage(5);
+        DealDamage(meleeDamage);
 
-        StartCoroutine(AttackDuration(1f, 3f));
+        //StartCoroutine(AttackDuration(1f, 3f));
     }
 
     //not called yet, swap in when ready and make sure collider gets deactivated
@@ -152,7 +169,7 @@ public class BossAttack : MonoBehaviour
         onCooldown = true;
         Instantiate(projectile, projectileOrigin.position, transform.rotation);
 
-        StartCoroutine(AttackDuration(1f, 3f));
+        //StartCoroutine(AttackDuration(1f, 3f));
     }
 
     public void MeleeComplete()
@@ -172,6 +189,8 @@ public class BossAttack : MonoBehaviour
 
     public void UltimateComplete()
     {
+        bossBeam.TurnBeamOff();
+        chaseBehaviour.bossCanRotate = true;
         StartCoroutine(NextAttackDelay(ultimateCooldown));
     }
 
@@ -186,14 +205,13 @@ public class BossAttack : MonoBehaviour
     IEnumerator NextAttackDelay(float minTimeBetweenAttack)
     {
         //instead of running two coroutines, call this at end of each attack animation
-        //isAttacking = false;
+        isAttacking = false;
         yield return new WaitForSeconds(minTimeBetweenAttack);
         onCooldown = false;
     }
 
     public void DealDamage(int attackDamage)
     {
-        //call this from each attack animation, create one for each attack to pass trhrough damage value
         playerHealth.TakeDamage(attackDamage);
     }
 
