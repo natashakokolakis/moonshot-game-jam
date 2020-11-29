@@ -29,12 +29,16 @@ public class MapCameraController : MonoBehaviour
     private Vector3 screenCentre = new Vector3(0.5f, 0.5f, 0);
     private Camera mainCamera;
     private bool cameraTransitionOver = false;
+
+    public FMODUnity.StudioEventEmitter mapUiClick;
+
     #endregion
 
 
 
     private void Awake()
     {
+        mapUiClick = GetComponent<FMODUnity.StudioEventEmitter>();
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         currentOrthSize = defaultOrthoSize;
         mapModeCanvas = transform.Find("MapModeCanvas").gameObject;
@@ -119,6 +123,8 @@ public class MapCameraController : MonoBehaviour
 
     private void MoveCamera()
     {
+        if (moveDirection.magnitude > 0)
+            mapUiClick.Play();
         transform.position += moveDirection * mapMoveSpeed * Time.deltaTime;
     }
 
