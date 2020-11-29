@@ -60,6 +60,7 @@ public class BossAttack : MonoBehaviour
         bossParent = GameObject.FindGameObjectWithTag("Boss");
     }
 
+
     void FixedUpdate()
     {
         /*if (onCooldown = false && playerHealth.currentHealth <= 0)
@@ -75,7 +76,11 @@ public class BossAttack : MonoBehaviour
                 enragedMultiplier = 1.5f;
             }*/
 
+            isAttacking = true;
+            onCooldown = true;
+
             int num = Random.Range(0, 5);
+
 
             if (num < 1)
             {
@@ -91,10 +96,12 @@ public class BossAttack : MonoBehaviour
             }
             else
             {
-                if (Vector3.Distance(bossParent.transform.position, player.transform.position) <= meleeAttackRange)
+                //Debug.DrawRay(bossParent.transform.position, (bossParent.transform.position - player.transform.position).normalized * meleeAttackRange, Color.yellow, 5);
+                if (Vector3.Magnitude(player.transform.position - bossParent.transform.position) <= meleeAttackRange)
                 {
                     //play melee animation
                     //MeleeAttack();
+                    
                     animate.SetTrigger("MeleeAttack");
                 }
                 else
@@ -130,8 +137,7 @@ public class BossAttack : MonoBehaviour
     public void ChargedAttack()
     {
         //modify so that boss charges before activating beam
-        isAttacking = true;
-        onCooldown = true;
+
         chaseBehaviour.bossCanRotate = false;
         chargeBeam.SetActive(true);
 
@@ -140,8 +146,7 @@ public class BossAttack : MonoBehaviour
 
     public void SummonMinions()
     {
-        isAttacking = true;
-        onCooldown = true;
+
 
         //summon 5 minions at random positions
         for (int i = 0; i < 5; i++)
@@ -168,8 +173,7 @@ public class BossAttack : MonoBehaviour
 
     public void MeleeAttack()
     {
-        isAttacking = true;
-        onCooldown = true;
+
         DealDamage(meleeDamage);
 
         //StartCoroutine(AttackDuration(1f, 3f));
@@ -178,15 +182,14 @@ public class BossAttack : MonoBehaviour
     //not called yet, swap in when ready and make sure collider gets deactivated
     public void MeleeStomp()
     {
-        isAttacking = true;
-        onCooldown = true;
+        
+
         sphereCollider.enabled = true;
     }
 
     public void RangedAttack()
     {
-        isAttacking = true;
-        onCooldown = true;
+
         Instantiate(projectile, projectileOrigin.position, transform.rotation);
 
         //StartCoroutine(AttackDuration(1f, 3f));
@@ -244,5 +247,6 @@ public class BossAttack : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(minionSpawnPoint.position, minionSpawnRange);
+
     }
 }
