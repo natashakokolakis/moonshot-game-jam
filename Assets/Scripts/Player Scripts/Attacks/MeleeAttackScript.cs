@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class MeleeAttackScript : MonoBehaviour
 {
-    public BoxCollider meleeHitbox;
     public int meleeDamage = 1;
     private Transform playerTransform;
     private MMFeedbacks hitEnemyFeedback;

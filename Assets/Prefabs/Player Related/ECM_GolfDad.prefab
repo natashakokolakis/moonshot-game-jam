@@ -944,6 +944,8 @@ GameObject:
   - component: {fileID: 92047313237046053}
   - component: {fileID: 92047313237046051}
   - component: {fileID: 92047313237046058}
+  - component: {fileID: 955415134}
+  - component: {fileID: 955415135}
   m_Layer: 0
   m_Name: ECM_GolfDad
   m_TagString: Player
@@ -1117,6 +1119,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced16738761ff9d42aed8749a3117990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &955415134
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92047313237046050}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.09, y: 1, z: 0.88}
+  m_Center: {x: 0, y: 0.8, z: 0.5}
+--- !u!114 &955415135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92047313237046050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 92047313237046050}
+  ListenerNumber: -1
 --- !u!1 &92047313541760614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1784,7 +1813,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 7c20027f031b9e7458962cbe11296703, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1854,7 +1883,7 @@ MonoBehaviour:
       serializedProperties: []
   backParameters:
     enabled: 1
-    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 0}
     dilateShift: 1
     blurShift: 1
     fillPass:
@@ -2304,7 +2333,7 @@ Transform:
   m_Father: {fileID: 7978419070973065204}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4180017644952246565
+--- !u!65 &317620769
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2313,154 +2342,11 @@ BoxCollider:
   m_GameObject: {fileID: 7744567644611372354}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.012034689, y: 0.0039411765, z: 0.031701084}
-  m_Center: {x: 0.0017152005, y: -0.0001139272, z: -0.011805763}
---- !u!95 &637889428031162811
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7744567644611372354}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3bbfbfcfa5ca6f34e9c65f4330678fb8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &92047314281563700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7744567644611372354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ba1d39e1a4e0a142831b5815b528429, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Active: 1
-  Label: Cinemachine Impulse
-  Chance: 100
-  Timing:
-    TimescaleMode: 0
-    InitialDelay: 0
-    CooldownDuration: 0
-    NumberOfRepeats: 0
-    RepeatForever: 0
-    DelayBetweenRepeats: 1
-    Sequence: {fileID: 0}
-    TrackID: 0
-    Quantized: 0
-    TargetBPM: 120
-  DebugActive: 0
-  m_ImpulseDefinition:
-    m_ImpulseChannel: 1
-    m_RawSignal: {fileID: 11400000, guid: 8608ec81ee27a15488d33f9dad239e91, type: 2}
-    m_AmplitudeGain: 1
-    m_FrequencyGain: 1
-    m_RepeatMode: 0
-    m_Randomize: 1
-    m_TimeEnvelope:
-      m_AttackShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_DecayShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_AttackTime: 0.1
-      m_SustainTime: 0.2
-      m_DecayTime: 0.7
-      m_ScaleWithImpact: 1
-      m_HoldForever: 0
-    m_ImpactRadius: 100
-    m_DirectionMode: 1
-    m_DissipationMode: 1
-    m_DissipationDistance: 1000
-  Velocity: {x: -0.08, y: 0, z: -0.08}
---- !u!114 &92047314281563701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7744567644611372354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 174b87f4e7a102a4ba0495310257cda6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Active: 1
-  Label: Orthographic Size
-  Chance: 100
-  Timing:
-    TimescaleMode: 0
-    InitialDelay: 0
-    CooldownDuration: 0
-    NumberOfRepeats: 0
-    RepeatForever: 0
-    DelayBetweenRepeats: 1
-    Sequence: {fileID: 0}
-    TrackID: 0
-    Quantized: 0
-    TargetBPM: 120
-  DebugActive: 0
-  Channel: 0
-  Duration: 0.3
-  ResetShakerValuesAfterShake: 1
-  ResetTargetValuesAfterShake: 1
-  RelativeOrthographicSize: 1
-  ShakeOrthographicSize:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.24583435
-      value: 0.99292374
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  RemapOrthographicSizeZero: 0
-  RemapOrthographicSizeOne: -0.4
---- !u!114 &4310511987879648481
+  m_Size: {x: 0.009999994, y: 0.01, z: 0.03497742}
+  m_Center: {x: 0.002160205, y: -0.0001061148, z: -0.013443911}
+--- !u!114 &317620767
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2473,13 +2359,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Feedbacks:
-  - {fileID: 92047314281563700}
-  - {fileID: 92047314281563701}
+  - {fileID: 0}
+  - {fileID: 0}
   InitializationMode: 1
   SafeMode: 3
   AutoPlayOnStart: 0
   DebugActive: 0
---- !u!114 &5405140281441878717
+--- !u!114 &317620768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2491,7 +2377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6320603092688c740baadd6c86828706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeHitbox: {fileID: 0}
   meleeDamage: 5
 --- !u!1 &8202713251369375761
 GameObject:
@@ -2742,15 +2627,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7474659181728258067}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &8105009615930180759 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 6c60fef783ff4bd4b97ac12afaf780da,
-    type: 3}
-  m_PrefabInstance: {fileID: 7474659181728258067}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6931580310018277368 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6c60fef783ff4bd4b97ac12afaf780da,
+    type: 3}
+  m_PrefabInstance: {fileID: 7474659181728258067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8105009615930180759 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 6c60fef783ff4bd4b97ac12afaf780da,
     type: 3}
   m_PrefabInstance: {fileID: 7474659181728258067}
   m_PrefabAsset: {fileID: 0}

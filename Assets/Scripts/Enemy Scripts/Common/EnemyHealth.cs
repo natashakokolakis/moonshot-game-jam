@@ -96,6 +96,7 @@ public class EnemyHealth : MonoBehaviour
             {
                 anim.SetTrigger("Enraged");
                 bossAttack.isEnraged = true;
+                gameObject.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
             }
         }
         StartCoroutine(InvincibilityAfterDamage(invincibilityLength));
