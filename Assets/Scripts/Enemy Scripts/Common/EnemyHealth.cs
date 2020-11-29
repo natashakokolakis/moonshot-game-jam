@@ -68,6 +68,11 @@ public class EnemyHealth : MonoBehaviour
         EventManagerNorth.StopListening("GolfBallSunk", Death);
     }
 
+    private void OnDestroy()
+    {
+        EventManagerNorth.StopListening("GolfBallSunk", Death);
+    }
+
     public void TakeDamage(int amount, Vector3 travelDirection)
     {
         if (invincibilityCooldown || currentHealth <= 0)
