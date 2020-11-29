@@ -59,6 +59,6 @@ public class EnemyAttacks : MonoBehaviour
 
     public void DestroySelf()
     {
-        Destroy(transform.root.gameObject, 1);
+        Destroy(transform.parent.gameObject, 1);
     }
 }
