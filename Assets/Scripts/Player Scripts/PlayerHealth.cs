@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     PlayerMoonGolfController playerController;
     CharacterMovement characterMovement;
     PlayerAnimations animate;
+    GameObject boss;
     Menus menus;
 
     [FMODUnity.EventRef]
@@ -33,6 +34,7 @@ public class PlayerHealth : MonoBehaviour
         healthSlider.maxValue = maxHealth;
         healthSlider.value = maxHealth;
         animate = GetComponent<PlayerAnimations>();
+        boss = GameObject.FindGameObjectWithTag("Boss");
         menus = GameObject.Find("LevelDetailsCanvas").GetComponent<Menus>();
     }
 
@@ -59,6 +61,13 @@ public class PlayerHealth : MonoBehaviour
         animate.Death();
         playerController.moveDirection = Vector3.zero;
         playerController.isDead = true;
+
+        if (boss != null)
+        {
+            boss.GetComponentInChildren<BossAttack>().onCooldown = true;
+            boss.GetComponentInChildren<Animator>().SetBool("PlayerDead", true);
+        }
+
         menus.TurnOnDeathMenu();
     }
 }

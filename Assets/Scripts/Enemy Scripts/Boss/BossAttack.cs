@@ -34,7 +34,7 @@ public class BossAttack : MonoBehaviour
     float enragedMultiplier = 1;
     [HideInInspector] public bool isEnraged = false;
     bool isAttacking = false;
-    bool onCooldown;
+    [HideInInspector] public bool onCooldown;
     string lastAttack; //set value to be name of last type, don't repeat special/ult too many times
     GameObject player;
     PlayerHealth playerHealth;
@@ -62,13 +62,13 @@ public class BossAttack : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (onCooldown = false && playerHealth.currentHealth <= 0)
+        /*if (onCooldown = false && playerHealth.currentHealth <= 0)
         {
             animate.SetBool("PlayerDead", true);
             onCooldown = true;
-        }
+        }*/
 
-        else if (isAttacking == false && onCooldown == false && playerHealth.currentHealth > 0)
+        if (isAttacking == false && onCooldown == false && playerHealth.currentHealth > 0)
         {
             /*if (isEnraged)
             {
