@@ -81,15 +81,6 @@ public class EnemyHealth : MonoBehaviour
         anim.SetBool("isHit", true);
 
         travelDirection = (this.transform.position - travelDirection).normalized;
-        
-        if (gameObject.CompareTag("Boss"))
-        {
-            if (currentHealth < startingHealth / 2 && !bossAttack.isEnraged)
-            {
-                anim.SetTrigger("Enraged");
-                bossAttack.isEnraged = true;
-            }
-        }
 
         if (currentHealth <= 0)
         {
@@ -98,7 +89,16 @@ public class EnemyHealth : MonoBehaviour
 
         GetPushedBack(amount, travelDirection);
 
-        StartCoroutine("InvincibilityAfterDamage");
+
+        if (gameObject.CompareTag("Boss"))
+        {
+            if (currentHealth < startingHealth / 2 && !bossAttack.isEnraged)
+            {
+                anim.SetTrigger("Enraged");
+                bossAttack.isEnraged = true;
+            }
+        }
+        StartCoroutine(InvincibilityAfterDamage(invincibilityLength));
     }
 
     public void GetPushedBack(int damage, Vector3 travelDirection)
@@ -106,9 +106,9 @@ public class EnemyHealth : MonoBehaviour
         enemyMovementController.ApplyForce(travelDirection * damage * basePushback, ForceMode.Impulse);
     }
 
-    IEnumerator InvincibilityAfterDamage()
+    IEnumerator InvincibilityAfterDamage(float time)
     {
-        yield return new WaitForSeconds(invincibilityLength);
+        yield return new WaitForSeconds(time);
         invincibilityCooldown = false;
     }
 
@@ -120,8 +120,9 @@ public class EnemyHealth : MonoBehaviour
         rb.Sleep();
         chaseBehaviour.chaseTarget = null;
 
-        if (transform.root.parent.CompareTag("Boss"))
+        if (gameObject.CompareTag("Boss"))
         {
+            EventManagerNorth.StopListening("GolfBallSunk", Death);
             EventManagerNorth.TriggerEvent("GolfBallSunk");
         }
         EventManagerNorth.StopListening("GolfBallSunk", Death);

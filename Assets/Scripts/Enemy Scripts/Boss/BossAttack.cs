@@ -71,10 +71,10 @@ public class BossAttack : MonoBehaviour
 
         if (isAttacking == false && onCooldown == false && playerHealth.currentHealth > 0)
         {
-            /*if (isEnraged)
+            if (isEnraged)
             {
                 enragedMultiplier = 1.5f;
-            }*/
+            }
 
             isAttacking = true;
             onCooldown = true;
@@ -84,30 +84,20 @@ public class BossAttack : MonoBehaviour
 
             if (num < 1)
             {
-                //play charging animation
-                //ChargedAttack();
                 animate.SetTrigger("ChargeAttack");
             }
             else if (num < 3 && num >=1)
             {
-                //play summon animation
-                //SummonMinions();
                 animate.SetTrigger("SummonMinions");
             }
             else
             {
-                //Debug.DrawRay(bossParent.transform.position, (bossParent.transform.position - player.transform.position).normalized * meleeAttackRange, Color.yellow, 5);
                 if (Vector3.Magnitude(player.transform.position - bossParent.transform.position) <= meleeAttackRange)
                 {
-                    //play melee animation
-                    //MeleeAttack();
-                    
                     animate.SetTrigger("MeleeAttack");
                 }
                 else
                 {
-                    //player ranged attack animation
-                    //RangedAttack();
                     animate.SetTrigger("RangedAttack");
                 }
             }
@@ -136,29 +126,18 @@ public class BossAttack : MonoBehaviour
 
     public void ChargedAttack()
     {
-        //modify so that boss charges before activating beam
-
         chaseBehaviour.bossCanRotate = false;
         chargeBeam.SetActive(true);
-
-        //StartCoroutine(AttackDuration(10f, 3f));
     }
 
     public void SummonMinions()
     {
-
-
-        //summon 5 minions at random positions
         for (int i = 0; i < 5; i++)
         {
             minion = minions[Random.Range(0, minions.Count - 1)];
-            //NavMeshHit hit;
-            //NavMesh.SamplePosition(minionSpawnPoint.position + randomPosition, out hit, 1, 1);
-            //randomPosition = hit.position;
-
             Vector3 randomPosition = new Vector3(Random.Range(-minionSpawnRange.x, minionSpawnRange.x), 0, Random.Range(-minionSpawnRange.y, minionSpawnRange.y));
 
-            Instantiate(minion, randomPosition, minionSpawnPoint.rotation);
+            Instantiate(minion, randomPosition + minionSpawnPoint.position, minionSpawnPoint.rotation);
             NavMeshAgent minionNav = minion.GetComponent<NavMeshAgent>();
 
             if (!minionNav.isOnNavMesh)
@@ -167,36 +146,42 @@ public class BossAttack : MonoBehaviour
                 NavMesh.FindClosestEdge(randomPosition, out hit, NavMesh.AllAreas);
             }
         }
-
-        //StartCoroutine(AttackDuration(2f, 7f));
     }
 
     public void MeleeAttack()
     {
 
         DealDamage(meleeDamage);
-
-        //StartCoroutine(AttackDuration(1f, 3f));
     }
 
-    //not called yet, swap in when ready and make sure collider gets deactivated
-    public void MeleeStomp()
+    //not called yet, swap in when ready and make sure collider gets deactivated in MeleeCompleted
+    public void MeleePushback()
     {
-        
-
         sphereCollider.enabled = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
+        {
+            //push them backwards from boss by a certain amount
+
+            if (other.CompareTag("Player"))
+            {
+                DealDamage(meleeDamage);
+            }
+        }
     }
 
     public void RangedAttack()
     {
 
         Instantiate(projectile, projectileOrigin.position, transform.rotation);
-
-        //StartCoroutine(AttackDuration(1f, 3f));
     }
 
     public void MeleeComplete()
     {
+        //sphereCollider.enabled = false;
         StartCoroutine(NextAttackDelay(meleeCooldown));
     }
 
@@ -217,17 +202,8 @@ public class BossAttack : MonoBehaviour
         StartCoroutine(NextAttackDelay(ultimateCooldown));
     }
 
-    //remove this method after animations get coded in
-    IEnumerator AttackDuration(float duration, float minTimeBetweenAttack)
-    {
-        yield return new WaitForSeconds(duration);
-        isAttacking = false;
-        StartCoroutine(NextAttackDelay(minTimeBetweenAttack));
-    }
-
     IEnumerator NextAttackDelay(float minTimeBetweenAttack)
     {
-        //instead of running two coroutines, call this at end of each attack animation
         isAttacking = false;
         yield return new WaitForSeconds(minTimeBetweenAttack);
         onCooldown = false;
@@ -245,6 +221,7 @@ public class BossAttack : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        //visualize minion spawn box
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(minionSpawnPoint.position, minionSpawnRange);
 
