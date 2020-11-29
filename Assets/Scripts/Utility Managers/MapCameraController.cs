@@ -32,6 +32,13 @@ public class MapCameraController : MonoBehaviour
 
     public FMODUnity.StudioEventEmitter mapUiClick;
 
+    [FMODUnity.EventRef]
+    public string MapZoomInEvent = "";
+
+    [FMODUnity.EventRef]
+    public string MapZoomOutEvent = "";
+
+
     #endregion
 
 
@@ -67,10 +74,16 @@ public class MapCameraController : MonoBehaviour
     private void OnEnable()
     {
         TurnOnMapMode();
+
+        if (playerMoonGolfController.gameObject.activeSelf == true)
+        FMODUnity.RuntimeManager.PlayOneShot(MapZoomInEvent);
     }
 
     public void TurnOffMapMode()
     {
+        if (playerMoonGolfController.gameObject.activeSelf == true)
+            FMODUnity.RuntimeManager.PlayOneShot(MapZoomOutEvent);
+
         thisCamera.Priority = 9;
         mapModeCanvas.SetActive(false);
         if (playerMoonGolfController.gameObject.activeSelf)
