@@ -24,6 +24,8 @@ public sealed class ChaseBehaviourPrefab : BaseAgentController
         pause = !pause;
     }
 
+
+
     public void OnEnable()
     {
         chaseTarget = GameObject.FindGameObjectWithTag("Player");
@@ -42,7 +44,7 @@ public sealed class ChaseBehaviourPrefab : BaseAgentController
 
     private void BossRotateTowardsPlayer()
     {
-        if (gameObject.CompareTag("Boss") && bossCanRotate)
+        if (gameObject.CompareTag("Boss") && bossCanRotate && chaseTarget != null)
             RotateTowards(chaseTarget.transform.position - transform.position);
 
     }

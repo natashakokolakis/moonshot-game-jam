@@ -55,6 +55,25 @@ public class EnemyAI : MonoBehaviour
     }
     #endregion
 
+    public void OnEnable()
+    {
+        EventManagerNorth.StartListening("ToggleGolfMode", PauseAnimation);
+    }
+
+    public void OnDisable()
+    {
+        EventManagerNorth.StopListening("ToggleGolfMode", PauseAnimation);
+    }
+
+    public void OnDestroy()
+    {
+        EventManagerNorth.StopListening("ToggleGolfMode", PauseAnimation);
+    }
+
+    void PauseAnimation()
+    {
+        anim.enabled = !anim.enabled;
+    }
 
     #region Coroutines
     IEnumerator EnemyFSM()
@@ -89,7 +108,7 @@ public class EnemyAI : MonoBehaviour
                 anim.SetFloat("Speed", 0);
             }
 
-            if (playerDistance <= attackRange && !onCooldown && !playerHealth.isDead)
+            if (playerDistance <= attackRange && !onCooldown && !playerHealth.isDead && chaseBehaviour.pause == false)
             {
                 state = ENEMY_STATE.Attack;
                 yield break; 

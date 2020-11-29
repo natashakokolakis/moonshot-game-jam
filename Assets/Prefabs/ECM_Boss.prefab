@@ -593,7 +593,7 @@ MonoBehaviour:
   projectileOrigin: {fileID: 4802496197529993442}
   chargeBeam: {fileID: 8880772845310490481}
   meleeAttackRange: 7
-  meleeDamage: 5
+  meleeDamage: 4
   rangedDamage: 4
   ultimateDamage: 5
   meleeCooldown: 3
@@ -601,6 +601,7 @@ MonoBehaviour:
   spawnCooldown: 5
   ultimateCooldown: 7
   isEnraged: 0
+  onCooldown: 0
 --- !u!1 &2050045144890319884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,6 +1550,7 @@ MonoBehaviour:
   startingHealth: 50
   currentHealth: 0
   basePushback: 0
+  invincibilityLength: 2
   invincibilityCooldown: 0
   EnemyImpactEvent: event:/Enemies/Enemy Impact
   EnemyHurtEvent: event:/Enemies/BasicEnemyHurt

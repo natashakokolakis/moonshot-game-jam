@@ -107,6 +107,26 @@ public class BossAttack : MonoBehaviour
         }
     }
 
+    public void OnEnable()
+    {
+        EventManagerNorth.StartListening("ToggleGolfMode", PauseAnimation);
+    }
+
+    public void OnDisable()
+    {
+        EventManagerNorth.StopListening("ToggleGolfMode", PauseAnimation);
+    }
+
+    public void OnDestroy()
+    {
+        EventManagerNorth.StopListening("ToggleGolfMode", PauseAnimation);
+    }
+
+    void PauseAnimation()
+    {
+        animate.enabled = !animate.enabled;
+    }
+
     public void ChargedAttack()
     {
         //modify so that boss charges before activating beam
@@ -213,6 +233,11 @@ public class BossAttack : MonoBehaviour
     public void DealDamage(int attackDamage)
     {
         playerHealth.TakeDamage(attackDamage);
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmos()

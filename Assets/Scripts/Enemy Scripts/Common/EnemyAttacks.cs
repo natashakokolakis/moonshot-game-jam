@@ -56,4 +56,9 @@ public class EnemyAttacks : MonoBehaviour
         diveCollider.enabled = false;
         diveTrigger.enabled = false;
     }
+
+    public void DestroySelf()
+    {
+        Destroy(transform.root.gameObject, 1);
+    }
 }

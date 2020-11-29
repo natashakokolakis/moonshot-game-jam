@@ -27,7 +27,8 @@ public class EnemyHealth : MonoBehaviour
 
 
     public int basePushback = 50;
-    public bool invincibilityCooldown = false;
+    public float invincibilityLength = .5f; 
+    [SerializeField] private bool invincibilityCooldown = false;
     
     Rigidbody rb;
     Animator anim;
@@ -107,7 +108,7 @@ public class EnemyHealth : MonoBehaviour
 
     IEnumerator InvincibilityAfterDamage()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(invincibilityLength);
         invincibilityCooldown = false;
     }
 
@@ -118,8 +119,12 @@ public class EnemyHealth : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.Sleep();
         chaseBehaviour.chaseTarget = null;
+
+        if (transform.root.parent.CompareTag("Boss"))
+        {
+            EventManagerNorth.TriggerEvent("GolfBallSunk");
+        }
         EventManagerNorth.StopListening("GolfBallSunk", Death);
-        Destroy(gameObject, 4f);
     }
 
     public void PlayHurtSound(float damageAmount)

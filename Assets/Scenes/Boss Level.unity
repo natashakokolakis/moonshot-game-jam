@@ -9140,6 +9140,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5081903714607671566, guid: a503cfb0dd759f246bfb458c9a7cd4bf,
+        type: 3}
+      propertyPath: invincibilityLength
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5994508065220479045, guid: a503cfb0dd759f246bfb458c9a7cd4bf,
         type: 3}
       propertyPath: m_LocalPosition.x
