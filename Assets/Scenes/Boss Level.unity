@@ -2382,57 +2382,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277519173}
   m_Mesh: {fileID: -121586978152425214, guid: 3c3da73ffb03fa9419bf4c2cc9cebe3f, type: 3}
---- !u!1 &317620763 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7744567644611372354, guid: 00495824cfb24094993af9edbbdc5b43,
-    type: 3}
-  m_PrefabInstance: {fileID: 1205113588}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &317620767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317620763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 841b72de2996c5c40bfb394f3d0e0a98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Feedbacks:
-  - {fileID: 1359232319}
-  - {fileID: 1359232318}
-  InitializationMode: 1
-  SafeMode: 3
-  AutoPlayOnStart: 0
-  DebugActive: 0
---- !u!114 &317620768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317620763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6320603092688c740baadd6c86828706, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meleeDamage: 5
---- !u!65 &317620769
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317620763}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.009999994, y: 0.01, z: 0.03497742}
-  m_Center: {x: 0.002160205, y: -0.0001061148, z: -0.013443911}
 --- !u!114 &317832002 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4506578018566758411, guid: e99b050644df2af40a44f6b30c8d3c17,
@@ -5135,7 +5084,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740044472}
   m_LocalRotation: {x: 0.2453074, y: -0, z: -0, w: 0.96944535}
-  m_LocalPosition: {x: -5.7666664, y: 31.048786, z: -48.951965}
+  m_LocalPosition: {x: -5.7628307, y: 31.048786, z: -48.951965}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 390617646}
@@ -7247,39 +7196,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948990498}
   m_Mesh: {fileID: -121586978152425214, guid: 3c3da73ffb03fa9419bf4c2cc9cebe3f, type: 3}
---- !u!1 &955415133 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 92047313237046050, guid: 00495824cfb24094993af9edbbdc5b43,
-    type: 3}
-  m_PrefabInstance: {fileID: 1205113588}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &955415134
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955415133}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1.09, y: 1, z: 0.88}
-  m_Center: {x: 0, y: 0.8, z: 0.5}
---- !u!114 &955415135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955415133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 955415133}
-  ListenerNumber: -1
 --- !u!4 &955415143 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 92047313237046052, guid: 00495824cfb24094993af9edbbdc5b43,
@@ -9242,7 +9158,7 @@ PrefabInstance:
     - target: {fileID: 5994508065220479045, guid: a503cfb0dd759f246bfb458c9a7cd4bf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 5994508065220479045, guid: a503cfb0dd759f246bfb458c9a7cd4bf,
         type: 3}
@@ -9796,6 +9712,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 317620767, guid: 00495824cfb24094993af9edbbdc5b43, type: 3}
+      propertyPath: Feedbacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 1359232319}
+    - target: {fileID: 317620767, guid: 00495824cfb24094993af9edbbdc5b43, type: 3}
+      propertyPath: Feedbacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 1359232318}
     - target: {fileID: 92047313121555762, guid: 00495824cfb24094993af9edbbdc5b43,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -9871,36 +9795,6 @@ PrefabInstance:
       propertyPath: golfBallTrail
       value: 
       objectReference: {fileID: 1479156739}
-    - target: {fileID: 6931580310018277368, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6931580310018277368, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6931580310018277368, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7744567644611372354, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_TagString
-      value: GolfClub
-      objectReference: {fileID: 0}
-    - target: {fileID: 8432429710751695456, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9195760582594417259, guid: 00495824cfb24094993af9edbbdc5b43,
-        type: 3}
-      propertyPath: backParameters.color.a
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00495824cfb24094993af9edbbdc5b43, type: 3}
 --- !u!1 &1210637055
@@ -10255,6 +10149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentOrthSize: 15
   zoomSpeed: 3
+  mapUiClick: {fileID: 0}
 --- !u!114 &1310356907
 MonoBehaviour:
   m_ObjectHideFlags: 0

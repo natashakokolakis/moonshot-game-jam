@@ -65,7 +65,7 @@ public class PlayerHealth : MonoBehaviour
         if (boss != null)
         {
             boss.GetComponentInChildren<BossAttack>().onCooldown = true;
-            boss.GetComponentInChildren<Animator>().SetBool("PlayerDead", true);
+            boss.GetComponentInChildren<Animator>().SetTrigger("PlayerDead");
         }
 
         menus.TurnOnDeathMenu();

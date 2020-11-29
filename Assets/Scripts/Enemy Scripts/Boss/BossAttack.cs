@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.AI;
+using ECM.Components;
 
 public class BossAttack : MonoBehaviour
 {
@@ -44,6 +45,7 @@ public class BossAttack : MonoBehaviour
     BossBeam bossBeam;
     Animator animate;
     GameObject bossParent;
+    CharacterMovement enemyMovementController;
 
     private void Awake()
     {
@@ -52,6 +54,7 @@ public class BossAttack : MonoBehaviour
         enemyHealth = GetComponentInParent<EnemyHealth>();
         chaseBehaviour = GetComponentInParent<ChaseBehaviourPrefab>();
         bossBeam = chargeBeam.GetComponent<BossBeam>();
+        enemyMovementController = GetComponentInParent<CharacterMovement>();
         meleeDamage = (int)(meleeDamage * enragedMultiplier);
         rangedDamage = (int)(rangedDamage * enragedMultiplier);
         ultimateDamage = (int)(ultimateDamage * enragedMultiplier);
@@ -84,6 +87,7 @@ public class BossAttack : MonoBehaviour
 
             if (num < 1)
             {
+                chaseBehaviour.bossCanRotate = false;
                 animate.SetTrigger("ChargeAttack");
             }
             else if (num < 3 && num >=1)
@@ -126,7 +130,6 @@ public class BossAttack : MonoBehaviour
 
     public void ChargedAttack()
     {
-        chaseBehaviour.bossCanRotate = false;
         chargeBeam.SetActive(true);
     }
 
@@ -162,14 +165,17 @@ public class BossAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
             //push them backwards from boss by a certain amount
-
-            if (other.CompareTag("Player"))
-            {
-                DealDamage(meleeDamage);
-            }
+            var travelDirection = (other.transform.position - transform.position).normalized;
+            other.GetComponent<CharacterMovement>().ApplyForce(travelDirection * meleeDamage * 50, ForceMode.Impulse);
+        }
+        else if (other.CompareTag("Player"))
+        {
+            var travelDirection = (other.transform.position - transform.position).normalized;
+            other.GetComponent<CharacterMovement>().ApplyForce(travelDirection * meleeDamage * 1000, ForceMode.Impulse);
+            DealDamage(meleeDamage);
         }
     }
 
@@ -181,7 +187,7 @@ public class BossAttack : MonoBehaviour
 
     public void MeleeComplete()
     {
-        //sphereCollider.enabled = false;
+        sphereCollider.enabled = false;
         StartCoroutine(NextAttackDelay(meleeCooldown));
     }
 
