@@ -156,7 +156,7 @@ public class BossAttack : MonoBehaviour
 
     public void SummonMinions()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             minion = minions[Random.Range(0, minions.Count - 1)];
             Vector3 randomPosition = new Vector3(Random.Range(-minionSpawnRange.x, minionSpawnRange.x), 0, Random.Range(-minionSpawnRange.y, minionSpawnRange.y));

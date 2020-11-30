@@ -124960,7 +124960,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 6.3
+  - time: 5.9666667
     functionName: UltimateComplete
     data: 
     objectReferenceParameter: {fileID: 0}

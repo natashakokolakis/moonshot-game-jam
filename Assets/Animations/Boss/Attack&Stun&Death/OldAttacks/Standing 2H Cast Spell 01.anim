@@ -79546,7 +79546,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.7333333
+  - time: 2.6
     functionName: SpawnComplete
     data: 
     objectReferenceParameter: {fileID: 0}
