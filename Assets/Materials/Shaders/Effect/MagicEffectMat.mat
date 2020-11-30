@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MagicSphereOuter
+  m_Name: MagicEffectMat
   m_Shader: {fileID: -6465566751694194690, guid: 66198536a8306874b9877de08056fb3d,
     type: 3}
   m_ShaderKeywords: 
@@ -67,6 +67,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_1626A7A3: 0.1
+    - Vector1_268CDA95: 5
+    - Vector1_7CF403E9: 6.77
+    - Vector1_87F5FB05: 0.01
+    - Vector1_9B17370C: 2
+    - Vector1_F7FE04CA: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -89,7 +94,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_441476DE: {r: 0, g: 0.8867651, b: 1.8117646, a: 0}
+    - Color_441476DE: {r: 0.32028022, g: 0, b: 2.3960288, a: 0}
+    - Color_D4856BDD: {r: 0.03594903, g: 0.027560947, b: 1.7547169, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
