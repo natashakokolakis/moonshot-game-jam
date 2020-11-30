@@ -125,6 +125,7 @@ public class BossAttack : MonoBehaviour
 
     void PauseAnimation()
     {
+        //triggered during player special
         animate.enabled = !animate.enabled;
     }
 
