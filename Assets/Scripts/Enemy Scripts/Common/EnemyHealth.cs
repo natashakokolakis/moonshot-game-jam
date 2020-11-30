@@ -41,6 +41,9 @@ public class EnemyHealth : MonoBehaviour
     [FMODUnity.EventRef]
     public string EnemyHurtEvent = "";
 
+    [FMODUnity.EventRef]
+    public string BossHurtEvent = "";
+
     #endregion
 
 
@@ -55,6 +58,8 @@ public class EnemyHealth : MonoBehaviour
         if (gameObject.CompareTag("Boss"))
         {
             bossAttack = GetComponentInChildren<BossAttack>();
+            //Changes hurt sound to boss sound
+            EnemyHurtEvent = BossHurtEvent;
         }
     }
 

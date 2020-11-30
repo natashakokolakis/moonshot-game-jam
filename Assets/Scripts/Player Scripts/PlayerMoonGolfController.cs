@@ -45,7 +45,7 @@ public class PlayerMoonGolfController : BaseCharacterController
     //public CapsuleCollider orbInteractionCollider;
 
     private AOEAttackHandler aoeHandler;
-    [HideInInspector]
+
     public bool isInAOE = false;
 
     MapCameraController mapCameraController;

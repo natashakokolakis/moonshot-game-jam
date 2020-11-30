@@ -68,10 +68,13 @@ public class AOEAttackHandler : MonoBehaviour
             {
                 if (!enemiesTargeted.Contains(hitInfo.transform.gameObject))
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/Golf Related/Ball Impact", transform.position);
-                    enemiesTargeted.Add(hitInfo.transform.gameObject);
-                    Vector3 targetPosition = hitInfo.transform.position + targetImageOffset;
-                    Instantiate(targetIcon, targetPosition, targetImageRotation);
+                    if (hitInfo.transform.gameObject.GetComponent<EnemyHealth>().currentHealth > 0)
+                    {
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/Golf Related/Ball Impact", transform.position);
+                        enemiesTargeted.Add(hitInfo.transform.gameObject);
+                        Vector3 targetPosition = hitInfo.transform.position + targetImageOffset;
+                        Instantiate(targetIcon, targetPosition, targetImageRotation);
+                    }
 
                 }
             }
@@ -120,7 +123,8 @@ public class AOEAttackHandler : MonoBehaviour
 
         while (i < maxNumbTargeted)
         {
-            transform.position = Vector3.MoveTowards(transform.position, enemiesTargeted[i].transform.position + offset, ballSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, enemiesTargeted[i].transform.position + offset, ballSpeed * Time.deltaTime);
+
 
             if (transform.position == enemiesTargeted[i].transform.position + offset)
             {

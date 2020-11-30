@@ -47,6 +47,8 @@ public class BossAttack : MonoBehaviour
     GameObject bossParent;
     CharacterMovement enemyMovementController;
 
+    PlayerMoonGolfController playerMoonGolfController;
+
 
     [FMODUnity.EventRef]
     public string BossMeleeEvent = "";
@@ -61,10 +63,14 @@ public class BossAttack : MonoBehaviour
     [FMODUnity.EventRef]
     public string BossBeamEvent = "";
 
+    [FMODUnity.EventRef]
+    public string FireBallEvent = "";
+
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        playerMoonGolfController = player.GetComponent<PlayerMoonGolfController>();
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponentInParent<EnemyHealth>();
         chaseBehaviour = GetComponentInParent<ChaseBehaviourPrefab>();
@@ -87,7 +93,7 @@ public class BossAttack : MonoBehaviour
             onCooldown = true;
         }*/
 
-        if (isAttacking == false && onCooldown == false && playerHealth.currentHealth > 0)
+        if (isAttacking == false && onCooldown == false && playerHealth.currentHealth > 0 && !playerMoonGolfController.isInAOE)
         {
             if (isEnraged)
             {
@@ -183,19 +189,19 @@ public class BossAttack : MonoBehaviour
         {
             //push them backwards from boss by a certain amount
             var travelDirection = (other.transform.position - transform.position).normalized;
-            other.GetComponent<CharacterMovement>().ApplyForce(travelDirection * meleeDamage * 50, ForceMode.Impulse);
+            other.GetComponent<CharacterMovement>().ApplyForce(travelDirection * meleeDamage * 150, ForceMode.Impulse);
         }
         else if (other.CompareTag("Player"))
         {
             var travelDirection = (other.transform.position - transform.position).normalized;
-            other.GetComponent<CharacterMovement>().ApplyForce(travelDirection * meleeDamage * 1000, ForceMode.Impulse);
+            other.GetComponent<CharacterMovement>().ApplyForce(travelDirection * meleeDamage * 3000, ForceMode.Impulse);
             DealDamage(meleeDamage);
         }
     }
 
     public void RangedAttack()
     {
-
+        FMODUnity.RuntimeManager.PlayOneShot(FireBallEvent, transform.position);
         Instantiate(projectile, projectileOrigin.position, transform.rotation);
     }
 
