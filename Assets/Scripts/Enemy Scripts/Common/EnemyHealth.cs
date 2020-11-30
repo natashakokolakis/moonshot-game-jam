@@ -83,7 +83,7 @@ public class EnemyHealth : MonoBehaviour
 
         invincibilityCooldown = true;
         currentHealth -= amount;
-        anim.SetBool("isHit", true);
+        anim.SetTrigger("isHit");
 
         travelDirection = (this.transform.position - travelDirection).normalized;
 

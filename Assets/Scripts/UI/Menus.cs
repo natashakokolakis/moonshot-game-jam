@@ -7,6 +7,7 @@ public class Menus : MonoBehaviour
 {
     public GameObject deathMenu;
     public GameObject pauseMenu;
+    public GameObject controlsImage;
     bool gameIsPaused = false;
 
     private void Awake()
@@ -25,11 +26,26 @@ public class Menus : MonoBehaviour
         gameIsPaused = true;
     }
 
+    public void StartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
+    }
+
+    public void ViewControls()
+    {
+        controlsImage.SetActive(true);
+    }
+
+    public void CloseControls()
+    {
+        controlsImage.SetActive(false);
     }
 
     public void RestartLevel()

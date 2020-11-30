@@ -87,8 +87,8 @@ public class BossAttack : MonoBehaviour
 
             if (num < 1)
             {
-                chaseBehaviour.bossCanRotate = false;
                 animate.SetTrigger("ChargeAttack");
+                chaseBehaviour.bossCanRotate = false;
             }
             else if (num < 3 && num >=1)
             {
@@ -125,6 +125,7 @@ public class BossAttack : MonoBehaviour
 
     void PauseAnimation()
     {
+        //triggered during player special
         animate.enabled = !animate.enabled;
     }
 
@@ -151,13 +152,6 @@ public class BossAttack : MonoBehaviour
         }
     }
 
-    public void MeleeAttack()
-    {
-
-        DealDamage(meleeDamage);
-    }
-
-    //not called yet, swap in when ready and make sure collider gets deactivated in MeleeCompleted
     public void MeleePushback()
     {
         sphereCollider.enabled = true;
@@ -203,7 +197,6 @@ public class BossAttack : MonoBehaviour
 
     public void UltimateComplete()
     {
-        bossBeam.TurnBeamOff();
         chaseBehaviour.bossCanRotate = true;
         StartCoroutine(NextAttackDelay(ultimateCooldown));
     }
