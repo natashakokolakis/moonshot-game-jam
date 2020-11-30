@@ -19,7 +19,7 @@ public class BossAttack : MonoBehaviour
     public List<GameObject> minions;
 
     public Transform minionSpawnPoint; //center point of where minions will spawn
-    public Vector3 minionSpawnRange = new Vector3(10, 1, 10);
+    public Vector3 minionSpawnRange = new Vector3(8.5f, 1, 8.5f);
     public GameObject projectile;
     public Transform projectileOrigin;
     public GameObject chargeBeam;
