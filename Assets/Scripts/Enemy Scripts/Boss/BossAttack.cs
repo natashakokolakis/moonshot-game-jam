@@ -22,6 +22,7 @@ public class BossAttack : MonoBehaviour
     public Vector3 minionSpawnRange = new Vector3(8.5f, 1, 8.5f);
     public GameObject projectile;
     public Transform projectileOrigin;
+    public GameObject meleeGameObject;
     public GameObject chargeBeam;
     public float meleeAttackRange;
     public int meleeDamage;
@@ -40,7 +41,6 @@ public class BossAttack : MonoBehaviour
     GameObject player;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
-    SphereCollider sphereCollider;
     ChaseBehaviourPrefab chaseBehaviour;
     BossBeam bossBeam;
     Animator animate;
@@ -79,7 +79,6 @@ public class BossAttack : MonoBehaviour
         meleeDamage = (int)(meleeDamage * enragedMultiplier);
         rangedDamage = (int)(rangedDamage * enragedMultiplier);
         ultimateDamage = (int)(ultimateDamage * enragedMultiplier);
-        sphereCollider = GetComponent<SphereCollider>();
         animate = GetComponent<Animator>();
         bossParent = GameObject.FindGameObjectWithTag("Boss");
     }
@@ -97,7 +96,6 @@ public class BossAttack : MonoBehaviour
         {
             if (isEnraged)
             {
-                
                 enragedMultiplier = 1.5f;
             }
 
@@ -105,7 +103,6 @@ public class BossAttack : MonoBehaviour
             onCooldown = true;
 
             int num = Random.Range(0, 5);
-
 
             if (num < 1)
             {
@@ -180,23 +177,7 @@ public class BossAttack : MonoBehaviour
 
     public void MeleePushback()
     {
-        sphereCollider.enabled = true;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            //push them backwards from boss by a certain amount
-            var travelDirection = (other.transform.position - transform.position).normalized;
-            other.GetComponent<CharacterMovement>().ApplyForce(travelDirection * meleeDamage * 150, ForceMode.Impulse);
-        }
-        else if (other.CompareTag("Player"))
-        {
-            var travelDirection = (other.transform.position - transform.position).normalized;
-            other.GetComponent<CharacterMovement>().ApplyForce(travelDirection * meleeDamage * 3000, ForceMode.Impulse);
-            DealDamage(meleeDamage);
-        }
+        meleeGameObject.SetActive(true);
     }
 
     public void RangedAttack()
@@ -207,7 +188,6 @@ public class BossAttack : MonoBehaviour
 
     public void MeleeComplete()
     {
-        sphereCollider.enabled = false;
         StartCoroutine(NextAttackDelay(meleeCooldown));
     }
 
@@ -249,6 +229,5 @@ public class BossAttack : MonoBehaviour
         //visualize minion spawn box
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(minionSpawnPoint.position, minionSpawnRange);
-
     }
 }
