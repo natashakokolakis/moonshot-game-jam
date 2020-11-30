@@ -18078,7 +18078,7 @@ PrefabInstance:
     - target: {fileID: 5081903714607671566, guid: a503cfb0dd759f246bfb458c9a7cd4bf,
         type: 3}
       propertyPath: invincibilityLength
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5147088221122733004, guid: a503cfb0dd759f246bfb458c9a7cd4bf,
         type: 3}
