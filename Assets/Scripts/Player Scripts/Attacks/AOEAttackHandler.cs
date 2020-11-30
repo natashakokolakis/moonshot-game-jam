@@ -53,6 +53,8 @@ public class AOEAttackHandler : MonoBehaviour
         aoeCircleTimer.enabled = true;
         StartCoroutine(aoeCircleTimer.CountDownAOETimer());
         EventManagerNorth.TriggerEvent("ToggleGolfMode");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/MapZoomIn", transform.position);
+
 
         while (currentTime > 0)
         {
@@ -66,6 +68,7 @@ public class AOEAttackHandler : MonoBehaviour
             {
                 if (!enemiesTargeted.Contains(hitInfo.transform.gameObject))
                 {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Golf Related/Ball Impact", transform.position);
                     enemiesTargeted.Add(hitInfo.transform.gameObject);
                     Vector3 targetPosition = hitInfo.transform.position + targetImageOffset;
                     Instantiate(targetIcon, targetPosition, targetImageRotation);
@@ -121,6 +124,8 @@ public class AOEAttackHandler : MonoBehaviour
 
             if (transform.position == enemiesTargeted[i].transform.position + offset)
             {
+                //Plays ball hit sound.
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Golf Related/Ball Impact", transform.position);
                 i++;
             }
             yield return waitForFixedUpdate;
@@ -145,11 +150,12 @@ public class AOEAttackHandler : MonoBehaviour
 
         enemiesTargeted.Clear();
 
+        //Plays effect end sound
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/MapZoomOut", transform.position);
+
         yield return null;
     }
 
-
-    //nothing works
     IEnumerator StartTimer(float maxTime)
     {
         timer = maxTime;
