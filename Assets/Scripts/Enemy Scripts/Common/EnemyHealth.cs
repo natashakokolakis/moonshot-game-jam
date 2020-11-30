@@ -99,6 +99,7 @@ public class EnemyHealth : MonoBehaviour
         {
             if (currentHealth < startingHealth / 2 && !bossAttack.isEnraged)
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Boss/BossEnraged", transform.position);
                 anim.SetTrigger("Enraged");
                 bossAttack.isEnraged = true;
             }
@@ -127,6 +128,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (gameObject.CompareTag("Boss"))
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Boss/BossDeath", transform.position);
             EventManagerNorth.StopListening("GolfBallSunk", Death);
             EventManagerNorth.TriggerEvent("GolfBallSunk");
         }

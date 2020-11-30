@@ -64,6 +64,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (boss != null)
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Boss/BossVictory", transform.position);
             boss.GetComponentInChildren<BossAttack>().onCooldown = true;
             boss.GetComponentInChildren<Animator>().SetTrigger("PlayerDead");
         }

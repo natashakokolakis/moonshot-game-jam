@@ -47,6 +47,21 @@ public class BossAttack : MonoBehaviour
     GameObject bossParent;
     CharacterMovement enemyMovementController;
 
+
+    [FMODUnity.EventRef]
+    public string BossMeleeEvent = "";
+
+    [FMODUnity.EventRef]
+    public string BossRangedEvent = "";
+
+
+    [FMODUnity.EventRef]
+    public string BossSummonEvent = "";
+
+    [FMODUnity.EventRef]
+    public string BossBeamEvent = "";
+
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -76,6 +91,7 @@ public class BossAttack : MonoBehaviour
         {
             if (isEnraged)
             {
+                
                 enragedMultiplier = 1.5f;
             }
 
@@ -87,21 +103,25 @@ public class BossAttack : MonoBehaviour
 
             if (num < 1)
             {
+                FMODUnity.RuntimeManager.PlayOneShot(BossBeamEvent, transform.position);
                 animate.SetTrigger("ChargeAttack");
                 chaseBehaviour.bossCanRotate = false;
             }
             else if (num < 3 && num >=1)
             {
+                FMODUnity.RuntimeManager.PlayOneShot(BossSummonEvent, transform.position);
                 animate.SetTrigger("SummonMinions");
             }
             else
             {
                 if (Vector3.Magnitude(player.transform.position - bossParent.transform.position) <= meleeAttackRange)
                 {
+                    FMODUnity.RuntimeManager.PlayOneShot(BossMeleeEvent, transform.position);
                     animate.SetTrigger("MeleeAttack");
                 }
                 else
                 {
+                    FMODUnity.RuntimeManager.PlayOneShot(BossRangedEvent, transform.position);
                     animate.SetTrigger("RangedAttack");
                 }
             }
