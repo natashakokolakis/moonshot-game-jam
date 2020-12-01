@@ -183,7 +183,7 @@ public class BossAttack : MonoBehaviour
     public void RangedAttack()
     {
         FMODUnity.RuntimeManager.PlayOneShot(FireBallEvent, transform.position);
-        Instantiate(projectile, projectileOrigin.position, transform.rotation);
+        Instantiate(projectile, projectileOrigin.position - new Vector3(0,3,0), transform.rotation);
     }
 
     public void MeleeComplete()

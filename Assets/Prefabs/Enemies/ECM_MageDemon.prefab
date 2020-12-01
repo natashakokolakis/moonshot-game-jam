@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 2
-  projectile: {fileID: 5807249022968383618, guid: 26a0c619e71232e479e8ee1e93942956,
+  projectile: {fileID: 3947491135251006353, guid: c0aba83fa55dc0741ab20ea9206dd246,
     type: 3}
   projectileOrigin: {fileID: 2548563456325021399}
 --- !u!1 &5854185220812412736
@@ -1319,6 +1319,7 @@ MonoBehaviour:
   invincibilityCooldown: 0
   EnemyImpactEvent: event:/Enemies/Enemy Impact
   EnemyHurtEvent: event:/Enemies/BasicEnemyHurt
+  BossHurtEvent: 
 --- !u!114 &3541286904097119733
 MonoBehaviour:
   m_ObjectHideFlags: 0
