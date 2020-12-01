@@ -154,6 +154,7 @@ public class BossAttack : MonoBehaviour
 
     public void ChargedAttack()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Boss/BossEnergy", transform.position);
         chargeBeam.SetActive(true);
     }
 
