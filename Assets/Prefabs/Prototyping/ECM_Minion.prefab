@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2dd5f02215454d841b6db36f90e2b81a, type: 2}
+  - {fileID: 2100000, guid: 40702ed620cf055428c35adf00a2c9b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -240,11 +240,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 50
   currentHealth: 0
-  meleeWeakness: 1
-  rangedWeakness: 1
-  specialWeakness: 1
   basePushback: 50
+  invincibilityLength: 0.5
   invincibilityCooldown: 0
+  EnemyImpactEvent: 
+  EnemyHurtEvent: 
+  BossHurtEvent: 
 --- !u!114 &-2641722695120502347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,3 +285,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   chaseTarget: {fileID: 0}
+  bossCanRotate: 1
