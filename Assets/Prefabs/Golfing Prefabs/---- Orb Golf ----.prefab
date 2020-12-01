@@ -130,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6320603092688c740baadd6c86828706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeHitbox: {fileID: 0}
   meleeDamage: 5
 --- !u!114 &5269677741500853230
 MonoBehaviour:
@@ -1637,7 +1636,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8caa672625832e74b8a4939c5f89ce08, type: 2}
+  - {fileID: 2100000, guid: 2a714df06e718d146bda41b2b3695d58, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
