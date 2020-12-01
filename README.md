@@ -1,6 +1,6 @@
 # Moonshot Golf
 
-![Image of Yaktocat](https://cdn.discordapp.com/attachments/729102531602546699/783445984033898566/unknown.png)
+![Image of Game Title](https://cdn.discordapp.com/attachments/729102531602546699/783445984033898566/unknown.png)
 
 ### About
 Demons have been planning an attack against the humans for a while now. Experts determined that a humble golf dad was the chosen saviour, despite never before being trained in combat. You must do the impossible and use your golfing skills to make your way through demon territory to defeat their leader and save the world.   
