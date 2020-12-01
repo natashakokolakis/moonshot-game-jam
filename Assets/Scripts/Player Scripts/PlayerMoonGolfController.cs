@@ -8,7 +8,7 @@ public class PlayerMoonGolfController : BaseCharacterController
     [Space(1)]
     // groundMask is used to determine which layer is the ground in Unity
     public LayerMask groundMask = 1;
-    public GameObject pauseMenu;
+    Menus mainMenu;
 
     // Turns off inputs when dead
     [HideInInspector]
@@ -47,7 +47,6 @@ public class PlayerMoonGolfController : BaseCharacterController
 
     private AOEAttackHandler aoeHandler;
     public bool isInAOE = false;
-    bool gamePause;
     MapCameraController mapCameraController;
 
     #endregion
@@ -197,25 +196,13 @@ public class PlayerMoonGolfController : BaseCharacterController
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!gamePause)
-            {
-                Time.timeScale = 0;
-                pauseMenu.SetActive(true);
-            }
-            else
-            {
-                Time.timeScale = 1;
-                pauseMenu.SetActive(false);
-            }
-
-        }
             //pause = !pause;
+            mainMenu.TurnOnPauseMenu();
+        }
 
         //Do nothing if dead/ attacking
-
         if (isAttacking | isDead | isInAOE)
             return;
-
 
         moveDirection = new Vector3
         {
@@ -295,6 +282,7 @@ public class PlayerMoonGolfController : BaseCharacterController
         golfBallAttack = golfBallObject.GetComponent<GolfBallAttack>();
         aoeHandler = GetComponentInChildren<AOEAttackHandler>();
         mapCameraController = GameObject.Find("Map Camera").GetComponent<MapCameraController>();
+        mainMenu = GameObject.Find("LevelDetailsCanvas").GetComponent<Menus>();
     }
 
     public override void FixedUpdate()
