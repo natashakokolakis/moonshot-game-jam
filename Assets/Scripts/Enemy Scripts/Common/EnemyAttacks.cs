@@ -13,6 +13,7 @@ public class EnemyAttacks : MonoBehaviour
     PlayerHealth playerHealth;
     SphereCollider diveCollider;
     CapsuleCollider diveTrigger;
+    SkinnedMeshRenderer meshRenderer;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class EnemyAttacks : MonoBehaviour
         playerHealth = player.GetComponent<PlayerHealth>();
         diveCollider = GetComponentInChildren<SphereCollider>();
         diveTrigger = GetComponentInChildren<CapsuleCollider>();
+        meshRenderer = GetComponent<SkinnedMeshRenderer>();
     }
 
     void MeleeAttack()

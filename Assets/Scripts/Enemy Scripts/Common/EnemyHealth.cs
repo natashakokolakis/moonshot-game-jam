@@ -150,6 +150,4 @@ public class EnemyHealth : MonoBehaviour
         enemyHurtSound.start();
         enemyHurtSound.release();
     }
-
-
 }
