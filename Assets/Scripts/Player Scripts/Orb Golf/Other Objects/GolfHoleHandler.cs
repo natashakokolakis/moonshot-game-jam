@@ -25,6 +25,7 @@ public class GolfHoleHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("GolfBall") & (!other.isTrigger))
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/GateCrumble", transform.position);
             FMODUnity.RuntimeManager.PlayOneShot(BallSinkEvent, transform.position);
             sunkHoleFeedback.PlayFeedbacks();
             EventManagerNorth.TriggerEvent("GolfBallSunk");

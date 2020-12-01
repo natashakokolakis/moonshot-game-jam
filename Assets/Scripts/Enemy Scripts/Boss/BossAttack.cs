@@ -162,6 +162,7 @@ public class BossAttack : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/EnemyPoof", transform.position);
             minion = minions[Random.Range(0, minions.Count - 1)];
             Vector3 randomPosition = new Vector3(Random.Range(-minionSpawnRange.x, minionSpawnRange.x), 0, Random.Range(-minionSpawnRange.y, minionSpawnRange.y));
 
