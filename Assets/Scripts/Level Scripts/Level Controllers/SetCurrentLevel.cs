@@ -45,6 +45,10 @@ public class SetCurrentLevel : MonoBehaviour
 
     public PlayerHealth playerHealthController;
 
+    private StrokeCounter strokeCounter;
+
+    public int levelPar = 4;
+
     #endregion
 
     // Need to set previous level gate in Scene
@@ -100,7 +104,7 @@ public class SetCurrentLevel : MonoBehaviour
         GetTriggerCollider();
 
         playerHealthController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-
+        strokeCounter = GameObject.Find("Stroke Counter").GetComponent<StrokeCounter>();
     }
 
     #endregion
@@ -145,7 +149,7 @@ public class SetCurrentLevel : MonoBehaviour
         startLevelTrigger.enabled = false;
 
         playerHealthController.currentHealth = playerHealthController.maxHealth;
-
+        strokeCounter.UpdateLevelStrokes(levelPar);
     }
 
     #endregion
