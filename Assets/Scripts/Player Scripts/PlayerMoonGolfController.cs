@@ -8,6 +8,7 @@ public class PlayerMoonGolfController : BaseCharacterController
     [Space(1)]
     // groundMask is used to determine which layer is the ground in Unity
     public LayerMask groundMask = 1;
+    public GameObject pauseMenu;
 
     // Turns off inputs when dead
     [HideInInspector]
@@ -45,9 +46,8 @@ public class PlayerMoonGolfController : BaseCharacterController
     //public CapsuleCollider orbInteractionCollider;
 
     private AOEAttackHandler aoeHandler;
-
     public bool isInAOE = false;
-
+    bool gamePause;
     MapCameraController mapCameraController;
 
     #endregion
@@ -195,8 +195,21 @@ public class PlayerMoonGolfController : BaseCharacterController
     // Handle user input
     protected override void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-            pause = !pause;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!gamePause)
+            {
+                Time.timeScale = 0;
+                pauseMenu.SetActive(true);
+            }
+            else
+            {
+                Time.timeScale = 1;
+                pauseMenu.SetActive(false);
+            }
+
+        }
+            //pause = !pause;
 
         //Do nothing if dead/ attacking
 
