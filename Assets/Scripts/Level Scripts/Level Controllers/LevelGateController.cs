@@ -5,18 +5,21 @@ using UnityEngine;
 public class LevelGateController : MonoBehaviour
 {
     private BoxCollider gateCollider;
-    private MeshRenderer gateRenderer;
+    CliffFalling cliffFalling;
+    //private MeshRenderer gateRenderer;
 
     private void Awake()
     {
         gateCollider = GetComponent<BoxCollider>();
-        gateRenderer = GetComponent<MeshRenderer>();
+        cliffFalling = GetComponentInChildren<CliffFalling>();
+        //gateRenderer = GetComponent<MeshRenderer>();
     }
 
     private void OpenGate()
     {
-        gateRenderer.enabled = false;
-        gateCollider.enabled = false;
+        cliffFalling.StartFalling();
+        //gateRenderer.enabled = false;
+        //gateCollider.enabled = false;
         EventManagerNorth.StopListening("GolfBallSunk", OpenGate);
     }
 
