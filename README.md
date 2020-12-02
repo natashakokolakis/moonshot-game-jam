@@ -21,6 +21,4 @@ FMOD Studio - Firelight Technologies
 
 ### Credits   
 ##### Music   
-Dominant - Punch Deck    
-
-*Made with FMOD Studio by Firelight Technologies Pty Ltd.*
+Dominant - Punch Deck  
